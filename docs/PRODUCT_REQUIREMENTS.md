@@ -10,7 +10,7 @@ Status: `Planned` · `In progress` · `Done` · `Blocked (content)`, where Block
 | BR-02 | Multiple conversion points: hero CTA, dock, AI section, work, estimate, final CTA | P0 | Planned |
 | BR-03 | Industry-neutral positioning; the three buyer types are served equally | P0 | Planned |
 | BR-04 | No invented clients, metrics, testimonials or stats anywhere | P0 | Planned |
-| BR-05 | "Why TechDesk" section with 3–4 real commitments | P1 | Blocked (content) |
+| BR-05 | "Why TechDesk" section with 3–4 real commitments | P1 | Planned |
 
 ## Functional (FR)
 | ID | Description | Priority | Status |
@@ -25,11 +25,11 @@ Status: `Planned` · `In progress` · `Done` · `Blocked (content)`, where Block
 ## Lead generation (LG)
 | ID | Description | Priority | Status |
 |---|---|---|---|
-| LG-01 | Persistent quick-contact dock: WhatsApp (`wa.me`, prefilled text), call (`tel:`), chat | P0 | Blocked (content: numbers) |
+| LG-01 | Persistent quick-contact dock: WhatsApp (`wa.me`, prefilled text), call (`tel:`), chat | P0 | Planned |
 | LG-02 | Five-step contact brief (spec §26) with validation and loading, success and error states | P0 | Planned |
 | LG-03 | `submitLead()` is the single submission boundary (form service now, Node later) | P0 | Planned |
 | LG-04 | Spam protection: honeypot plus the form service's built-in filtering; no captcha friction by default | P0 | Planned |
-| LG-05 | Quote calculator: type, size and add-ons give an **indicative range**, with a clear disclaimer | P0 | Blocked (content: prices) |
+| LG-05 | Quote calculator: type, size and add-ons give an **indicative range**, with a clear disclaimer | P0 | Planned |
 | LG-06 | The calculator hands off to the brief (prefilled) or WhatsApp (prefilled summary) | P0 | Planned |
 | LG-07 | AI chatbot answers from site data only, shows a typing state (streaming is P2), and suggests prompts | P1 | Planned |
 | LG-08 | When every provider is unavailable, the chatbot shows a handoff (WhatsApp, call, brief), never a dead end | P0 (if LG-07 ships) | Planned |

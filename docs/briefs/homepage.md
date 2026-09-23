@@ -34,7 +34,7 @@ One dominant idea per viewport. Rhythm alternates between **loud** (hero, AI, wo
 | 9 | **Footer** | Spec §23 links, contact, legal | Dense, calm, hairline grid |
 | ∞ | **Quick-contact dock** | WhatsApp · Call · Chat | Fixed bottom-right cluster on desktop; bottom bar on mobile (thumb zone, 44px or larger). It hides only while the full-screen menu or chatbot is open |
 
-Spec items **deliberately merged**: "Capability signal" and "Technology intro" become the hero-to-services transition, because a separate stats band would be the hero-metric anti-pattern. "Case studies" are folded into Work. "Why us" is **omitted until the owner supplies real commitments** (Open Question 2); it will not be filled with generic claims.
+Spec items **deliberately merged**: "Capability signal" and "Technology intro" become the hero-to-services transition, because a separate stats band would be the hero-metric anti-pattern. "Case studies" are folded into Work. "Why us" becomes a quiet band of the **four commitments** (own everything · weekly working software · talk to the builders · estimate before commitment), placed between Industries and Estimate.
 
 ## 6. Key States
 | Surface | States |
@@ -63,6 +63,8 @@ Spec items **deliberately merged**: "Capability signal" and "Technology intro" b
 `animate.md` (the choreographed sequences) · `layout.md` (loud/quiet rhythm) · `typeset.md` (font selection in Phase 2) · `interaction-design` guidance for the calculator and chatbot · `harden.md` (chatbot failure and handoff states) · `adapt.md` (mobile simplification) · `audit.md` before ship.
 
 ## 10. Open Questions
+**All resolved 2026-09-23.** See `docs/DISCOVERY.md` § Business content. Kept below for history.
+
 1. **Pricing for the calculator:** which currency (INR, USD, or both with a toggle), and what are the real base prices and multipliers? digital-ascent's USD figures ($3k web / $4k AI, ×1/2.5/5) are placeholders until you confirm them.
 2. **"Why TechDesk" commitments:** give 3–4 true statements (e.g. "You own the code", "Weekly demos", "Direct line to the engineer"). Without them, the section stays out.
 3. **Contact details:** WhatsApp and call number(s), email, city.

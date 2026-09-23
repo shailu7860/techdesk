@@ -20,6 +20,9 @@ Premium futuristic technology-agency website for **TechDesk**. Goal: qualified l
 | Motion | GSAP + ScrollTrigger (+ Lenis). Three.js/R3F only where justified, lazy-loaded, desktop only. |
 | Fonts | Display + mono, self-hosted. Chosen in Phase 2 per `DESIGN.md` §3 (no reflex fonts: Space Grotesk, Inter, Plex, Space Mono, Orbitron…). |
 
+## Business content (see `docs/DISCOVERY.md` § Business content)
+WhatsApp/call **+91 92033 87375** · **shailendramishra0127@gmail.com** · **Indore, India, serving clients worldwide** · INR and USD toggle · Mon–Sat 10–19 IST · replies within one business day · four "Why TechDesk" commitments and price bands are in DISCOVERY.md (delegated by the owner; editable).
+
 ## Content rules (non-negotiable)
 - **Never invent** client names, metrics, results, testimonials or stats (spec §71 rules 6–8).
 - Old portfolio testimonials ("Sarah Chen" etc.) and stats ("50+ projects", "30+ clients", "99.9%") are **template content — excluded** unless the owner confirms them.
