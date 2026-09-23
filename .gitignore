@@ -1,0 +1,8 @@
+node_modules/
+build/
+.react-router/
+.amplify/
+amplify_outputs.json
+.env*
+!.env.example
+.DS_Store
