@@ -1,0 +1,79 @@
+/*
+ * TechDesk design tokens. Single source for DESIGN.md values.
+ * Colors are OKLCH. Contrast pairs are verified by `npm run check:contrast`.
+ */
+@import "tailwindcss";
+
+@theme static {
+  /* ── Color: neutrals (pure, chroma 0) ── */
+  --color-void: oklch(0.14 0 0);          /* page canvas */
+  --color-panel: oklch(0.19 0 0);         /* raised surfaces: dock, inputs, chat */
+  --color-panel-hi: oklch(0.24 0 0);      /* hover on panel */
+  --color-hairline: oklch(0.32 0 0);      /* borders, grid lines, corner markers */
+  --color-ink: oklch(0.97 0 0);           /* headlines + body */
+  --color-muted: oklch(0.74 0 0);         /* secondary text, metadata */
+  --color-subtle: oklch(0.6 0 0);         /* disabled, placeholders (≥4.5:1 on void) */
+
+  /* ── Color: signal (live / actionable) ── */
+  --color-signal: oklch(0.86 0.13 215);   /* electric cyan-blue; fills carry void text */
+  --color-signal-hi: oklch(0.92 0.09 215);
+  --color-signal-lo: oklch(0.86 0.13 215 / 0.14);
+
+  /* ── Color: agent (AI at work, AI surfaces only) ── */
+  --color-agent: oklch(0.72 0.16 294);
+  --color-agent-lo: oklch(0.72 0.16 294 / 0.16);
+
+  /* ── Color: states (always paired with text/icon, never color alone) ── */
+  --color-danger: oklch(0.74 0.16 25);
+  --color-success: oklch(0.82 0.15 160);
+
+  /* ── Type ── */
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Martian Mono Variable", ui-monospace, "SFMono-Regular", monospace;
+
+  --text-display: clamp(2.75rem, 1.4rem + 5.4vw, 6rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.035em;
+  --text-headline: clamp(2rem, 1.35rem + 2.6vw, 3.5rem);
+  --text-headline--line-height: 1.02;
+  --text-headline--letter-spacing: -0.025em;
+  --text-title: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --text-title--line-height: 1.2;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.7;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.6;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.02em;
+
+  /* ── Radius: machined, barely rounded ── */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* ── Motion ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-quart: cubic-bezier(0.5, 0, 0.75, 0);
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --duration-slow: 480ms;
+  --duration-cinematic: 1200ms;
+}
+
+:root {
+  /* Layout */
+  --container: 88rem;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 3rem);
+  --section-y: clamp(5rem, 3rem + 8vw, 11rem);
+  --dock-h: 4rem;
+
+  /* Z scale (semantic, never ad-hoc) */
+  --z-base: 0;
+  --z-sticky: 100;
+  --z-dock: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}

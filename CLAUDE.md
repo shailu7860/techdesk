@@ -9,7 +9,7 @@ Premium futuristic technology-agency website for **TechDesk**. Goal: qualified l
 | Area | Decision |
 |---|---|
 | Brand | **TechDesk** (wordmark `TECHDESK`). No logo exists — SVG wordmark designed in Phase 2. |
-| Stack | Vite + React 19 + TypeScript (strict) + React Router v7 framework mode |
+| Stack | Vite 8 + React 19 + TypeScript 7 (strict) + React Router 8 framework mode (v7 API; prerender unchanged) |
 | Rendering | `ssr: false` + `prerender()` → static HTML per route incl. every `/work/:slug` (SEO, spec §32) |
 | Hosting | **AWS Amplify** Hosting (static). No domain yet — use Amplify default URL, domain later. |
 | Leads | Form service (Formspree/Web3Forms class) behind ONE `submitLead()` in `src/lib/leads.ts`. Public form ID only. |
@@ -18,7 +18,7 @@ Premium futuristic technology-agency website for **TechDesk**. Goal: qualified l
 | Quick contact | Persistent dock: WhatsApp (`wa.me` deep link, prefilled text) + phone (`tel:`) + chat. |
 | Styling | Tailwind CSS v4 + CSS custom-property tokens (`src/styles/tokens.css`). |
 | Motion | GSAP + ScrollTrigger (+ Lenis). Three.js/R3F only where justified, lazy-loaded, desktop only. |
-| Fonts | Display + mono, self-hosted. Chosen in Phase 2 per `DESIGN.md` §3 (no reflex fonts: Space Grotesk, Inter, Plex, Space Mono, Orbitron…). |
+| Fonts | **Archivo** variable (display at 118% width, body at 100%) + **Martian Mono** (labels only), self-hosted via Fontsource. |
 
 ## Business content (see `docs/DISCOVERY.md` § Business content)
 WhatsApp/call **+91 92033 87375** · **shailendramishra0127@gmail.com** · **Indore, India, serving clients worldwide** · INR and USD toggle · Mon–Sat 10–19 IST · replies within one business day · four "Why TechDesk" commitments and price bands are in DISCOVERY.md (delegated by the owner; editable).
@@ -40,7 +40,7 @@ WhatsApp/call **+91 92033 87375** · **shailendramishra0127@gmail.com** · **Ind
 
 ## Design context
 - `PRODUCT.md` — register **brand**, platform **web**, users, personality (precise · calm-confident · inventive · warm), anti-references, principles. WCAG 2.2 AA.
-- `DESIGN.md` — SEED visual system (The Instrument in the Dark): restrained near-black + Signal Blue ≤10% + Agent Violet for AI only; display + mono; choreographed motion. Re-run `/impeccable document` after Phase 2.
+- `DESIGN.md` — visual system (The Instrument in the Dark): restrained near-black + Signal Blue ≤10% + Agent Violet for AI only; display + mono; choreographed motion. Tokens scanned from code after Phase 2; `/system` is the live specimen (noindex).
 
 ## Docs
 `PRODUCT.md` · `DESIGN.md` (= spec DESIGN_SYSTEM) · `docs/DISCOVERY.md` (Phase 0) · `docs/PROJECT_OVERVIEW.md` · `docs/PRODUCT_REQUIREMENTS.md` · `docs/ARCHITECTURE.md` · `docs/UX_FLOW.md`

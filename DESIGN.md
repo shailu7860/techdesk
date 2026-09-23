@@ -1,9 +1,82 @@
 ---
 name: TechDesk
 description: A technology studio from the near future — cinematic, precise, and one tap from a human.
+colors:
+  void: "oklch(0.14 0 0)"
+  panel: "oklch(0.19 0 0)"
+  panel-hi: "oklch(0.24 0 0)"
+  hairline: "oklch(0.32 0 0)"
+  ink: "oklch(0.97 0 0)"
+  muted: "oklch(0.74 0 0)"
+  subtle: "oklch(0.6 0 0)"
+  signal: "oklch(0.86 0.13 215)"
+  signal-hi: "oklch(0.92 0.09 215)"
+  agent: "oklch(0.72 0.16 294)"
+  danger: "oklch(0.74 0.16 25)"
+  success: "oklch(0.82 0.15 160)"
+typography:
+  display:
+    fontFamily: "Archivo Variable, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2.75rem, 1.4rem + 5.4vw, 6rem)"
+    fontWeight: 640
+    lineHeight: 0.95
+    letterSpacing: "-0.035em"
+  headline:
+    fontFamily: "Archivo Variable, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2rem, 1.35rem + 2.6vw, 3.5rem)"
+    fontWeight: 640
+    lineHeight: 1.02
+    letterSpacing: "-0.025em"
+  title:
+    fontFamily: "Archivo Variable, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem)"
+    fontWeight: 500
+    lineHeight: 1.2
+  body:
+    fontFamily: "Archivo Variable, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 400
+    lineHeight: 1.7
+  label:
+    fontFamily: "Martian Mono Variable, ui-monospace, monospace"
+    fontSize: "0.75rem"
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: "0.02em"
+rounded:
+  sm: "2px"
+  md: "4px"
+  lg: "8px"
+spacing:
+  gutter: "clamp(1rem, 0.5rem + 2.5vw, 3rem)"
+  section: "clamp(5rem, 3rem + 8vw, 11rem)"
+  container: "88rem"
+components:
+  button-primary:
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.void}"
+    rounded: "{rounded.sm}"
+    padding: "0 20px"
+  button-primary-hover:
+    backgroundColor: "{colors.signal-hi}"
+  button-secondary:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sm}"
+    padding: "0 20px"
+  field:
+    backgroundColor: "{colors.panel}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sm}"
+    padding: "0 16px"
+  dock-button:
+    backgroundColor: "{colors.panel}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sm}"
+    width: "48px"
+    height: "48px"
 ---
-
-<!-- SEED: re-run /impeccable document once there's code to capture the actual tokens and components. -->
+<!-- Scanned from src/styles/tokens.css + src/components after Phase 2 (2026-09-24). Tokens in frontmatter are normative. -->
 
 # Design System: TechDesk
 
@@ -29,13 +102,13 @@ This system explicitly rejects **generic agency templates** (hero plus three ico
 **The Signal Rule.** Colour means something here. Blue marks "live / actionable". Violet marks "AI at work". Everything else is neutral. If a colour is on screen, a visitor must be able to say what it means.
 
 ### Primary
-- **Signal Blue** (electric blue leaning cyan, `[to be resolved during implementation]`): the only accent on the canvas. Used for primary CTAs, focus rings, active states, live indicators and links. It covers at most 10% of any viewport.
+- **Signal Blue** (electric cyan-blue, pale enough that void text sits on it at 13:1): the only accent on the canvas. Used for primary CTAs, focus rings, active states, live indicators and links. It covers at most 10% of any viewport.
 
 ### Secondary
-- **Agent Violet** (indigo-violet anchored at OKLCH hue ≈294, `[to be resolved during implementation]`): appears **only** in the AI agent section, the chatbot and AI-specific project states. Never used for decoration, never on generic UI.
+- **Agent Violet** (indigo-violet, hue 294, the palette seed; used as text and lines, never as a fill carrying text): appears **only** in the AI agent section, the chatbot and AI-specific project states. Never used for decoration, never on generic UI.
 
 ### Neutral
-- **Void** (pure near-black, chroma 0, `[to be resolved during implementation]`): the page canvas. Never tinted warm or blue.
+- **Void** (pure near-black, chroma 0): the page canvas. Never tinted warm or blue.
 - **Panel** (Void lifted slightly toward white): raised surfaces such as the dock, chatbot, calculator and inputs.
 - **Ink** (near-white): headlines and body text. At least 7:1 contrast against Void.
 - **Muted Ink**: secondary text and metadata. At least 4.5:1 against Void, because it carries real information.
@@ -47,9 +120,9 @@ This system explicitly rejects **generic agency templates** (hero plus three ico
 
 ## 3. Typography
 
-**Display Font:** `[engineered display face to be chosen at implementation]`
-**Body Font:** the display family at text sizes, unless the chosen face lacks a text optical size.
-**Label/Mono Font:** `[monospace to be chosen at implementation]`
+**Display and Body Font:** **Archivo** (Omnibus-Type, variable: width 62–125, weight 100–900). Display runs expanded (118% width, weight 640) like an engraved equipment plate; body runs at normal width. One family, contrast carried by *width*, not by a second face.
+**Label/Mono Font:** **Martian Mono** (Evil Martians, variable), a distinctive technical mono for system labels only.
+Both are self-hosted through Fontsource; `unicode-range` subsets mean only the Latin files load for English pages.
 
 **Character:** display plus mono. A distinctive, engineered display face carries the voice: headlines, body and CTAs. A monospace is used **only** for system language: project IDs (`PROJECT / 01`), status (`STATUS / ONLINE`), coordinates, technology names and calculator figures.
 
@@ -74,7 +147,25 @@ Layered, with depth expressed through **light and parallax, not drop shadows**. 
 
 ## 5. Components
 
-`[Omitted in seed. Components are documented on the first scan-mode run, after the Phase 2 design system is built.]`
+Live specimen: `/system` (noindex). Components live in `src/components/`.
+
+### Buttons
+- **Primary** (Signal fill, Void text, 2px radius, 44px minimum height, 52px when large): one per viewport. Hover lifts to Signal-hi; the trailing glyph (→ ↓) nudges 2px. Loading shows a small spinner, keeps the label, sets `aria-busy`, and disables the button.
+- **Secondary** (hairline outline, Ink text): hover turns the border to Ink. Used beside a primary action.
+- **Ghost** (text only): hover shows Signal plus an underline. Used for in-flow links such as "View case study".
+- All buttons use Archivo at 112% width and weight 500. Transitions run 220ms with ease-out-quart on colour properties only, so hover never shifts layout.
+
+### Labels (system engraving)
+Martian Mono, 12px, uppercase, tone muted, signal or agent. The optional live dot is the single permitted glow; its ping stops under reduced motion, and it is always paired with status text.
+
+### Inputs / Fields
+Panel fill, hairline border, 2px radius, 48px minimum height, Subtle placeholder (5:1). Focus turns the border Signal and adds the global 2px Signal focus ring. Errors turn the border Danger and add a `!` message wired through `aria-describedby`, so they never rely on colour alone. Labels are always visible, and required fields say "(required)" in text.
+
+### Navigation
+The wordmark links home. Full navigation arrives in Phase 3.
+
+### Quick-contact dock (signature component)
+Plain anchors (`wa.me`, `tel:`), so it works without JS. On desktop it is a bottom-right stack of 48px Panel squares with mono text tooltips on hover and focus. On mobile it is a full-width bottom bar with labelled buttons (64px tall, safe-area aware) and body padding so no content hides behind it.
 
 ## 6. Do's and Don'ts
 

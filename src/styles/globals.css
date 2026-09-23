@@ -1,0 +1,72 @@
+@import "./tokens.css";
+
+@layer base {
+  html {
+    background: var(--color-void);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    color-scheme: dark;
+  }
+
+  body {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  ::selection { background: var(--color-signal); color: var(--color-void); }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Mobile: the contact dock is a bottom bar; keep content clear of it. */
+  @media (width < 48rem) {
+    body { padding-bottom: calc(var(--dock-h) + env(safe-area-inset-bottom)); }
+  }
+
+  /* Safety net. Components still declare their own reduced-motion alternative. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Engineered display voice: Archivo at expanded width. */
+@utility font-display {
+  font-family: var(--font-sans);
+  font-stretch: 118%;
+  font-weight: 640;
+}
+
+@utility skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: var(--z-toast);
+  padding: 0.75rem 1rem;
+  background: var(--color-signal);
+  color: var(--color-void);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+  &:focus-visible { transform: none; }
+}
