@@ -71,7 +71,7 @@
 
 :root {
   /* Layout */
-  --container: 80rem; /* Tailwind max-w-7xl: the "xl" site width */
+  --container: 96rem; /* content width 1536px (Tailwind 2xl), matching the owner's Stratos site; padding sits outside */
   --gutter: clamp(1rem, 0.5rem + 2.5vw, 3rem);
   --section-y: clamp(4rem, 2.5rem + 4.5vw, 7rem);
   --dock-h: 4rem;
