@@ -144,3 +144,12 @@ test("chat: answers from the assistant, then a human handoff when it is down", a
   await page.keyboard.press("Escape");
   await expect(chat).toBeHidden();
 });
+
+test("sending an estimate keeps what the visitor already typed in the brief", async ({ page }) => {
+  await page.goto("/contact");
+  await page.locator("#brief").getByLabel("Your name").fill("Asha Rao");
+  await page.locator("#estimate").getByText("Digital marketing").click();
+  await page.locator("#estimate").getByRole("button", { name: "Send this to us" }).click();
+  await expect(page).toHaveURL(/type=marketing/);
+  await expect(page.locator("#brief").getByLabel("Your name")).toHaveValue("Asha Rao");
+});

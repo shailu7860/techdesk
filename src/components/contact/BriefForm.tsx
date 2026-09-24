@@ -34,9 +34,27 @@ const chip =
 type Status = "editing" | "sending" | "sent" | (SubmitResult & { ok: false });
 
 /** Five-step project brief (spec §26, LG-02) with per-step validation and every submit state. */
-export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
+export function BriefForm({
+  projectType = "",
+  estimate = "",
+  reference = "",
+}: {
+  projectType?: string;
+  estimate?: string;
+  reference?: string;
+}) {
   const [step, setStep] = useState(1);
-  const [lead, setLead] = useState<Lead>({ ...emptyLead, ...prefill });
+  const [lead, setLead] = useState<Lead>({ ...emptyLead, projectType, estimate, ref: reference });
+  // Context from the URL (calculator / case study) is merged in when it changes, never by remounting,
+  // so anything the visitor has already typed is kept.
+  useEffect(() => {
+    setLead((l) => ({
+      ...l,
+      ...(projectType ? { projectType } : {}),
+      ...(estimate ? { estimate } : {}),
+      ...(reference ? { ref: reference } : {}),
+    }));
+  }, [projectType, estimate, reference]);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("editing");
   const headingRef = useRef<HTMLHeadingElement>(null);

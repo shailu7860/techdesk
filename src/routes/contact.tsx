@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { BriefForm } from "../components/contact/BriefForm";
 import { QuoteCalculator } from "../components/contact/QuoteCalculator";
@@ -10,6 +9,7 @@ import { faqs } from "../data/faq";
 import { projectTypes } from "../data/pricing";
 import { getProject } from "../data/projects";
 import { summaryFromParams } from "../lib/estimate";
+import { useHydrated } from "../lib/hydration";
 import { seo } from "../lib/seo";
 import { telLink, waLink } from "../lib/whatsapp";
 import { FaqSection } from "../sections/home/FaqSection";
@@ -32,14 +32,12 @@ export default function Contact() {
   const [params] = useSearchParams();
   // URL context (from the calculator or a case study) is applied after hydration,
   // so the prerendered HTML and the first client render always match.
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => setHydrated(true), []);
+  const hydrated = useHydrated();
 
   const typeId = hydrated ? (params.get("type") ?? "") : "";
   const typeName = projectTypes.find((t) => t.id === typeId)?.name ?? "";
   const ref = hydrated ? (getProject(params.get("ref") ?? "")?.title ?? "") : "";
   const estimate = hydrated ? summaryFromParams(params) : "";
-  const prefillKey = `${typeId}|${ref}|${estimate}`;
 
   return (
     <main id="main">
@@ -85,7 +83,7 @@ export default function Contact() {
               Five short steps, about two minutes. We reply with questions or a call slot, not a sales sequence.
             </p>
           </div>
-          <BriefForm key={prefillKey} prefill={{ projectType: typeName, estimate, ref }} />
+          <BriefForm projectType={typeName} estimate={estimate} reference={ref} />
         </div>
       </section>
 

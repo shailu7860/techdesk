@@ -43,7 +43,9 @@ export function Typewriter({ phrases, className = "" }: { phrases: readonly stri
       <span className="invisible col-start-1 row-start-1">{longest}</span>
       <span className="col-start-1 row-start-1">
         {shown}
-        <span className={`ml-0.5 inline-block w-[0.08em] translate-y-[0.08em] bg-current ${len === (phrases[i]?.length ?? 0) || still ? "caret" : ""}`}>
+        <span
+          className={`ml-0.5 inline-block w-[0.08em] translate-y-[0.08em] bg-current ${len === (phrases[i]?.length ?? 0) || still ? "caret" : ""}`}
+        >
           &nbsp;
         </span>
       </span>
