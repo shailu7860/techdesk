@@ -33,7 +33,7 @@ export function Hero() {
     <section aria-labelledby="hero-title" className="relative isolate overflow-hidden">
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 opacity-40 md:left-[30%] md:opacity-70 lg:left-[52%] lg:opacity-100"
+        className="absolute inset-0 -z-10 opacity-20 md:left-[38%] md:opacity-30 lg:left-[52%] lg:opacity-100"
       >
         {webgl ? (
           <Suspense fallback={<SystemCorePoster />}>

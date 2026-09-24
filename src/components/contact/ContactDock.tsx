@@ -95,7 +95,7 @@ export function ContactDock() {
           <button
             type="button"
             onClick={() => openChat("dock")}
-            aria-label="Ask our AI assistant"
+            aria-label="Chat with our AI assistant"
             className="peer flex h-(--dock-h) w-full cursor-pointer items-center justify-center gap-2.5 text-small font-medium text-ink transition-colors duration-(--duration-base) ease-(--ease-out-quart) hover:text-agent md:size-12 md:h-12 md:rounded-sm md:border md:border-agent/50 md:bg-panel md:hover:border-agent"
           >
             <ChatIcon />
@@ -105,7 +105,7 @@ export function ContactDock() {
             aria-hidden="true"
             className="pointer-events-none absolute top-1/2 right-full mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-sm bg-panel px-3 py-1.5 font-mono text-label text-ink opacity-0 transition-opacity duration-(--duration-fast) peer-hover:opacity-100 peer-focus-visible:opacity-100 md:block"
           >
-            Ask our AI assistant
+            Chat with our AI assistant
           </span>
         </li>
       </ul>

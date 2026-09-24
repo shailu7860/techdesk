@@ -2,6 +2,7 @@
 // /path → /path/index.html, unknown → /404/index.html with status 404, same security headers.
 import { createReadStream, existsSync, statSync } from "node:fs";
 import { createServer } from "node:http";
+import { createGzip } from "node:zlib";
 import { extname, join, normalize } from "node:path";
 import { securityHeaders } from "./security-headers.mjs";
 
@@ -35,6 +36,10 @@ createServer((req, res) => {
     file = join(root, "404/index.html");
     status = 404;
   }
-  res.writeHead(status, { ...securityHeaders, "Content-Type": types[extname(file)] ?? "application/octet-stream" });
-  createReadStream(file).pipe(res);
+  const type = types[extname(file)] ?? "application/octet-stream";
+  // Compress text like CloudFront does in production, so local performance numbers are realistic.
+  const gzip = /text|javascript|json|xml|svg/.test(type) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
+  res.writeHead(status, { ...securityHeaders, "Content-Type": type, ...(gzip ? { "Content-Encoding": "gzip", Vary: "Accept-Encoding" } : {}) });
+  const stream = createReadStream(file);
+  (gzip ? stream.pipe(createGzip()) : stream).pipe(res);
 }).listen(port, () => console.log(`serving ${root} on http://localhost:${port}`));

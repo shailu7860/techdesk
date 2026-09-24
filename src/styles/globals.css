@@ -134,3 +134,12 @@ div[data-hero-reveal] {
     animation: none;
   }
 }
+
+/* AN-003 Agent trace lighting (class added by JS; without JS every step is fully lit). */
+.trace-armed [data-trace-step] > p:last-child {
+  color: var(--color-muted);
+  transition: color var(--duration-slow) var(--ease-out-quart);
+}
+.trace-armed [data-trace-step].is-lit > p:last-child {
+  color: var(--color-ink);
+}

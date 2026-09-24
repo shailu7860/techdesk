@@ -128,7 +128,7 @@ test("chat: answers from the assistant, then a human handoff when it is down", a
     else await route.fulfill({ status: 503, json: { handoff: true } });
   });
   await page.goto("/");
-  await page.getByRole("button", { name: /ask our ai assistant/i }).click();
+  await page.getByRole("button", { name: /chat with our ai assistant/i }).click();
   const chat = page.getByRole("dialog", { name: "Ask TechDesk" });
   await expect(chat).toBeVisible();
   await chat.getByRole("button", { name: "What do you build?" }).click();

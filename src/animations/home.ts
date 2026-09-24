@@ -21,30 +21,21 @@ export function useHomeMotion() {
       mm.add(MOTION_OK, () => {
         reveal(gsap, ScrollTrigger, root);
 
-        // AN-003 Agent trace: each step brightens as it crosses the viewport centre.
-        const steps = gsap.utils.toArray<HTMLElement>("[data-trace-step]", root);
-        for (const step of steps) {
-          gsap.fromTo(
-            step,
-            { opacity: 0.4 },
-            {
-              opacity: 1,
-              ease: "none",
-              scrollTrigger: { trigger: step, start: "top 80%", end: "top 50%", scrub: true },
-            },
-          );
+        // AN-003 Agent trace: each step "lights up" (muted → ink, still AA at every stage) as it
+        // reaches the viewport centre; the dot scales with scroll. No opacity dimming.
+        const trace = root.querySelector("[data-trace]");
+        trace?.classList.add("trace-armed");
+        for (const step of gsap.utils.toArray<HTMLElement>("[data-trace-step]", root)) {
+          ScrollTrigger.create({ trigger: step, start: "top 62%", onEnter: () => step.classList.add("is-lit") });
           const dot = step.querySelector("[data-trace-dot]");
           if (dot)
             gsap.fromTo(
               dot,
               { scale: 0.4 },
-              {
-                scale: 1.6,
-                ease: "none",
-                scrollTrigger: { trigger: step, start: "top 70%", end: "top 50%", scrub: true },
-              },
+              { scale: 1.6, ease: "none", scrollTrigger: { trigger: step, start: "top 75%", end: "top 55%", scrub: true } },
             );
         }
+        return () => trace?.classList.remove("trace-armed");
       });
 
       // AN-005 Process pipeline line draws with scroll (desktop layout only).
