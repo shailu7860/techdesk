@@ -5,28 +5,33 @@
 @import "tailwindcss";
 
 @theme static {
-  /* ── Color: light theme (digital-ascent direction, green accent) ──
+  /* ── Color: green nebula galaxy (dark) ──
      Token names are roles: "void" = page background, "ink" = text, "signal" = primary accent. */
-  --color-void: oklch(0.985 0.004 155); /* page background: soft off-white, faint green cast */
-  --color-panel: oklch(1 0 0); /* cards, inputs, dock, chat */
-  --color-panel-hi: oklch(0.96 0.008 155); /* hover / tinted surfaces */
-  --color-hairline: oklch(0.9 0.008 155); /* borders */
-  --color-ink: oklch(0.22 0.03 160); /* headlines + body: deep green-slate */
-  --color-muted: oklch(0.46 0.02 160); /* secondary text (≥4.5:1 on white) */
-  --color-subtle: oklch(0.54 0.015 160); /* placeholders, disabled */
+  --color-void: oklch(0.13 0.02 175); /* deep space, faint teal cast */
+  --color-panel: oklch(0.18 0.025 170); /* solid surfaces: inputs, dock, chat */
+  --color-panel-hi: oklch(0.23 0.03 168); /* hover / tinted surfaces */
+  --color-hairline: oklch(0.34 0.04 165); /* borders */
+  --color-ink: oklch(0.97 0.01 160); /* headlines + body */
+  --color-muted: oklch(0.78 0.025 160); /* secondary text */
+  --color-subtle: oklch(0.66 0.025 160); /* placeholders, disabled */
 
-  /* ── Color: signal (primary accent: green) ── */
-  --color-signal: oklch(0.52 0.14 152); /* green buttons/links; carries white text */
-  --color-signal-hi: oklch(0.45 0.13 152); /* hover: deeper green */
-  --color-signal-lo: oklch(0.52 0.14 152 / 0.1); /* tints: selected chips, badges */
+  /* ── Color: signal (primary accent: nebula green) ── */
+  --color-signal: oklch(0.8 0.19 152); /* bright green; carries dark text */
+  --color-signal-hi: oklch(0.87 0.16 152); /* hover */
+  --color-signal-lo: oklch(0.8 0.19 152 / 0.12); /* tints */
+
+  /* ── Color: nebula palette (decorative light only, never text) ── */
+  --color-nebula-a: oklch(0.62 0.17 155); /* green */
+  --color-nebula-b: oklch(0.6 0.13 190); /* teal */
+  --color-nebula-c: oklch(0.55 0.14 280); /* faint violet */
 
   /* ── Color: agent (AI surfaces only) ── */
-  --color-agent: oklch(0.5 0.17 290);
-  --color-agent-lo: oklch(0.5 0.17 290 / 0.1);
+  --color-agent: oklch(0.76 0.14 290);
+  --color-agent-lo: oklch(0.76 0.14 290 / 0.14);
 
   /* ── Color: states (always paired with text/icon, never color alone) ── */
-  --color-danger: oklch(0.53 0.19 27);
-  --color-success: oklch(0.52 0.14 152);
+  --color-danger: oklch(0.74 0.16 25);
+  --color-success: oklch(0.8 0.19 152);
 
   /* ── Type ── */
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
@@ -52,9 +57,7 @@
   --radius-md: 12px;
   --radius-lg: 16px;
 
-  /* Soft elevation (light theme) */
-  --shadow-card: 0 1px 2px oklch(0.22 0.03 160 / 0.05), 0 4px 16px -4px oklch(0.22 0.03 160 / 0.08);
-  --shadow-lift: 0 2px 4px oklch(0.22 0.03 160 / 0.06), 0 16px 32px -12px oklch(0.22 0.03 160 / 0.16);
+  /* No shadows by rule: depth = solid colour, borders, blur. */
 
   /* ── Motion ── */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

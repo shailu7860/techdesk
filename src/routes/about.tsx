@@ -1,7 +1,9 @@
+import { EngagementModels } from "../components/content/EngagementModels";
+import { StackGrid } from "../components/content/StackGrid";
 import { PageIntro } from "../components/layout/PageIntro";
 import { Button } from "../components/ui/Button";
 import { Label } from "../components/ui/Label";
-import { commitments } from "../data/company";
+import { commitments, strengths } from "../data/company";
 import { contact } from "../data/contact";
 import { process } from "../data/process";
 import { organizationLd, seo } from "../lib/seo";
@@ -44,18 +46,72 @@ export default function About() {
         </div>
       </section>
 
+      <section aria-labelledby="strengths" className="container-page border-t border-hairline py-(--section-y)">
+        <h2 id="strengths" className="font-display text-headline">
+          Where we are strongest
+        </h2>
+        <ul className="mt-12 grid gap-4 md:grid-cols-3">
+          {strengths.map((x) => (
+            <li key={x.title} className="glass rounded-lg p-8" data-reveal>
+              <p className="font-display text-title">{x.title}</p>
+              <p className="mt-3 text-muted">{x.detail}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section aria-labelledby="commit" className="container-page border-t border-hairline py-(--section-y)">
         <h2 id="commit" className="font-display text-headline">
           Four commitments
         </h2>
         <ul className="mt-12 grid gap-4 md:grid-cols-2">
           {commitments.map((c) => (
-            <li key={c.title} className="rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card)">
+            <li key={c.title} className="glass rounded-md p-8">
               <p className="font-display text-title">{c.title}</p>
               <p className="mt-3 text-muted">{c.detail}</p>
             </li>
           ))}
         </ul>
+      </section>
+
+      <section
+        aria-labelledby="where"
+        className="container-page grid gap-10 border-t border-hairline py-(--section-y) md:grid-cols-[1fr_1.4fr]"
+      >
+        <h2 id="where" className="font-display text-headline">
+          Indore-based, working worldwide
+        </h2>
+        <div className="grid gap-6 text-title leading-snug">
+          <p>
+            Our team works from {contact.city}. Office hours are {contact.hours}, which overlap with European mornings
+            and US evenings, and WhatsApp messages are welcome at any time.
+          </p>
+          <p className="text-muted">
+            Every project gets a weekly live demo at a time that suits you, a shared channel with the engineers, and
+            written decisions you can come back to. {contact.replyPromise}
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="engage" className="container-page border-t border-hairline py-(--section-y)">
+        <h2 id="engage" className="font-display text-headline">
+          Ways to work with us
+        </h2>
+        <div className="mt-12">
+          <EngagementModels />
+        </div>
+      </section>
+
+      <section aria-labelledby="stack" className="container-page border-t border-hairline py-(--section-y)">
+        <h2 id="stack" className="font-display text-headline">
+          Technology we use
+        </h2>
+        <p className="mt-4 max-w-[60ch] text-muted">
+          Taken from the systems in our portfolio. We pick per project and explain the choice in plain language.
+        </p>
+        <div className="mt-12">
+          <StackGrid />
+        </div>
       </section>
 
       <section aria-labelledby="how" className="container-page border-t border-hairline py-(--section-y)">

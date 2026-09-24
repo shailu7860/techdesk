@@ -24,7 +24,7 @@ export default function Services() {
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <li key={s.slug}>
-              <article className="group relative flex h-full flex-col rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card) transition-[border-color,box-shadow,transform] duration-(--duration-base) hover:-translate-y-0.5 hover:border-signal/50 hover:shadow-(--shadow-lift)">
+              <article className="group relative flex h-full flex-col glass rounded-md p-8 transition-[border-color,transform] duration-(--duration-base) hover:-translate-y-0.5 hover:border-signal/50">
                 <span className="inline-flex size-10 items-center justify-center rounded-sm bg-signal-lo text-small font-bold text-signal-hi">
                   {s.code}
                 </span>

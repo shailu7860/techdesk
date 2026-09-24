@@ -81,7 +81,7 @@ export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
 
   if (status === "sent") {
     return (
-      <div className="rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card) md:p-12" role="status">
+      <div className="glass rounded-md p-8 md:p-12" role="status">
         <Label tone="signal" live>
           Transmission / received
         </Label>
@@ -112,11 +112,7 @@ export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
   };
 
   return (
-    <form
-      onSubmit={onSubmit}
-      noValidate
-      className="overflow-hidden rounded-md border border-hairline bg-panel shadow-(--shadow-card)"
-    >
+    <form onSubmit={onSubmit} noValidate className="overflow-hidden glass rounded-md">
       <div className="flex items-center justify-between gap-4 border-b border-hairline px-6 py-4 md:px-8">
         <Label>Step {step} of 5</Label>
         <div aria-hidden="true" className="flex gap-1">

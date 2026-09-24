@@ -9,7 +9,7 @@ import { Label } from "../ui/Label";
 export function MissionFile({ project, headingLevel: H = "h3" }: { project: Project; headingLevel?: "h2" | "h3" }) {
   const cs = project.caseStudy;
   return (
-    <article className="group relative flex h-full flex-col rounded-md border border-hairline bg-panel p-6 shadow-(--shadow-card) transition-[border-color,box-shadow,transform] duration-(--duration-base) hover:-translate-y-0.5 hover:border-signal/50 hover:shadow-(--shadow-lift) md:p-8">
+    <article className="group relative flex h-full flex-col glass rounded-md p-6 transition-[border-color,transform] duration-(--duration-base) hover:-translate-y-0.5 hover:border-signal/50 md:p-8">
       <div className="flex items-center justify-between gap-4">
         <Label tone="signal">{project.industry}</Label>
         <Label tone={project.status === "Live" ? "signal" : "muted"} live={project.status === "Live"}>

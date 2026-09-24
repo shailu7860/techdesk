@@ -6,7 +6,7 @@ export function ProcessSection() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="scroll-mt-20 border-t border-hairline bg-panel py-(--section-y)"
+      className="scroll-mt-20 border-t border-hairline bg-panel/35 backdrop-blur-[2px] py-(--section-y)"
     >
       <div className="container-page">
         <h2 id="process-title" className="max-w-[16ch] font-display text-headline" data-reveal>

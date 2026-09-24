@@ -2,18 +2,19 @@
 name: TechDesk
 description: A technology studio from the near future — cinematic, precise, and one tap from a human.
 colors:
-  void: "oklch(0.14 0 0)"
-  panel: "oklch(0.19 0 0)"
-  panel-hi: "oklch(0.24 0 0)"
-  hairline: "oklch(0.32 0 0)"
-  ink: "oklch(0.97 0 0)"
-  muted: "oklch(0.74 0 0)"
-  subtle: "oklch(0.6 0 0)"
-  signal: "oklch(0.86 0.13 215)"
-  signal-hi: "oklch(0.92 0.09 215)"
-  agent: "oklch(0.72 0.16 294)"
+  void: "oklch(0.13 0.02 175)"
+  panel: "oklch(0.18 0.025 170)"
+  panel-hi: "oklch(0.23 0.03 168)"
+  hairline: "oklch(0.34 0.04 165)"
+  ink: "oklch(0.97 0.01 160)"
+  muted: "oklch(0.78 0.025 160)"
+  subtle: "oklch(0.66 0.025 160)"
+  signal: "oklch(0.8 0.19 152)"
+  signal-hi: "oklch(0.87 0.16 152)"
+  agent: "oklch(0.76 0.14 290)"
   danger: "oklch(0.74 0.16 25)"
-  success: "oklch(0.82 0.15 160)"
+  nebula-a: "oklch(0.62 0.17 155)"
+  nebula-b: "oklch(0.6 0.13 190)"
 typography:
   display:
     fontFamily: "Archivo Variable, ui-sans-serif, system-ui, sans-serif"
@@ -76,7 +77,13 @@ components:
     width: "48px"
     height: "48px"
 ---
-<!-- Scanned from src/styles/tokens.css + src/components after Phase 2 (2026-09-24). Tokens in frontmatter are normative. -->
+<!-- Updated 2026-09-24 for the owner's "green nebula galaxy" direction. Tokens in frontmatter are normative. -->
+
+> **Current direction (owner, 2026-09-24):** dark deep-space site with an animated starfield, solid-colour
+> nebula blurs, a flat-shaded green planet, glass panels, green accent, sentence case, 1280px (xl) width.
+> **No gradients and no box shadows anywhere** (enforced by `tests/unit/style-rules.test.ts`). Every ambient
+> animation obeys reduced motion and the site-wide Pause motion toggle. Where older prose below conflicts
+> (e.g. "no glow", mono labels, uppercase), this note wins.
 
 # Design System: TechDesk
 

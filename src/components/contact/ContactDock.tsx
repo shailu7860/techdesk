@@ -71,7 +71,7 @@ export function ContactDock() {
       aria-label="Quick contact"
       className="fixed z-(--z-dock) inset-x-0 bottom-0 md:inset-x-auto md:right-6 md:bottom-6"
     >
-      <ul className="grid grid-cols-3 border-t border-hairline bg-panel/95 pb-[env(safe-area-inset-bottom)] shadow-(--shadow-lift) backdrop-blur-sm md:flex md:flex-col md:gap-2 md:border-0 md:bg-transparent md:pb-0 md:backdrop-blur-none">
+      <ul className="grid grid-cols-3 border-t border-hairline bg-void/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm md:flex md:flex-col md:gap-2 md:border-0 md:bg-transparent md:pb-0 md:backdrop-blur-none">
         {actions.map((a) => (
           <li key={a.key} className="md:relative">
             <a

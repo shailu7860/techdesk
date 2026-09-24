@@ -83,20 +83,18 @@ test("reduced motion: content fully visible", async ({ browser }) => {
   await ctx.close();
 });
 
-
-test("hero video plays with motion allowed and is skipped under reduced motion", async ({ browser }) => {
-  const on = await browser.newContext({ viewport: { width: 1440, height: 900 } });
-  const p1 = await on.newPage();
-  await p1.goto("/");
-  await expect(p1.locator("section[aria-labelledby=hero-title] video")).toHaveAttribute("src", "/media/hero-network.mp4");
-  await on.close();
-  const off = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 1440, height: 900 } });
-  const p2 = await off.newPage();
-  const media: string[] = [];
-  p2.on("request", (r) => r.url().endsWith(".mp4") && media.push(r.url()));
-  await p2.goto("/");
-  await p2.waitForTimeout(800);
-  await expect(p2.locator("section[aria-labelledby=hero-title] video")).toHaveCount(0);
-  expect(media).toEqual([]);
-  await off.close();
+test("space backdrop renders and the pause-motion toggle freezes ambient animation", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("canvas")).toHaveCount(1);
+  const toggle = page.getByRole("contentinfo").getByRole("button", { name: /pause motion/i });
+  await toggle.click();
+  await expect(page.locator("html")).toHaveAttribute("data-motion", "paused");
+  await expect(page.locator(".marquee-track")).toHaveCSS("animation-play-state", "paused");
+  await expect(page.getByRole("contentinfo").getByRole("button", { name: /resume motion/i })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  // Remembered across navigation/reload.
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-motion", "paused");
 });

@@ -59,7 +59,7 @@ export function QuoteCalculator({
   const toggle = (a: AddOnId) => setSelected((s) => (s.includes(a) ? s.filter((x) => x !== a) : [...s, a]));
 
   return (
-    <div className="grid overflow-hidden rounded-md border border-hairline bg-panel shadow-(--shadow-card) lg:grid-cols-[1.6fr_1fr]">
+    <div className="grid overflow-hidden glass rounded-md lg:grid-cols-[1.6fr_1fr]">
       <div className="grid gap-10 p-6 md:p-8">
         <fieldset>
           <legend className="text-label font-medium text-muted">01 · What are you building?</legend>

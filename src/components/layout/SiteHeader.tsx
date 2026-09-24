@@ -40,7 +40,7 @@ export function SiteHeader() {
   return (
     <header
       onFocusCapture={() => setHidden(false)}
-      className={`sticky top-0 z-(--z-sticky) border-b border-hairline bg-panel/90 backdrop-blur-md transition-transform duration-(--duration-slow) ease-(--ease-out-expo) ${
+      className={`sticky top-0 z-(--z-sticky) border-b border-hairline/70 bg-void/70 backdrop-blur-md transition-transform duration-(--duration-slow) ease-(--ease-out-expo) ${
         hidden ? "-translate-y-full" : ""
       }`}
     >

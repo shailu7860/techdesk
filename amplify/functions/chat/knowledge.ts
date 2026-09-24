@@ -1,6 +1,7 @@
 // The assistant's only source of truth: the same data files the website renders.
-import { commitments } from "../../../src/data/company";
+import { commitments, engagements } from "../../../src/data/company";
 import { contact } from "../../../src/data/contact";
+import { faqs } from "../../../src/data/faq";
 import { industries } from "../../../src/data/industries";
 import { projectTypes, sizes } from "../../../src/data/pricing";
 import { process } from "../../../src/data/process";
@@ -63,6 +64,12 @@ ${commitments.map((c) => `- ${c.title}: ${c.detail}`).join("\n")}
 
 INDICATIVE PRICE RANGES (INR for India / USD elsewhere; add-ons such as custom design or priority timeline raise them)
 ${prices}
+
+ENGAGEMENT MODELS
+${engagements.map((e) => `- ${e.name} (${e.fit}): ${e.points.join("; ")}`).join("\n")}
+
+FAQ
+${faqs.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n")}
 
 CONTACT
 WhatsApp/phone ${contact.phoneDisplay}, email ${contact.email}, ${contact.hours}. ${contact.replyPromise}`;

@@ -24,7 +24,7 @@ export function AgentTrace() {
     <section
       id="ai"
       aria-labelledby="ai-title"
-      className="border-t border-hairline bg-panel py-(--section-y)"
+      className="border-t border-hairline bg-panel/35 backdrop-blur-[2px] py-(--section-y)"
       data-agent-section
     >
       <div className="container-page grid gap-16 lg:grid-cols-[1fr_1.2fr]">

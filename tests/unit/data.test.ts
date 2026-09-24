@@ -46,6 +46,8 @@ describe("chat grounding", () => {
     for (const s of services) expect(p).toContain(s.name);
     for (const pr of projects) expect(p).toContain(pr.title);
     expect(p).toContain("+91 92033 87375");
+    expect(p).toContain("Who owns the code and designs?");
+    expect(p).toContain("Discovery sprint");
     expect(p).toMatch(/never invent/i);
   });
 });

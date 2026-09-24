@@ -12,7 +12,8 @@ type Seo = {
   image?: string;
   noindex?: boolean;
   type?: "website" | "article";
-  jsonLd?: Record<string, unknown>;
+  /** One schema.org node, or several (emitted as an @graph). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
 /** Title, description, canonical, Open Graph and X metadata for one route (SE-01). */
@@ -37,7 +38,12 @@ export function seo({ title, description, path, image = "/og/default.png", noind
     { name: "twitter:image", content: img },
   ];
   if (noindex) tags.push({ name: "robots", content: "noindex, nofollow" });
-  if (jsonLd) tags.push({ "script:ld+json": { "@context": "https://schema.org", ...jsonLd } });
+  if (jsonLd)
+    tags.push({
+      "script:ld+json": Array.isArray(jsonLd)
+        ? { "@context": "https://schema.org", "@graph": jsonLd }
+        : { "@context": "https://schema.org", ...jsonLd },
+    });
   return tags;
 }
 

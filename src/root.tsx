@@ -11,6 +11,8 @@ import { ContactDock } from "./components/contact/ContactDock";
 import { SiteFooter } from "./components/layout/SiteFooter";
 import { SiteHeader } from "./components/layout/SiteHeader";
 import { NotFound } from "./components/NotFound";
+import { SpaceBackdrop } from "./components/space/SpaceBackdrop";
+import { useRestoreMotionPreference } from "./lib/motion";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preload", href: archivoLatin, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
@@ -23,7 +25,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#f8fbf9" />
+        <meta name="theme-color" content="#08130f" />
         <Meta />
         <Links />
       </head>
@@ -41,8 +43,10 @@ export function Layout({ children }: { children: ReactNode }) {
 
 export default function App() {
   useSmoothScroll();
+  useRestoreMotionPreference();
   return (
     <>
+      <SpaceBackdrop />
       <SiteHeader />
       <Outlet />
       <SiteFooter />
@@ -57,6 +61,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   if (import.meta.env.DEV && !notFound) console.error(error);
   return (
     <>
+      <SpaceBackdrop />
       <SiteHeader />
       {notFound ? (
         <NotFound />

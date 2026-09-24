@@ -2,20 +2,24 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { BriefForm } from "../components/contact/BriefForm";
 import { QuoteCalculator } from "../components/contact/QuoteCalculator";
+import { faqLd } from "../components/content/FaqList";
 import { PageIntro } from "../components/layout/PageIntro";
 import { Label } from "../components/ui/Label";
 import { contact } from "../data/contact";
+import { faqs } from "../data/faq";
 import { projectTypes } from "../data/pricing";
 import { getProject } from "../data/projects";
 import { summaryFromParams } from "../lib/estimate";
 import { seo } from "../lib/seo";
 import { telLink, waLink } from "../lib/whatsapp";
+import { FaqSection } from "../sections/home/FaqSection";
 
 export const meta = () =>
   seo({
     title: "Contact | Start a project with TechDesk",
     description: `Tell us what you're building. WhatsApp or call ${contact.phoneDisplay}, get an indicative estimate, or send a short project brief. ${contact.replyPromise}`,
     path: "/contact",
+    jsonLd: faqLd(faqs),
   });
 
 const lines = [
@@ -52,7 +56,7 @@ export default function Contact() {
               <a
                 href={l.href}
                 {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group flex h-full flex-col gap-3 rounded-md border border-hairline bg-panel p-6 shadow-(--shadow-card) transition-[border-color,box-shadow] hover:border-signal/50 hover:shadow-(--shadow-lift) md:p-8"
+                className="group flex h-full flex-col gap-3 glass rounded-md p-6 transition-[border-color,background-color] hover:border-signal/50 md:p-8"
               >
                 <Label>{l.label}</Label>
                 <span className="break-all font-display text-title transition-colors group-hover:text-signal">
@@ -100,6 +104,7 @@ export default function Contact() {
           <QuoteCalculator key={typeId || "default"} initialType={typeId || undefined} />
         </div>
       </section>
+      <FaqSection items={faqs} title="Before you write" />
     </main>
   );
 }

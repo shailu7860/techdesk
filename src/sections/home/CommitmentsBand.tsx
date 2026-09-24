@@ -2,7 +2,10 @@ import { commitments } from "../../data/company";
 
 export function CommitmentsBand() {
   return (
-    <section aria-labelledby="why-title" className="border-t border-hairline bg-panel py-(--section-y)">
+    <section
+      aria-labelledby="why-title"
+      className="border-t border-hairline bg-panel/35 backdrop-blur-[2px] py-(--section-y)"
+    >
       <div className="container-page grid gap-12 lg:grid-cols-[1fr_2fr]">
         <h2 id="why-title" className="font-display text-headline" data-reveal>
           Why TechDesk

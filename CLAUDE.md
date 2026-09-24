@@ -23,6 +23,11 @@ Premium futuristic technology-agency website for **TechDesk**. Goal: qualified l
 ## Business content (see `docs/DISCOVERY.md` § Business content)
 WhatsApp/call **+91 92033 87375** · **shailendramishra0127@gmail.com** · **Indore, India, serving clients worldwide** · INR and USD toggle · Mon–Sat 10–19 IST · replies within one business day · four "Why TechDesk" commitments and price bands are in DISCOVERY.md (delegated by the owner; editable).
 
+## Visual rules (owner, 2026-09-24)
+- **No gradients and no box shadows anywhere** (incl. glows, drop/text shadows, gradient masks). Enforced by `tests/unit/style-rules.test.ts`.
+- Theme: **green nebula galaxy** (dark space, starfield, solid-colour nebula blurs, green accent). Content width 80rem (xl). Sentence case, never forced uppercase.
+- Every ambient animation must obey `prefers-reduced-motion` and the site-wide Pause motion toggle.
+
 ## Content rules (non-negotiable)
 - **Never invent** client names, metrics, results, testimonials or stats (spec §71 rules 6–8).
 - Old portfolio testimonials ("Sarah Chen" etc.) and stats ("50+ projects", "30+ clients", "99.9%") are **template content — excluded** unless the owner confirms them.

@@ -69,7 +69,7 @@ export function IndustriesSection() {
               id="industry-panel"
               role="tabpanel"
               aria-labelledby={`tab-${current.key}`}
-              className="rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card) md:p-10"
+              className="glass rounded-md p-8 md:p-10"
             >
               <Label tone="signal">Example solution</Label>
               <p className="mt-6 font-display text-title leading-snug">{current.example}</p>

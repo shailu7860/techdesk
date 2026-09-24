@@ -5,6 +5,7 @@ import { legalNav, primaryNav } from "../../data/navigation";
 import { services } from "../../data/services";
 import { telLink, waLink } from "../../lib/whatsapp";
 import { Wordmark } from "../brand/Wordmark";
+import { MotionToggle } from "../space/MotionToggle";
 
 const col = "flex flex-col gap-3 text-small";
 const heading = "mb-2 text-label font-medium text-muted";
@@ -12,7 +13,7 @@ const link = "text-ink/85 transition-colors hover:text-signal";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-hairline bg-panel">
+    <footer className="border-t border-hairline bg-void/80 backdrop-blur-sm">
       <div className="container-page grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div className="flex flex-col gap-4">
           <Link to="/" aria-label="TechDesk home" className="self-start">
@@ -64,6 +65,7 @@ export function SiteFooter() {
         <p>
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
+        <MotionToggle className="-ml-3 md:ml-0" />
         <nav aria-label="Legal">
           <ul className="flex gap-6">
             {legalNav.map((item) => (

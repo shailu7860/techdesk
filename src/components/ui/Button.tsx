@@ -22,11 +22,11 @@ const base =
   "disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer select-none";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-signal text-white shadow-(--shadow-card) hover:bg-signal-hi",
-  secondary: "border border-hairline bg-panel text-ink hover:border-signal hover:text-signal",
+  primary: "bg-signal text-void hover:bg-signal-hi",
+  secondary: "border border-hairline bg-panel/60 text-ink backdrop-blur-sm hover:border-signal hover:text-signal",
   ghost: "text-ink underline-offset-[6px] hover:text-signal hover:underline",
   // For use on the solid green band.
-  onBrand: "bg-panel text-signal shadow-(--shadow-card) hover:bg-panel-hi",
+  onBrand: "bg-panel text-signal hover:bg-panel-hi",
   onBrandOutline: "border border-white/50 text-white hover:bg-white/10",
 };
 

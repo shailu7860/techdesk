@@ -1,13 +1,24 @@
 import { Link } from "react-router";
+import { faqLd } from "../components/content/FaqList";
 import { NotFound } from "../components/NotFound";
 import { Button } from "../components/ui/Button";
 import { Label } from "../components/ui/Label";
 import { MissionFile } from "../components/work/MissionFile";
+import { faqs, faqsFor } from "../data/faq";
+import { projectTypes, sizes } from "../data/pricing";
+import { process } from "../data/process";
 import { projects } from "../data/projects";
 import { getService, services } from "../data/services";
+import { formatBand } from "../lib/estimate";
 import { seo } from "../lib/seo";
 import { waLink } from "../lib/whatsapp";
+import { FaqSection } from "../sections/home/FaqSection";
 import type { Route } from "./+types/services.$slug";
+
+const serviceFaqs = (slug: Parameters<typeof faqsFor>[0]) => {
+  const own = faqsFor(slug);
+  return own.length >= 3 ? own : [...own, ...faqs.filter((f) => !f.services && !own.includes(f))].slice(0, 5);
+};
 
 export const meta = ({ params }: Route.MetaArgs) => {
   const s = getService(params.slug);
@@ -16,13 +27,16 @@ export const meta = ({ params }: Route.MetaArgs) => {
     title: `${s.name} | TechDesk`,
     description: `${s.outcome} ${s.summary}`,
     path: `/services/${s.slug}`,
-    jsonLd: {
-      "@type": "Service",
-      name: s.name,
-      description: s.summary,
-      provider: { "@type": "Organization", name: "TechDesk" },
-      areaServed: "Worldwide",
-    },
+    jsonLd: [
+      faqLd(serviceFaqs(s.slug)),
+      {
+        "@type": "Service",
+        name: s.name,
+        description: s.summary,
+        provider: { "@type": "Organization", name: "TechDesk" },
+        areaServed: "Worldwide",
+      },
+    ],
   });
 };
 
@@ -31,13 +45,12 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
   if (!s) return <NotFound title="Service not found." body="That service page does not exist. See all five below." />;
   const related = projects.filter((p) => p.caseStudy && p.services.includes(s.slug));
   const others = services.filter((o) => o.slug !== s.slug);
+  const type = projectTypes.find((t) => t.id === s.estimateType);
 
   return (
     <main id="main">
       <header className="container-page pt-16 pb-12 md:pt-24">
-        <Label tone={s.slug === "ai-automation" ? "agent" : "signal"}>
-          {s.name}
-        </Label>
+        <Label tone={s.slug === "ai-automation" ? "agent" : "signal"}>{s.name}</Label>
         <h1 className="mt-6 max-w-[18ch] font-display text-headline md:text-display">{s.outcome}</h1>
         <p className="mt-6 max-w-[60ch] text-title leading-snug text-muted">{s.summary}</p>
         <div className="mt-10 flex flex-wrap gap-4">
@@ -82,6 +95,71 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
         </div>
       </section>
 
+      <section aria-labelledby="deliver" className="container-page border-t border-hairline py-16">
+        <h2 id="deliver" className="font-display text-title">
+          How we deliver it
+        </h2>
+        <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {process.slice(0, 4).map((st) => (
+            <li key={st.code} className="glass rounded-lg p-6">
+              <p className="text-label font-semibold text-signal">Step {Number(st.code)}</p>
+              <p className="mt-2 font-display text-title">{st.name}</p>
+              <p className="mt-2 text-small text-muted">{st.objective}</p>
+              <p className="mt-4 text-small text-ink/90">You get: {st.deliverables.join(", ").toLowerCase()}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-6 text-small text-muted">
+          Then test, deploy and evolve: the same seven-stage process on every project.
+        </p>
+      </section>
+
+      {type && (
+        <section aria-labelledby="price" className="container-page border-t border-hairline py-16">
+          <h2 id="price" className="font-display text-title">
+            Indicative investment
+          </h2>
+          <p className="mt-3 max-w-[60ch] text-muted">
+            Ranges for {type.name.toLowerCase()} work, before any add-ons. Not a quote: you get a fixed price after a
+            short scoping call.
+          </p>
+          <div className="mt-8">
+            <table className="glass w-full rounded-lg text-left text-small md:text-body">
+              <caption className="sr-only">Indicative price ranges by project size</caption>
+              <thead className="text-label font-semibold text-muted">
+                <tr className="border-b border-hairline">
+                  <th scope="col" className="p-3 md:p-4">
+                    Size
+                  </th>
+                  <th scope="col" className="p-3 md:p-4">
+                    India (INR)
+                  </th>
+                  <th scope="col" className="p-3 md:p-4">
+                    Worldwide (USD)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {sizes.map((z) => (
+                  <tr key={z.id} className="border-b border-hairline last:border-0">
+                    <th scope="row" className="p-3 font-medium md:p-4">
+                      {z.name}
+                      <span className="block text-small font-normal text-muted">{z.detail}</span>
+                    </th>
+                    <td className="p-3 md:p-4">
+                      {formatBand({ band: type.bands[z.id].INR, currency: "INR", perMonth: Boolean(type.perMonth) })}
+                    </td>
+                    <td className="p-3 md:p-4">
+                      {formatBand({ band: type.bands[z.id].USD, currency: "USD", perMonth: Boolean(type.perMonth) })}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
       {related.length > 0 && (
         <section aria-labelledby="proof" className="container-page border-t border-hairline py-16">
           <h2 id="proof" className="font-display text-title">
@@ -96,6 +174,8 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
           </ul>
         </section>
       )}
+
+      <FaqSection items={serviceFaqs(s.slug)} title={`${s.name}: common questions`} />
 
       <nav aria-labelledby="more" className="container-page border-t border-hairline py-16">
         <h2 id="more" className="text-label font-medium text-muted">
