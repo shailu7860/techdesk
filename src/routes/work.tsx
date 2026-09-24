@@ -24,7 +24,6 @@ export default function Work() {
   return (
     <main id="main">
       <PageIntro
-        label="Our work"
         title="Systems, shipped."
         lead="Every project here is real and built by us. No stock mockups, no invented numbers. Four flagships as full case studies, plus the builds behind them."
       />

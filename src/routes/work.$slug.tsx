@@ -39,9 +39,8 @@ function Block({ n, title, children }: { n: number; title: string; children: Rea
       aria-labelledby={id}
       className="grid gap-6 border-t border-hairline py-16 md:grid-cols-[14rem_1fr] md:gap-12"
     >
-      <h2 id={id} className="flex flex-col gap-2">
-        <Label>{String(n).padStart(2, "0")}</Label>
-        <span className="font-display text-title">{title}</span>
+      <h2 id={id} className="font-display text-title">
+        {title}
       </h2>
       <div className="max-w-[70ch]">{children}</div>
     </section>
@@ -113,9 +112,8 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
             <p>{cs.approach}</p>
           </Block>
           <section aria-labelledby="architecture" className="border-t border-hairline py-16">
-            <h2 id="architecture" className="flex flex-col gap-2">
-              <Label>{String(++n).padStart(2, "0")}</Label>
-              <span className="font-display text-title">System architecture</span>
+            <h2 id="architecture" className="font-display text-title">
+              System architecture
             </h2>
             <div className="mt-10">
               <SystemDiagram nodes={cs.architecture} />
@@ -163,8 +161,7 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
       <aside aria-label="Next steps" className="container-page border-t border-hairline py-(--section-y)">
         <div className="grid gap-12 md:grid-cols-2">
           <div>
-            <Label>Build something like this</Label>
-            <p className="mt-4 max-w-[24ch] font-display text-headline">Your system could be next.</p>
+            <p className="max-w-[24ch] font-display text-headline">Your system could be next.</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href={`/contact?ref=${p.slug}`} size="lg" trailing="→">
                 Start a project

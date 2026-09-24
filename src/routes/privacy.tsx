@@ -11,7 +11,7 @@ export const meta = () =>
 
 export default function Privacy() {
   return (
-    <LegalPage label="Legal" title="Privacy policy" updated="24 September 2026">
+    <LegalPage title="Privacy policy" updated="24 September 2026">
       <h2>What we collect</h2>
       <ul>
         <li>

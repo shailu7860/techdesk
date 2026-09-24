@@ -1,6 +1,5 @@
 import { type KeyboardEvent, useRef, useState } from "react";
 import { Link } from "react-router";
-import { Label } from "../../components/ui/Label";
 import { industries } from "../../data/industries";
 import { getProject } from "../../data/projects";
 import { getService } from "../../data/services";
@@ -71,8 +70,7 @@ export function IndustriesSection() {
               aria-labelledby={`tab-${current.key}`}
               className="glass rounded-md p-8 md:p-10"
             >
-              <Label tone="signal">Example solution</Label>
-              <p className="mt-6 font-display text-title leading-snug">{current.example}</p>
+              <p className="font-display text-title leading-snug">{current.example}</p>
               <p className="mt-8 text-label font-medium text-muted">Relevant services</p>
               <ul className="mt-2 flex flex-wrap gap-2">
                 {current.services.map((s) => (

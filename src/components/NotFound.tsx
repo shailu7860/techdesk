@@ -1,7 +1,6 @@
 import { contact } from "../data/contact";
 import { waLink } from "../lib/whatsapp";
 import { Button } from "./ui/Button";
-import { Label } from "./ui/Label";
 
 /** Designed 404 / error screen (FR-04). Every exit is a real route or a human. */
 export function NotFound({
@@ -15,9 +14,10 @@ export function NotFound({
 }) {
   return (
     <main id="main" className="container-page flex min-h-[70dvh] flex-col justify-center py-(--section-y)">
-      <Label tone="signal">Error {code}</Label>
-      <h1 className="mt-6 max-w-[18ch] font-display text-headline">{title}</h1>
-      <p className="mt-6 max-w-[55ch] text-muted">{body}</p>
+      <h1 className="max-w-[18ch] font-display text-headline">{title}</h1>
+      <p className="mt-6 max-w-[55ch] text-muted">
+        {body} (Error {code})
+      </p>
       <div className="mt-10 flex flex-wrap gap-4">
         <Button href="/" trailing="→">
           Return to base

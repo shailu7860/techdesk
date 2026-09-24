@@ -3,7 +3,6 @@ import { contact } from "../../data/contact";
 import { CHAT_LIMITS, type ChatMsg, sendChat } from "../../lib/chat";
 import { telLink, waLink } from "../../lib/whatsapp";
 import { Button } from "../ui/Button";
-import { Label } from "../ui/Label";
 
 const SUGGESTIONS = [
   "What do you build?",
@@ -82,10 +81,7 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
       <div className="flex h-full flex-col">
         <header className="flex items-center justify-between gap-4 border-b border-hairline px-5 py-4">
           <div>
-            <Label tone="agent" live>
-              Agent / online
-            </Label>
-            <h2 id="chat-title" className="mt-1 font-display text-small">
+            <h2 id="chat-title" className="font-display text-title">
               Ask TechDesk
             </h2>
           </div>

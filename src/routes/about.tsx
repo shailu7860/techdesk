@@ -21,7 +21,6 @@ export default function About() {
   return (
     <main id="main">
       <PageIntro
-        label="About us"
         title="A small studio that builds serious systems."
         lead={`We are a technology studio in ${contact.city}, working with founders, businesses and enterprise teams worldwide. We design, build and run the software: AI agents, platforms, automation and the marketing that brings people to them.`}
       />

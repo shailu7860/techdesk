@@ -65,7 +65,7 @@ test("calculator: currency switch, then hand the estimate to the brief", async (
   await expect(page.getByLabel("Project type")).toHaveValue("AI agent / chatbot / automation");
   await page.getByLabel("What are you building?").fill("A WhatsApp agent that qualifies clinic leads.");
   await page.getByRole("button", { name: "Continue" }).click();
-  await expect(page.getByText("Your estimate")).toBeVisible();
+  await expect(page.locator("#brief").getByText("Your estimate")).toBeVisible();
 });
 
 test("brief: validation, then a successful submission", async ({ page }) => {

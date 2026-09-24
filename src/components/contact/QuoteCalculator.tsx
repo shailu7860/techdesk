@@ -4,7 +4,6 @@ import { type AddOnId, addOns, type Currency, projectTypes, type SizeId, sizes }
 import { defaultCurrency, estimate, formatBand, summarize } from "../../lib/estimate";
 import { waLink } from "../../lib/whatsapp";
 import { Button } from "../ui/Button";
-import { Label } from "../ui/Label";
 
 const CURRENCY_KEY = "techdesk.currency";
 
@@ -122,7 +121,7 @@ export function QuoteCalculator({
 
       <div className="flex flex-col border-t border-hairline bg-panel-hi p-6 md:p-8 lg:border-t-0 lg:border-l">
         <div className="flex items-center justify-between gap-4">
-          <Label tone="signal">Estimate</Label>
+          <p className="font-medium text-ink">Your estimate</p>
           <fieldset className="flex rounded-sm border border-hairline p-0.5">
             <legend className="sr-only">Currency</legend>
             {(["INR", "USD"] as const).map((c) => (

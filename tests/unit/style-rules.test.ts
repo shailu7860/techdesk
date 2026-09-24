@@ -20,6 +20,21 @@ const walk = (d: string): string[] =>
   readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
 const files = [...walk("src"), ...walk("public")].filter((f) => /\.(tsx?|css|svg)$/.test(f));
 
+// Owner rule: no em dashes in site copy (comments are fine: visitors never see them).
+const isComment = (line: string) => /^\s*(\/\/|\*|\/\*)/.test(line);
+describe("copy rules: no em dashes in anything a visitor can read", () => {
+  for (const file of files.filter((f) => /\.(tsx?)$/.test(f))) {
+    it(file, () => {
+      const hits = readFileSync(file, "utf8")
+        .split("\n")
+        .flatMap((line, i) =>
+          line.includes("\u2014") && !isComment(line) ? [`${file}:${i + 1} ${line.trim().slice(0, 100)}`] : [],
+        );
+      expect(hits).toEqual([]);
+    });
+  }
+});
+
 describe("visual rules: no gradients, no shadows", () => {
   for (const file of files) {
     it(file, () => {

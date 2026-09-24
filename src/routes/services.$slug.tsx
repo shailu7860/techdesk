@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { faqLd } from "../components/content/FaqList";
 import { NotFound } from "../components/NotFound";
 import { Button } from "../components/ui/Button";
-import { Label } from "../components/ui/Label";
 import { MissionFile } from "../components/work/MissionFile";
 import { faqs, faqsFor } from "../data/faq";
 import { projectTypes, sizes } from "../data/pricing";
@@ -50,8 +49,7 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
   return (
     <main id="main">
       <header className="container-page pt-16 pb-12 md:pt-24">
-        <Label tone={s.slug === "ai-automation" ? "agent" : "signal"}>{s.name}</Label>
-        <h1 className="mt-6 max-w-[18ch] font-display text-headline md:text-display">{s.outcome}</h1>
+        <h1 className="max-w-[18ch] font-display text-headline md:text-display">{s.outcome}</h1>
         <p className="mt-6 max-w-[60ch] text-title leading-snug text-muted">{s.summary}</p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Button href={`/contact?type=${s.estimateType}#estimate`} size="lg" trailing="→">

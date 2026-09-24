@@ -47,16 +47,9 @@ export function Hero() {
 
       <div className="container-page grid min-h-[calc(100svh-4.5rem)] items-center gap-12 py-14 lg:grid-cols-[1.15fr_1fr] lg:py-16">
         <div>
-          <p
-            className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-small font-medium text-ink"
-            data-hero-reveal
-          >
-            <span aria-hidden="true" className="size-2 rounded-full bg-signal" />
-            Technology studio · Indore to worldwide
-          </p>
           <h1
             id="hero-title"
-            className="mt-7 font-display text-[clamp(2.5rem,1.6rem+3.4vw,4.25rem)] leading-[1.05] tracking-[-0.03em]"
+            className="font-display text-[clamp(2.5rem,1.6rem+3.4vw,4.25rem)] leading-[1.05] tracking-[-0.03em]"
             data-hero-title
           >
             <span className="sr-only">

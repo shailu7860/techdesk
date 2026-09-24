@@ -16,7 +16,6 @@ export default function Services() {
   return (
     <main id="main">
       <PageIntro
-        label="Services"
         title="Outcomes first. Technology second."
         lead="Five ways we help, each measured by what changes in your business, not by how many frameworks we used."
       />

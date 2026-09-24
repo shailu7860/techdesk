@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import type { Project } from "../../data/projects";
-import { Label } from "../ui/Label";
 
 /**
  * A flagship project as a "mission file" (spec §15): ID, name, industry, problem,
@@ -10,13 +9,7 @@ export function MissionFile({ project, headingLevel: H = "h3" }: { project: Proj
   const cs = project.caseStudy;
   return (
     <article className="group relative flex h-full flex-col glass rounded-md p-6 transition-[border-color,transform] duration-(--duration-base) hover:-translate-y-0.5 hover:border-signal/50 md:p-8">
-      <div className="flex items-center justify-between gap-4">
-        <Label tone="signal">{project.industry}</Label>
-        <Label tone={project.status === "Live" ? "signal" : "muted"} live={project.status === "Live"}>
-          {project.status}
-        </Label>
-      </div>
-      <H className="mt-8 font-display text-headline">
+      <H className="font-display text-headline">
         <Link
           to={`/work/${project.slug}`}
           viewTransition
@@ -27,6 +20,14 @@ export function MissionFile({ project, headingLevel: H = "h3" }: { project: Proj
       </H>
       <p className="mt-2 text-muted">{project.tagline}</p>
       <dl className="mt-8 grid gap-5 text-small sm:grid-cols-2">
+        <div>
+          <dt className="text-label text-muted">Industry</dt>
+          <dd className="mt-1">{project.industry}</dd>
+        </div>
+        <div>
+          <dt className="text-label text-muted">Status</dt>
+          <dd className="mt-1">{project.status}</dd>
+        </div>
         {cs && (
           <div className="sm:col-span-2">
             <dt className="text-label font-medium text-muted">Problem</dt>

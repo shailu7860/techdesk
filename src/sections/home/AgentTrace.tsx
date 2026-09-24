@@ -1,5 +1,4 @@
 import { Button } from "../../components/ui/Button";
-import { Label } from "../../components/ui/Label";
 import { openChat } from "../../lib/chat-events";
 
 // A real, concrete workflow (brief §5 section 3). Each step names what actually happens.
@@ -29,10 +28,7 @@ export function AgentTrace() {
     >
       <div className="container-page grid gap-16 lg:grid-cols-[1fr_1.2fr]">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <Label tone="agent" live>
-            AI & automation
-          </Label>
-          <h2 id="ai-title" className="mt-6 font-display text-display">
+          <h2 id="ai-title" className="font-display text-display">
             Intelligence that acts.
           </h2>
           <p className="mt-6 max-w-[46ch] text-muted">

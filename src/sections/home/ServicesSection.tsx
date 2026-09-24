@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import { Label } from "../../components/ui/Label";
 import { type Service, services } from "../../data/services";
 import { ServiceVisual } from "./ServiceVisual";
 
@@ -28,8 +27,7 @@ function Tile({ s, big }: { s: Service; big: boolean }) {
       }`}
       data-reveal
     >
-      <div className="flex items-center justify-between gap-4">
-        <Label tone={ai ? "agent" : "signal"}>Service {s.code}</Label>
+      <div className="flex items-center justify-end gap-4">
         <span
           aria-hidden="true"
           className="text-muted transition-transform group-hover:translate-x-1 group-hover:text-ink"

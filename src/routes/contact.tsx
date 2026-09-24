@@ -42,7 +42,6 @@ export default function Contact() {
   return (
     <main id="main">
       <PageIntro
-        label="Contact"
         title="What will you build next?"
         lead={`Pick the fastest route for you. A human answers, usually the engineer who would build it. ${contact.replyPromise}`}
       />

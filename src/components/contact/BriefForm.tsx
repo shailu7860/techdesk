@@ -100,10 +100,7 @@ export function BriefForm({
   if (status === "sent") {
     return (
       <div className="glass rounded-md p-8 md:p-12" role="status">
-        <Label tone="signal" live>
-          Transmission / received
-        </Label>
-        <h3 ref={headingRef} tabIndex={-1} className="mt-6 font-display text-headline focus:outline-none">
+        <h3 ref={headingRef} tabIndex={-1} className="font-display text-headline focus:outline-none">
           Thank you, {lead.name.split(" ")[0]}.
         </h3>
         <p className="mt-4 max-w-[50ch] text-muted">

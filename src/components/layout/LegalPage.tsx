@@ -1,21 +1,10 @@
 import type { ReactNode } from "react";
 import { PageIntro } from "./PageIntro";
 
-export function LegalPage({
-  label,
-  title,
-  updated,
-  children,
-}: {
-  label: string;
-  title: string;
-  updated: string;
-  children: ReactNode;
-}) {
+export function LegalPage({ title, updated, children }: { title: string; updated: string; children: ReactNode }) {
   return (
     <main id="main">
       <PageIntro
-        label={label}
         title={title}
         lead={`Last updated ${updated}. Written in plain language; if anything is unclear, ask us.`}
       />

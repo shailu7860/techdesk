@@ -11,7 +11,7 @@ export const meta = () =>
 
 export default function Terms() {
   return (
-    <LegalPage label="Legal" title="Terms of use" updated="24 September 2026">
+    <LegalPage title="Terms of use" updated="24 September 2026">
       <h2>About this website</h2>
       <p>
         This website describes TechDesk's services and past work. Using it does not create a client relationship; that
