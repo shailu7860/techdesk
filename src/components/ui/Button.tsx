@@ -48,7 +48,7 @@ export function Button(props: AsLink | AsButton) {
     const { href, external, onClick } = props;
     const isInternal = href.startsWith("/") && !external;
     return isInternal ? (
-      <Link to={href} className={cls} onClick={onClick}>
+      <Link to={href} className={cls} onClick={onClick} viewTransition>
         {children}
         {glyph}
       </Link>

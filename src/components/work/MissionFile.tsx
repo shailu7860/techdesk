@@ -17,7 +17,11 @@ export function MissionFile({ project, headingLevel: H = "h3" }: { project: Proj
         </Label>
       </div>
       <H className="mt-10 font-display text-headline uppercase">
-        <Link to={`/work/${project.slug}`} className="after:absolute after:inset-0 focus-visible:outline-none">
+        <Link
+          to={`/work/${project.slug}`}
+          viewTransition
+          className="after:absolute after:inset-0 focus-visible:outline-none"
+        >
           {project.title}
         </Link>
       </H>

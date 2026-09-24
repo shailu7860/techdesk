@@ -1,39 +1,37 @@
-import { Button } from "../components/ui/Button";
-import type { Route } from "./+types/home";
+import { useHomeMotion } from "../animations/home";
+import { site } from "../data/company";
+import { organizationLd, seo } from "../lib/seo";
+import { AgentTrace } from "../sections/home/AgentTrace";
+import { CommitmentsBand } from "../sections/home/CommitmentsBand";
+import { EstimateSection } from "../sections/home/EstimateSection";
+import { FinalCTA } from "../sections/home/FinalCTA";
+import { Hero } from "../sections/home/Hero";
+import { IndustriesSection } from "../sections/home/IndustriesSection";
+import { ProcessSection } from "../sections/home/ProcessSection";
+import { ServicesSection } from "../sections/home/ServicesSection";
+import { WorkSection } from "../sections/home/WorkSection";
 
-export const meta: Route.MetaFunction = () => [
-  { title: "TechDesk | AI agents, software platforms and automation" },
-  {
-    name: "description",
-    content:
-      "TechDesk engineers AI agents, software platforms, intelligent automation and high-performance digital experiences for ambitious businesses. Indore, India, serving clients worldwide.",
-  },
-];
+export const meta = () =>
+  seo({
+    title: "TechDesk | AI agents, software platforms and automation",
+    description: site.description,
+    path: "/",
+    jsonLd: organizationLd,
+  });
 
-// ponytail: static hero only. The full cinematic homepage is Phase 4 (docs/briefs/homepage.md).
 export default function Home() {
+  const scope = useHomeMotion();
   return (
-    <>
-      <main
-        id="main"
-        className="container-page flex min-h-[calc(100dvh-4.5rem)] flex-col justify-center pb-[var(--section-y)]"
-      >
-        <h1 className="font-display text-display max-w-[14ch] uppercase">
-          We engineer digital systems for what's next.
-        </h1>
-        <p className="mt-8 max-w-[60ch] text-body text-muted">
-          AI agents, software platforms, intelligent automation and high-performance digital experiences engineered for
-          ambitious businesses.
-        </p>
-        <div className="mt-10 flex flex-wrap items-center gap-4">
-          <Button href="/contact" size="lg" trailing="→">
-            Start a project
-          </Button>
-          <Button href="#work" variant="secondary" size="lg" trailing="↓">
-            Explore our work
-          </Button>
-        </div>
-      </main>
-    </>
+    <main id="main" ref={scope}>
+      <Hero />
+      <ServicesSection />
+      <AgentTrace />
+      <WorkSection />
+      <ProcessSection />
+      <IndustriesSection />
+      <CommitmentsBand />
+      <EstimateSection />
+      <FinalCTA />
+    </main>
   );
 }

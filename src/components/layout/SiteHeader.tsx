@@ -53,7 +53,12 @@ export function SiteHeader() {
           <ul className="flex items-center gap-8">
             {primaryNav.map((item) => (
               <li key={item.href}>
-                <NavLink to={item.href} className={linkCls}>
+                <NavLink
+                  to={item.href}
+                  // In-page anchors (/#process) are never "the current page".
+                  className={(a) => linkCls({ isActive: a.isActive && !item.href.includes("#") })}
+                  viewTransition
+                >
                   {item.label}
                 </NavLink>
               </li>

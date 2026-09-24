@@ -4,6 +4,8 @@ import type { Route } from "./+types/root";
 import "@fontsource-variable/archivo/wdth.css";
 import "@fontsource-variable/martian-mono/wght.css";
 import "./styles/globals.css";
+import { useSmoothScroll } from "./animations/smoothScroll";
+import { ChatLauncher } from "./components/chat/ChatLauncher";
 import { ContactDock } from "./components/contact/ContactDock";
 import { SiteFooter } from "./components/layout/SiteFooter";
 import { SiteHeader } from "./components/layout/SiteHeader";
@@ -17,7 +19,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#0b0b0b" />
+        <meta name="theme-color" content="#090909" />
         <Meta />
         <Links />
       </head>
@@ -34,12 +36,14 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
+  useSmoothScroll();
   return (
     <>
       <SiteHeader />
       <Outlet />
       <SiteFooter />
       <ContactDock />
+      <ChatLauncher />
     </>
   );
 }
