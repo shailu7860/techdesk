@@ -7,7 +7,7 @@ import { Label } from "../components/ui/Label";
 import { contact } from "../data/contact";
 import { projectTypes } from "../data/pricing";
 import { getProject } from "../data/projects";
-import { LIMITS } from "../lib/leads";
+import { summaryFromParams } from "../lib/estimate";
 import { seo } from "../lib/seo";
 import { telLink, waLink } from "../lib/whatsapp";
 
@@ -34,7 +34,7 @@ export default function Contact() {
   const typeId = hydrated ? (params.get("type") ?? "") : "";
   const typeName = projectTypes.find((t) => t.id === typeId)?.name ?? "";
   const ref = hydrated ? (getProject(params.get("ref") ?? "")?.title ?? "") : "";
-  const estimate = hydrated ? (params.get("estimate") ?? "").slice(0, LIMITS.short) : "";
+  const estimate = hydrated ? summaryFromParams(params) : "";
   const prefillKey = `${typeId}|${ref}|${estimate}`;
 
   return (

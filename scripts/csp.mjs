@@ -33,7 +33,7 @@ for (const file of files) {
     "default-src 'self'",
     `script-src 'self' ${[...hashes].join(" ")}`,
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data:",
+    "img-src 'self'",
     "font-src 'self'",
     `connect-src 'self' https://api.web3forms.com${chatOrigin ? ` ${chatOrigin}` : ""}`,
     "form-action 'self' https://api.web3forms.com",

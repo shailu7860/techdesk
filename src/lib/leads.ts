@@ -47,6 +47,9 @@ const CONTROL = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g;
 /** Trim, drop control characters and hard-cap length. Applied to every field before sending. */
 export const clean = (v: string, max: number) => v.replace(CONTROL, "").trim().slice(0, max);
 
+/** Single-line fields (name, email, subject parts): also collapse line breaks so nothing can split a header. */
+export const line = (v: string, max: number) => clean(v.replace(/[\r\n\u2028\u2029]+/g, " "), max);
+
 export type Errors = Partial<Record<keyof Lead, string>>;
 
 /** Validation per brief step (1-based). Step 5 validates everything. */
@@ -81,20 +84,20 @@ export async function submitLead(l: Lead, fetcher: typeof fetch = fetch): Promis
 
   const payload = {
     access_key: key,
-    subject: `New project brief: ${clean(l.projectType, LIMITS.short)} from ${clean(l.name, LIMITS.name)}`,
+    subject: `New project brief: ${line(l.projectType, LIMITS.short)} from ${line(l.name, LIMITS.name)}`,
     from_name: "TechDesk website",
-    name: clean(l.name, LIMITS.name),
-    company: clean(l.company, LIMITS.company),
-    email: clean(l.email, LIMITS.email),
-    phone: clean(l.phone, LIMITS.phone),
+    name: line(l.name, LIMITS.name),
+    company: line(l.company, LIMITS.company),
+    email: line(l.email, LIMITS.email),
+    phone: line(l.phone, LIMITS.phone),
     preferred_channel: l.channel,
-    project_type: clean(l.projectType, LIMITS.short),
-    industry: clean(l.industry, LIMITS.short),
-    scope: l.scope.map((s) => clean(s, LIMITS.short)).join(", "),
-    timeline: clean(l.timeline, LIMITS.short),
-    budget: clean(l.budget, LIMITS.short),
-    estimate: clean(l.estimate, LIMITS.short),
-    reference: clean(l.ref, LIMITS.short),
+    project_type: line(l.projectType, LIMITS.short),
+    industry: line(l.industry, LIMITS.short),
+    scope: l.scope.map((s) => line(s, LIMITS.short)).join(", "),
+    timeline: line(l.timeline, LIMITS.short),
+    budget: line(l.budget, LIMITS.short),
+    estimate: line(l.estimate, LIMITS.short),
+    reference: line(l.ref, LIMITS.short),
     message: clean(l.description, LIMITS.description),
     botcheck: "",
   };

@@ -1,7 +1,7 @@
 import { useEffect, useId, useState } from "react";
 import { useNavigate } from "react-router";
 import { type AddOnId, addOns, type Currency, projectTypes, type SizeId, sizes } from "../../data/pricing";
-import { defaultCurrency, estimate, formatBand } from "../../lib/estimate";
+import { defaultCurrency, estimate, formatBand, summarize } from "../../lib/estimate";
 import { waLink } from "../../lib/whatsapp";
 import { Button } from "../ui/Button";
 import { Label } from "../ui/Label";
@@ -54,10 +54,7 @@ export function QuoteCalculator({
 
   const result = estimate(type, size, selected, currency);
   const range = result ? formatBand(result) : "";
-  const typeName = projectTypes.find((t) => t.id === type)?.name ?? "";
-  const sizeName = sizes.find((s) => s.id === size)?.name ?? "";
-  const extras = addOns.filter((a) => selected.includes(a.id)).map((a) => a.name);
-  const summary = `${typeName}, ${sizeName}${extras.length ? `, with ${extras.join(", ")}` : ""}: ${range} (indicative)`;
+  const summary = summarize(type, size, selected, currency);
 
   const toggle = (a: AddOnId) => setSelected((s) => (s.includes(a) ? s.filter((x) => x !== a) : [...s, a]));
 
@@ -158,7 +155,9 @@ export function QuoteCalculator({
           <Button
             trailing="→"
             onClick={() =>
-              navigate(`/contact?type=${encodeURIComponent(type)}&estimate=${encodeURIComponent(summary)}#brief`)
+              navigate(
+                `/contact?${new URLSearchParams({ type, size, addons: selected.join(","), cur: currency })}#brief`,
+              )
             }
           >
             Send this to us

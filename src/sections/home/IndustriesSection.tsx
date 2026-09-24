@@ -65,12 +65,10 @@ export function IndustriesSection() {
             ))}
           </div>
           {current && (
-            // biome-ignore lint/a11y/noNoninteractiveTabindex: WAI-ARIA tabs pattern makes the tabpanel focusable
             <div
               id="industry-panel"
               role="tabpanel"
               aria-labelledby={`tab-${current.key}`}
-              tabIndex={0}
               className="border border-hairline bg-panel p-8 md:p-10"
             >
               <Label tone="signal">Example solution</Label>

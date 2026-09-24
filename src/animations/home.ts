@@ -32,7 +32,11 @@ export function useHomeMotion() {
             gsap.fromTo(
               dot,
               { scale: 0.4 },
-              { scale: 1.6, ease: "none", scrollTrigger: { trigger: step, start: "top 75%", end: "top 55%", scrub: true } },
+              {
+                scale: 1.6,
+                ease: "none",
+                scrollTrigger: { trigger: step, start: "top 75%", end: "top 55%", scrub: true },
+              },
             );
         }
         return () => trace?.classList.remove("trace-armed");

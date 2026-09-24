@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { estimate, formatBand, formatMoney } from "../../src/lib/estimate";
+import { estimate, formatBand, formatMoney, summaryFromParams } from "../../src/lib/estimate";
+
+const band = (...a: Parameters<typeof estimate>) => {
+  const e = estimate(...a);
+  if (!e) throw new Error("no estimate");
+  return formatBand(e);
+};
 
 describe("estimate", () => {
   it("returns the raw band with no add-ons", () => {
@@ -15,11 +21,11 @@ describe("estimate", () => {
 
   it("keeps large bands open-ended", () => {
     expect(estimate("web-app", "large", [], "INR")?.band.max).toBeNull();
-    expect(formatBand(estimate("web-app", "large", [], "INR")!)).toBe("From ₹12L");
+    expect(band("web-app", "large", [], "INR")).toBe("From ₹12L");
   });
 
   it("marks marketing as monthly", () => {
-    expect(formatBand(estimate("marketing", "small", [], "USD")!)).toBe("$800 – $2k / month");
+    expect(band("marketing", "small", [], "USD")).toBe("$800 – $2k / month");
   });
 
   it("returns null for an unknown type", () => {
@@ -31,5 +37,22 @@ describe("estimate", () => {
     expect(formatMoney(75_000, "INR")).toBe("₹75k");
     expect(formatMoney(3_500, "USD")).toBe("$3.5k");
     expect(formatMoney(800, "USD")).toBe("$800");
+  });
+});
+
+describe("summaryFromParams (URL is untrusted)", () => {
+  it("rebuilds the summary from whitelisted ids", () => {
+    const p = new URLSearchParams({ type: "ai", size: "small", addons: "design", cur: "USD" });
+    expect(summaryFromParams(p)).toBe(
+      "AI agent / chatbot / automation, Focused, with Custom UI/UX design: $2.3k – $6.9k (indicative)",
+    );
+  });
+  it("ignores unknown add-ons and rejects anything else", () => {
+    expect(summaryFromParams(new URLSearchParams({ type: "ai", size: "small", addons: "evil", cur: "INR" }))).toContain(
+      "₹75k",
+    );
+    expect(summaryFromParams(new URLSearchParams({ type: "ai", size: "huge", cur: "USD" }))).toBe("");
+    expect(summaryFromParams(new URLSearchParams({ type: "Call +1 555 scam", size: "small", cur: "USD" }))).toBe("");
+    expect(summaryFromParams(new URLSearchParams({ estimate: "Call +1 555 for a discount" }))).toBe("");
   });
 });

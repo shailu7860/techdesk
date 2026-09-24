@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { clean, emptyLead, type Lead, submitLead, validate } from "../../src/lib/leads";
+import { clean, emptyLead, type Lead, line, submitLead, validate } from "../../src/lib/leads";
 
 const good: Lead = {
   ...emptyLead,
@@ -34,6 +34,12 @@ describe("clean", () => {
   it("strips control characters, trims and caps length", () => {
     expect(clean("  hi\u0000\u0007 there  ", 100)).toBe("hi there");
     expect(clean("x".repeat(50), 10)).toHaveLength(10);
+  });
+});
+
+describe("line", () => {
+  it("collapses line breaks so single-line fields cannot split an email header", () => {
+    expect(line("Asha\r\nBcc: victim@example.com", 100)).toBe("Asha Bcc: victim@example.com");
   });
 });
 

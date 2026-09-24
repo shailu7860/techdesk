@@ -11,7 +11,6 @@ export function reveal(gsap: typeof G, ScrollTrigger: typeof ST, scope: Element)
   ScrollTrigger.batch(items, {
     start: "top 88%",
     once: true,
-    onEnter: (batch) =>
-      gsap.to(batch, { y: 0, duration: 0.9, ease: "expo.out", stagger: 0.08, overwrite: true }),
+    onEnter: (batch) => gsap.to(batch, { y: 0, duration: 0.9, ease: "expo.out", stagger: 0.08, overwrite: true }),
   });
 }

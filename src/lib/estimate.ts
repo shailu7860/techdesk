@@ -1,4 +1,4 @@
-import { type AddOnId, addOns, type Band, type Currency, projectTypes, type SizeId } from "../data/pricing";
+import { type AddOnId, addOns, type Band, type Currency, projectTypes, type SizeId, sizes } from "../data/pricing";
 
 export type Estimate = { band: Band; currency: Currency; perMonth: boolean };
 
@@ -46,4 +46,27 @@ export function defaultCurrency(): Currency {
   } catch {
     return "USD";
   }
+}
+
+/** Human summary of a selection, e.g. "Web app / SaaS platform, Focused: $3k – $8k (indicative)". */
+export function summarize(typeId: string, size: SizeId, selected: AddOnId[], currency: Currency): string {
+  const e = estimate(typeId, size, selected, currency);
+  if (!e) return "";
+  const type = projectTypes.find((t) => t.id === typeId)?.name;
+  const sizeName = sizes.find((s) => s.id === size)?.name;
+  const extras = addOns.filter((a) => selected.includes(a.id)).map((a) => a.name);
+  return `${type}, ${sizeName}${extras.length ? `, with ${extras.join(", ")}` : ""}: ${formatBand(e)} (indicative)`;
+}
+
+/**
+ * Rebuild a summary from untrusted URL params. Only whitelisted ids are accepted, so a crafted link
+ * can never make the page display arbitrary text (content-injection guard).
+ */
+export function summaryFromParams(p: URLSearchParams): string {
+  const type = p.get("type") ?? "";
+  const size = p.get("size") as SizeId | null;
+  const cur = p.get("cur");
+  if (!size || !sizes.some((s) => s.id === size) || (cur !== "INR" && cur !== "USD")) return "";
+  const picked = (p.get("addons") ?? "").split(",").filter((a): a is AddOnId => addOns.some((x) => x.id === a));
+  return summarize(type, size, picked, cur);
 }
