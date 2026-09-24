@@ -17,10 +17,19 @@
     min-height: 100dvh;
   }
 
-  h1, h2, h3 { text-wrap: balance; }
-  p { text-wrap: pretty; }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
 
-  ::selection { background: var(--color-signal); color: var(--color-void); }
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-void);
+  }
 
   :focus-visible {
     outline: 2px solid var(--color-signal);
@@ -30,12 +39,16 @@
 
   /* Mobile: the contact dock is a bottom bar; keep content clear of it. */
   @media (width < 48rem) {
-    body { padding-bottom: calc(var(--dock-h) + env(safe-area-inset-bottom)); }
+    body {
+      padding-bottom: calc(var(--dock-h) + env(safe-area-inset-bottom));
+    }
   }
 
   /* Safety net. Components still declare their own reduced-motion alternative. */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -68,5 +81,7 @@
   color: var(--color-void);
   border-radius: var(--radius-sm);
   transform: translateY(-200%);
-  &:focus-visible { transform: none; }
+  &:focus-visible {
+    transform: none;
+  }
 }

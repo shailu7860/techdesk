@@ -7,7 +7,10 @@
     "build": "react-router build",
     "start": "npx serve build/client",
     "typecheck": "react-router typegen && tsc",
-    "check:contrast": "node scripts/check-contrast.mjs"
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "verify": "npm run lint && npm run typecheck && npm run check:contrast && npm run build"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.3.0",
@@ -19,6 +22,7 @@
     "react-router": "^8.4.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.14",
     "@react-router/dev": "^8.4.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.2",

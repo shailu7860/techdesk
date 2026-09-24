@@ -12,7 +12,12 @@ const tones: Record<Tone, string> = {
  * System label: the instrument's engraving (DESIGN.md "Mono-Is-Metadata").
  * For metadata only (project IDs, status, stack), never headings or prose.
  */
-export function Label({ children, tone = "muted", live = false, className = "" }: {
+export function Label({
+  children,
+  tone = "muted",
+  live = false,
+  className = "",
+}: {
   children: ReactNode;
   tone?: Tone;
   /** Shows the single permitted live indicator. Pair with text that states the status. */

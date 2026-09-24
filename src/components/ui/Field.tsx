@@ -1,4 +1,10 @@
-import { useId, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type TextareaHTMLAttributes } from "react";
+import {
+  type InputHTMLAttributes,
+  type ReactNode,
+  type SelectHTMLAttributes,
+  type TextareaHTMLAttributes,
+  useId,
+} from "react";
 
 type Base = { label: string; hint?: string; error?: string; className?: string };
 type InputProps = Base & { as?: "input" } & InputHTMLAttributes<HTMLInputElement>;
@@ -31,7 +37,11 @@ export function Field(props: InputProps | TextareaProps | SelectProps) {
     el = <textarea {...rest} {...a11y} className={`${control} ${border} min-h-32 py-3`} />;
   } else if (props.as === "select") {
     const { as: _a, label: _l, hint: _h, error: _e, className: _c, children, ...rest } = props;
-    el = <select {...rest} {...a11y} className={`${control} ${border} min-h-12 cursor-pointer`}>{children}</select>;
+    el = (
+      <select {...rest} {...a11y} className={`${control} ${border} min-h-12 cursor-pointer`}>
+        {children}
+      </select>
+    );
   } else {
     const { as: _a, label: _l, hint: _h, error: _e, className: _c, ...rest } = props;
     el = <input {...rest} {...a11y} className={`${control} ${border} min-h-12`} />;
@@ -43,11 +53,17 @@ export function Field(props: InputProps | TextareaProps | SelectProps) {
         {label}
         {required && <span className="text-muted"> (required)</span>}
       </label>
-      {hint && <p id={hintId} className="text-small text-muted">{hint}</p>}
+      {hint && (
+        <p id={hintId} className="text-small text-muted">
+          {hint}
+        </p>
+      )}
       {el}
       {error && (
         <p id={errorId} className="flex items-start gap-2 text-small text-danger">
-          <span aria-hidden="true" className="font-mono">!</span>
+          <span aria-hidden="true" className="font-mono">
+            !
+          </span>
           {error}
         </p>
       )}

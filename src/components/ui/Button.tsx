@@ -36,7 +36,10 @@ export function Button(props: AsLink | AsButton) {
   const { variant = "primary", size = "md", trailing, children, className = "" } = props;
   const cls = `${base} ${variants[variant]} ${variant === "ghost" ? "min-h-11 px-1" : sizes[size]} ${className}`;
   const glyph = trailing ? (
-    <span aria-hidden="true" className="transition-transform duration-(--duration-base) ease-(--ease-out-quart) group-hover:translate-x-0.5">
+    <span
+      aria-hidden="true"
+      className="transition-transform duration-(--duration-base) ease-(--ease-out-quart) group-hover:translate-x-0.5"
+    >
       {trailing}
     </span>
   ) : null;
@@ -45,18 +48,42 @@ export function Button(props: AsLink | AsButton) {
     const { href, external, onClick } = props;
     const isInternal = href.startsWith("/") && !external;
     return isInternal ? (
-      <Link to={href} className={cls} onClick={onClick}>{children}{glyph}</Link>
+      <Link to={href} className={cls} onClick={onClick}>
+        {children}
+        {glyph}
+      </Link>
     ) : (
-      <a href={href} className={cls} onClick={onClick} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
-        {children}{glyph}
+      <a
+        href={href}
+        className={cls}
+        onClick={onClick}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
+        {children}
+        {glyph}
       </a>
     );
   }
 
-  const { loading = false, variant: _v, size: _s, trailing: _t, className: _c, children: _ch, disabled, type = "button", ...rest } = props;
+  const {
+    loading = false,
+    variant: _v,
+    size: _s,
+    trailing: _t,
+    className: _c,
+    children: _ch,
+    disabled,
+    type = "button",
+    ...rest
+  } = props;
   return (
     <button type={type} className={cls} disabled={disabled || loading} aria-busy={loading || undefined} {...rest}>
-      {loading && <span aria-hidden="true" className="size-3.5 animate-spin rounded-full border-2 border-current border-t-transparent" />}
+      {loading && (
+        <span
+          aria-hidden="true"
+          className="size-3.5 animate-spin rounded-full border-2 border-current border-t-transparent"
+        />
+      )}
       {children}
       {!loading && glyph}
     </button>

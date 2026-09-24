@@ -4,12 +4,15 @@ import { readFileSync } from "node:fs";
 
 const css = readFileSync(new URL("../src/styles/tokens.css", import.meta.url), "utf8");
 const tokens = Object.fromEntries(
-  [...css.matchAll(/--color-([\w-]+):\s*oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*\)/g)]
-    .map(([, name, l, c, h]) => [name, [+l, +c, +h]]),
+  [...css.matchAll(/--color-([\w-]+):\s*oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*\)/g)].map(([, name, l, c, h]) => [
+    name,
+    [+l, +c, +h],
+  ]),
 );
 
 function luminance([L, C, H]) {
-  const a = C * Math.cos((H * Math.PI) / 180), b = C * Math.sin((H * Math.PI) / 180);
+  const a = C * Math.cos((H * Math.PI) / 180),
+    b = C * Math.sin((H * Math.PI) / 180);
   const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
   const m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3;
   const s = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
@@ -27,15 +30,23 @@ const ratio = (fg, bg) => {
 
 // [foreground, background, minimum] — every text/UI pairing the design uses.
 const pairs = [
-  ["ink", "void", 7], ["ink", "panel", 7], ["ink", "panel-hi", 4.5],
-  ["muted", "void", 4.5], ["muted", "panel", 4.5],
-  ["subtle", "void", 4.5], ["subtle", "panel", 3],
-  ["signal", "void", 4.5], ["signal", "panel", 4.5],
-  ["void", "signal", 4.5], ["void", "signal-hi", 4.5],   // text on filled primary button
-  ["agent", "void", 4.5], ["agent", "panel", 4.5],
-  ["danger", "void", 4.5], ["danger", "panel", 4.5],
+  ["ink", "void", 7],
+  ["ink", "panel", 7],
+  ["ink", "panel-hi", 4.5],
+  ["muted", "void", 4.5],
+  ["muted", "panel", 4.5],
+  ["subtle", "void", 4.5],
+  ["subtle", "panel", 3],
+  ["signal", "void", 4.5],
+  ["signal", "panel", 4.5],
+  ["void", "signal", 4.5],
+  ["void", "signal-hi", 4.5], // text on filled primary button
+  ["agent", "void", 4.5],
+  ["agent", "panel", 4.5],
+  ["danger", "void", 4.5],
+  ["danger", "panel", 4.5],
   ["success", "void", 4.5],
-  ["hairline", "void", 1.4],                              // non-text structure, just visible
+  ["hairline", "void", 1.4], // non-text structure, just visible
 ];
 
 let failed = 0;

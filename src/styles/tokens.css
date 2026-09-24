@@ -6,16 +6,16 @@
 
 @theme static {
   /* ── Color: neutrals (pure, chroma 0) ── */
-  --color-void: oklch(0.14 0 0);          /* page canvas */
-  --color-panel: oklch(0.19 0 0);         /* raised surfaces: dock, inputs, chat */
-  --color-panel-hi: oklch(0.24 0 0);      /* hover on panel */
-  --color-hairline: oklch(0.32 0 0);      /* borders, grid lines, corner markers */
-  --color-ink: oklch(0.97 0 0);           /* headlines + body */
-  --color-muted: oklch(0.74 0 0);         /* secondary text, metadata */
-  --color-subtle: oklch(0.6 0 0);         /* disabled, placeholders (≥4.5:1 on void) */
+  --color-void: oklch(0.14 0 0); /* page canvas */
+  --color-panel: oklch(0.19 0 0); /* raised surfaces: dock, inputs, chat */
+  --color-panel-hi: oklch(0.24 0 0); /* hover on panel */
+  --color-hairline: oklch(0.32 0 0); /* borders, grid lines, corner markers */
+  --color-ink: oklch(0.97 0 0); /* headlines + body */
+  --color-muted: oklch(0.74 0 0); /* secondary text, metadata */
+  --color-subtle: oklch(0.6 0 0); /* disabled, placeholders (≥4.5:1 on void) */
 
   /* ── Color: signal (live / actionable) ── */
-  --color-signal: oklch(0.86 0.13 215);   /* electric cyan-blue; fills carry void text */
+  --color-signal: oklch(0.86 0.13 215); /* electric cyan-blue; fills carry void text */
   --color-signal-hi: oklch(0.92 0.09 215);
   --color-signal-lo: oklch(0.86 0.13 215 / 0.14);
 

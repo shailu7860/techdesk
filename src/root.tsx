@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse } from "react-router";
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import type { Route } from "./+types/root";
 import "@fontsource-variable/archivo/wdth.css";
 import "@fontsource-variable/martian-mono/wght.css";
 import "./styles/globals.css";
 import { ContactDock } from "./components/contact/ContactDock";
+import { SiteFooter } from "./components/layout/SiteFooter";
+import { SiteHeader } from "./components/layout/SiteHeader";
+import { NotFound } from "./components/NotFound";
 
-export const links: Route.LinksFunction = () => [
-  { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-];
+export const links: Route.LinksFunction = () => [{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }];
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -21,7 +22,9 @@ export function Layout({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body>
-        <a href="#main" className="skip-link">Skip to content</a>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -33,22 +36,31 @@ export function Layout({ children }: { children: ReactNode }) {
 export default function App() {
   return (
     <>
+      <SiteHeader />
       <Outlet />
+      <SiteFooter />
       <ContactDock />
     </>
   );
 }
 
-// ponytail: minimal boundary; the designed 404 / error screens land in Phase 3.
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const notFound = isRouteErrorResponse(error) && error.status === 404;
+  if (import.meta.env.DEV && !notFound) console.error(error);
   return (
-    <main id="main" className="container-page py-[var(--section-y)]">
-      <p className="font-mono text-label uppercase text-muted">System error / {notFound ? "404" : "500"}</p>
-      <h1 className="font-display text-headline mt-4">
-        {notFound ? "The requested module does not exist." : "Something failed on our side."}
-      </h1>
-      <a href="/" className="mt-8 inline-block text-signal underline underline-offset-4">Return to base →</a>
-    </main>
+    <>
+      <SiteHeader />
+      {notFound ? (
+        <NotFound />
+      ) : (
+        <NotFound
+          code="500"
+          title="Something failed on our side."
+          body="The page hit an unexpected error. Try again, or reach us directly while we fix it."
+        />
+      )}
+      <SiteFooter />
+      <ContactDock />
+    </>
   );
 }

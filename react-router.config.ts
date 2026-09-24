@@ -1,11 +1,17 @@
 import type { Config } from "@react-router/dev/config";
+import { flagships } from "./src/data/projects";
+import { services } from "./src/data/services";
 
 export default {
   appDirectory: "src",
   // Static hosting on Amplify: no runtime server. Every route is prerendered to HTML.
   ssr: false,
   async prerender({ getStaticPaths }) {
-    // Dynamic routes (/work/:slug, /services/:slug) are appended here from src/data in Phase 6–7.
-    return getStaticPaths();
+    return [
+      ...getStaticPaths(),
+      ...flagships.map((p) => `/work/${p.slug}`),
+      ...services.map((s) => `/services/${s.slug}`),
+      "/404", // served by Amplify for unknown URLs with a 404 status (amplify customRules)
+    ];
   },
 } satisfies Config;
