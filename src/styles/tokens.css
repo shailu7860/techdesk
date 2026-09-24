@@ -31,7 +31,7 @@
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Martian Mono Variable", ui-monospace, "SFMono-Regular", monospace;
 
-  --text-display: clamp(2.75rem, 1.4rem + 5.4vw, 6rem);
+  --text-display: clamp(2.25rem, 1.1rem + 5.6vw, 6rem);
   --text-display--line-height: 0.95;
   --text-display--letter-spacing: -0.035em;
   --text-headline: clamp(2rem, 1.35rem + 2.6vw, 3.5rem);

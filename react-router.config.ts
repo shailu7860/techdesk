@@ -4,6 +4,7 @@ import { services } from "./src/data/services";
 
 export default {
   appDirectory: "src",
+  buildDirectory: process.env.BUILD_DIR ?? "build",
   // Static hosting on Amplify: no runtime server. Every route is prerendered to HTML.
   ssr: false,
   async prerender({ getStaticPaths }) {

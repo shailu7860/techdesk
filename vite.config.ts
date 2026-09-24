@@ -18,4 +18,6 @@ if (!process.env.VITE_CHAT_URL && existsSync("amplify_outputs.json")) {
 
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter()],
+  // No data: URIs, so the CSP can stay strict (font-src/img-src 'self').
+  build: { assetsInlineLimit: 0 },
 });

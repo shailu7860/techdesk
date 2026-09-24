@@ -6,7 +6,18 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["src/**", "scripts/**", "amplify/**", "tests/**", "*.ts", "!**/.react-router", "!**/build"]
+    "includes": [
+      "src/**",
+      "scripts/**",
+      "amplify/**",
+      "tests/**",
+      "*.ts",
+      "!**/.react-router",
+      "!**/build",
+      "!**/build-e2e",
+      "!**/test-results",
+      "!**/playwright-report"
+    ]
   },
   "formatter": {
     "enabled": true,

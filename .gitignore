@@ -6,3 +6,6 @@ amplify_outputs.json
 .env*
 !.env.example
 .DS_Store
+build-e2e/
+test-results/
+playwright-report/

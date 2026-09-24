@@ -17,7 +17,7 @@ colors:
 typography:
   display:
     fontFamily: "Archivo Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2.75rem, 1.4rem + 5.4vw, 6rem)"
+    fontSize: "clamp(2.25rem, 1.1rem + 5.6vw, 6rem)"
     fontWeight: 640
     lineHeight: 0.95
     letterSpacing: "-0.035em"
