@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { PageIntro } from "../components/layout/PageIntro";
 import { Button } from "../components/ui/Button";
-import { Label } from "../components/ui/Label";
 import { services } from "../data/services";
 import { seo } from "../lib/seo";
 
@@ -17,34 +16,36 @@ export default function Services() {
   return (
     <main id="main">
       <PageIntro
-        label="Services / 05"
+        label="Services"
         title="Outcomes first. Technology second."
         lead="Five ways we help, each measured by what changes in your business, not by how many frameworks we used."
       />
       <section aria-label="Service lines" className="container-page pb-(--section-y)">
-        <ul className="border-t border-hairline">
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <li key={s.slug} className="group relative border-b border-hairline">
-              <div className="grid gap-4 py-10 md:grid-cols-[5rem_1fr_1fr] md:gap-10 md:py-14">
-                <Label>{s.code}</Label>
-                <div>
-                  <h2 className="font-display text-title">
-                    <Link
-                      to={`/services/${s.slug}`}
-                      className="after:absolute after:inset-0 focus-visible:outline-none"
-                    >
-                      {s.name}
-                    </Link>
-                  </h2>
-                  <p className="mt-3 font-display text-headline leading-tight uppercase transition-colors group-hover:text-signal">
-                    {s.outcome}
-                  </p>
-                </div>
-                <div className="flex flex-col justify-between gap-6">
-                  <p className="text-muted">{s.summary}</p>
-                  <p className="font-mono text-label text-muted">{s.capabilities.slice(0, 4).join(" · ")}</p>
-                </div>
-              </div>
+            <li key={s.slug}>
+              <article className="group relative flex h-full flex-col rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card) transition-[border-color,box-shadow,transform] duration-(--duration-base) hover:-translate-y-0.5 hover:border-signal/50 hover:shadow-(--shadow-lift)">
+                <span className="inline-flex size-10 items-center justify-center rounded-sm bg-signal-lo text-small font-bold text-signal-hi">
+                  {s.code}
+                </span>
+                <h2 className="mt-6 font-display text-title">
+                  <Link to={`/services/${s.slug}`} className="after:absolute after:inset-0 focus-visible:outline-none">
+                    {s.name}
+                  </Link>
+                </h2>
+                <p className="mt-3 font-medium text-ink">{s.outcome}</p>
+                <p className="mt-3 text-small text-muted">{s.summary}</p>
+                <ul className="mt-6 flex flex-wrap gap-2">
+                  {s.capabilities.slice(0, 4).map((c) => (
+                    <li key={c} className="rounded-sm bg-panel-hi px-3 py-1 text-label font-medium text-muted">
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+                <p aria-hidden="true" className="mt-auto pt-8 text-small font-semibold text-signal">
+                  Learn more <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                </p>
+              </article>
             </li>
           ))}
         </ul>

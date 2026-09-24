@@ -31,6 +31,8 @@ const ratio = (fg, bg) => {
 // [foreground, background, minimum] — every text/UI pairing the design uses.
 const pairs = [
   ["ink", "void", 7],
+  ["muted", "panel-hi", 4.5],
+  ["signal", "panel", 4.5], // green links on white
   ["ink", "panel", 7],
   ["ink", "panel-hi", 4.5],
   ["muted", "void", 4.5],
@@ -39,14 +41,14 @@ const pairs = [
   ["subtle", "panel", 3],
   ["signal", "void", 4.5],
   ["signal", "panel", 4.5],
-  ["void", "signal", 4.5],
-  ["void", "signal-hi", 4.5], // text on filled primary button
+  ["void", "signal", 4.5], // off-white text on green primary button
+  ["void", "signal-hi", 4.5],
   ["agent", "void", 4.5],
   ["agent", "panel", 4.5],
   ["danger", "void", 4.5],
   ["danger", "panel", 4.5],
   ["success", "void", 4.5],
-  ["hairline", "void", 1.4], // non-text structure, just visible
+  ["hairline", "panel", 1.15], // non-text structure: border on white, just visible
 ];
 
 let failed = 0;

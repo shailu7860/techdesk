@@ -36,9 +36,9 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
     <main id="main">
       <header className="container-page pt-16 pb-12 md:pt-24">
         <Label tone={s.slug === "ai-automation" ? "agent" : "signal"}>
-          Service / {s.code} · {s.name}
+          {s.name}
         </Label>
-        <h1 className="mt-6 max-w-[18ch] font-display text-headline uppercase md:text-display">{s.outcome}</h1>
+        <h1 className="mt-6 max-w-[18ch] font-display text-headline md:text-display">{s.outcome}</h1>
         <p className="mt-6 max-w-[60ch] text-title leading-snug text-muted">{s.summary}</p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Button href={`/contact?type=${s.estimateType}#estimate`} size="lg" trailing="→">
@@ -71,7 +71,7 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
           <h2 className="font-display text-title">Tools we reach for</h2>
           <ul className="mt-8 flex flex-wrap gap-2">
             {s.stack.map((t) => (
-              <li key={t} className="rounded-sm border border-hairline px-3 py-1.5 font-mono text-label">
+              <li key={t} className="rounded-sm border border-hairline px-3 py-1.5 text-label font-medium">
                 {t}
               </li>
             ))}
@@ -98,7 +98,7 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
       )}
 
       <nav aria-labelledby="more" className="container-page border-t border-hairline py-16">
-        <h2 id="more" className="font-mono text-label uppercase text-muted">
+        <h2 id="more" className="text-label font-medium text-muted">
           Other services
         </h2>
         <ul className="mt-6 grid gap-2 md:grid-cols-2">
@@ -108,7 +108,7 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
                 to={`/services/${o.slug}`}
                 className="flex items-baseline gap-4 py-3 transition-colors hover:text-signal"
               >
-                <span className="font-mono text-label text-muted">{o.code}</span>
+                <span className="text-label font-medium text-muted">{o.code}</span>
                 {o.name}
               </Link>
             </li>

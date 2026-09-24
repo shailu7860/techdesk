@@ -15,8 +15,8 @@ export function NotFound({
 }) {
   return (
     <main id="main" className="container-page flex min-h-[70dvh] flex-col justify-center py-(--section-y)">
-      <Label tone="signal">System error / {code}</Label>
-      <h1 className="mt-6 max-w-[18ch] font-display text-headline uppercase">{title}</h1>
+      <Label tone="signal">Error {code}</Label>
+      <h1 className="mt-6 max-w-[18ch] font-display text-headline">{title}</h1>
       <p className="mt-6 max-w-[55ch] text-muted">{body}</p>
       <div className="mt-10 flex flex-wrap gap-4">
         <Button href="/" trailing="→">

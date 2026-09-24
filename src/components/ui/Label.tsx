@@ -25,7 +25,7 @@ export function Label({
   className?: string;
 }) {
   return (
-    <span className={`inline-flex items-center gap-2 font-mono text-label uppercase ${tones[tone]} ${className}`}>
+    <span className={`inline-flex items-center gap-2 text-label font-semibold ${tones[tone]} ${className}`}>
       {live && (
         <span aria-hidden="true" className="relative inline-flex size-1.5">
           <span className="absolute inset-0 rounded-full bg-current opacity-60 motion-safe:animate-ping" />

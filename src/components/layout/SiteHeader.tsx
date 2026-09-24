@@ -8,7 +8,7 @@ import { Button } from "../ui/Button";
 
 const linkCls = ({ isActive }: { isActive: boolean }) =>
   `py-2 text-small transition-colors duration-(--duration-base) hover:text-ink ${
-    isActive ? "text-ink underline decoration-signal decoration-2 underline-offset-8" : "text-muted"
+    isActive ? "font-semibold text-signal underline decoration-2 underline-offset-8" : "font-medium text-muted"
   }`;
 
 /**
@@ -40,7 +40,7 @@ export function SiteHeader() {
   return (
     <header
       onFocusCapture={() => setHidden(false)}
-      className={`sticky top-0 z-(--z-sticky) border-b border-hairline/60 bg-void/90 backdrop-blur-md transition-transform duration-(--duration-slow) ease-(--ease-out-expo) ${
+      className={`sticky top-0 z-(--z-sticky) border-b border-hairline bg-panel/90 backdrop-blur-md transition-transform duration-(--duration-slow) ease-(--ease-out-expo) ${
         hidden ? "-translate-y-full" : ""
       }`}
     >
@@ -89,7 +89,7 @@ export function SiteHeader() {
       <dialog
         ref={menuRef}
         aria-label="Menu"
-        className="m-0 h-dvh max-h-none w-screen max-w-none bg-void p-0 text-ink backdrop:bg-void"
+        className="m-0 h-dvh max-h-none w-screen max-w-none bg-panel p-0 text-ink backdrop:bg-void"
       >
         <div className="container-page flex h-full flex-col pb-10">
           <div className="flex h-18 items-center justify-between">
@@ -109,7 +109,7 @@ export function SiteHeader() {
                   <Link
                     to={item.href}
                     onClick={() => menuRef.current?.close()}
-                    className="block py-2 font-display text-headline uppercase"
+                    className="block py-2 font-display text-headline"
                   >
                     {item.label}
                   </Link>
@@ -129,7 +129,7 @@ export function SiteHeader() {
                 Call
               </Button>
             </div>
-            <p className="mt-2 font-mono text-label text-muted">{contact.phoneDisplay}</p>
+            <p className="mt-2 text-label font-medium text-muted">{contact.phoneDisplay}</p>
           </div>
         </div>
       </dialog>

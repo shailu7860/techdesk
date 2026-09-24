@@ -30,7 +30,7 @@ export function IndustriesSection() {
   return (
     <section id="industries" aria-labelledby="ind-title" className="border-t border-hairline py-(--section-y)">
       <div className="container-page">
-        <h2 id="ind-title" className="max-w-[18ch] font-display text-headline uppercase" data-reveal>
+        <h2 id="ind-title" className="max-w-[18ch] font-display text-headline" data-reveal>
           Built for real business
         </h2>
         <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
@@ -69,11 +69,11 @@ export function IndustriesSection() {
               id="industry-panel"
               role="tabpanel"
               aria-labelledby={`tab-${current.key}`}
-              className="border border-hairline bg-panel p-8 md:p-10"
+              className="rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card) md:p-10"
             >
               <Label tone="signal">Example solution</Label>
               <p className="mt-6 font-display text-title leading-snug">{current.example}</p>
-              <p className="mt-8 font-mono text-label uppercase text-muted">Relevant services</p>
+              <p className="mt-8 text-label font-medium text-muted">Relevant services</p>
               <ul className="mt-2 flex flex-wrap gap-2">
                 {current.services.map((s) => (
                   <li key={s}>

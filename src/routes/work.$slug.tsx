@@ -66,13 +66,13 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
     <main id="main">
       <article>
         <header className="container-page pt-16 pb-12 md:pt-24">
-          <nav aria-label="Breadcrumb" className="font-mono text-label uppercase text-muted">
+          <nav aria-label="Breadcrumb" className="text-label font-medium text-muted">
             <Link to="/work" className="hover:text-ink">
               Work
             </Link>{" "}
-            / {p.code}
+            / {p.title}
           </nav>
-          <h1 className="mt-8 font-display text-display uppercase">{p.title}</h1>
+          <h1 className="mt-8 font-display text-display">{p.title}</h1>
           <p className="mt-4 max-w-[40ch] font-display text-title text-muted">{p.tagline}</p>
           <dl className="mt-12 grid gap-6 border-t border-hairline pt-8 text-small sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -82,7 +82,7 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
               ["Services", p.services.map((s) => getService(s)?.name).join(", ")],
             ].map(([k, v]) => (
               <div key={k}>
-                <dt className="font-mono text-label uppercase text-muted">{k}</dt>
+                <dt className="text-label font-medium text-muted">{k}</dt>
                 <dd className="mt-2">{v}</dd>
               </div>
             ))}
@@ -124,7 +124,7 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
           <Block n={++n} title="Technology">
             <ul className="flex flex-wrap gap-2">
               {p.stack.map((t) => (
-                <li key={t} className="rounded-sm border border-hairline px-3 py-1.5 font-mono text-label">
+                <li key={t} className="rounded-sm border border-hairline px-3 py-1.5 text-label font-medium">
                   {t}
                 </li>
               ))}
@@ -153,7 +153,7 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
             </Block>
           )}
           {cs.visualsPending && import.meta.env.DEV && (
-            <p className="border border-dashed border-danger p-4 font-mono text-label text-danger">
+            <p className="border border-dashed border-danger p-4 text-label font-medium text-danger">
               [CONTENT NEEDED] Screenshots or recordings for {p.title}. Hidden in production builds.
             </p>
           )}
@@ -164,7 +164,7 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
         <div className="grid gap-12 md:grid-cols-2">
           <div>
             <Label>Build something like this</Label>
-            <p className="mt-4 max-w-[24ch] font-display text-headline uppercase">Your system could be next.</p>
+            <p className="mt-4 max-w-[24ch] font-display text-headline">Your system could be next.</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href={`/contact?ref=${p.slug}`} size="lg" trailing="→">
                 Start a project
@@ -184,8 +184,8 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
               to={`/work/${next.slug}`}
               className="group block border border-hairline p-8 transition-colors hover:border-signal/60"
             >
-              <Label>Next project / {next.code}</Label>
-              <p className="mt-6 font-display text-headline uppercase">{next.title}</p>
+              <Label>Next project</Label>
+              <p className="mt-6 font-display text-headline">{next.title}</p>
               <p className="mt-2 text-muted">{next.tagline}</p>
               <p aria-hidden="true" className="mt-8 text-signal transition-transform group-hover:translate-x-1">
                 →

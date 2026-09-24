@@ -22,14 +22,15 @@ function Box({
 }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} fill="var(--color-void)" stroke={accent ?? S} />
+      <rect x={x} y={y} width={w} height={h} rx="6" fill="var(--color-panel)" stroke={accent ?? S} />
       <text
         x={x + w / 2}
         y={y + h / 2 + 3}
         textAnchor="middle"
         fill={accent ?? INK}
-        fontFamily="var(--font-mono)"
-        fontSize="9"
+        fontFamily="var(--font-sans)"
+        fontSize="11"
+        fontWeight="500"
       >
         {label}
       </text>
@@ -56,30 +57,30 @@ export function ServiceVisual({ visual }: { visual: Service["visual"] }) {
           <rect x="188" y="98" width="156" height="30" fill="none" stroke={S} />
           <Line d="M200 144v30M200 210v14" c={SIG} />
           <Box x={152} y={174} label="API" accent={SIG} />
-          <Box x={152} y={224} w={96} h={26} label="DATABASE" />
+          <Box x={152} y={224} w={96} h={26} label="Database" />
         </svg>
       );
     case "agent":
       return (
         <svg {...common} aria-label="An AI agent loop: observe, reason, use tools, act">
           <circle cx="200" cy="130" r="86" fill="none" stroke={AG} strokeDasharray="3 5" />
-          <Box x={152} y={112} label="AGENT" accent={AG} />
-          <Box x={152} y={26} label="OBSERVE" />
-          <Box x={286} y={112} w={90} label="REASON" />
-          <Box x={152} y={198} label="ACT" />
-          <Box x={24} y={112} w={90} label="TOOLS" />
+          <Box x={152} y={112} label="Agent" accent={AG} />
+          <Box x={152} y={26} label="Observe" />
+          <Box x={286} y={112} w={90} label="Reason" />
+          <Box x={152} y={198} label="Act" />
+          <Box x={24} y={112} w={90} label="Tools" />
           <Line d="M200 62v50M248 130h38M200 148v50M152 130h-38" c={AG} />
         </svg>
       );
     case "systems":
       return (
         <svg {...common} aria-label="Services connected through a queue to a ledger database and cache">
-          <Box x={24} y={30} label="SERVICE A" />
-          <Box x={24} y={112} label="SERVICE B" />
-          <Box x={24} y={194} label="WEBHOOKS" />
-          <Box x={160} y={112} label="QUEUE" accent={SIG} />
-          <Box x={290} y={60} w={86} label="LEDGER" />
-          <Box x={290} y={164} w={86} label="CACHE" />
+          <Box x={24} y={30} label="Service A" />
+          <Box x={24} y={112} label="Service B" />
+          <Box x={24} y={194} label="Webhooks" />
+          <Box x={160} y={112} label="Queue" accent={SIG} />
+          <Box x={290} y={60} w={86} label="Ledger" />
+          <Box x={290} y={164} w={86} label="Cache" />
           <Line d="M120 48h20v82h20M120 130h40M120 212h20v-82" />
           <Line d="M256 130h14v-52h20M270 130v52h20" c={SIG} />
         </svg>
@@ -88,10 +89,10 @@ export function ServiceVisual({ visual }: { visual: Service["visual"] }) {
       return (
         <svg {...common} aria-label="A search and campaign funnel from visibility to qualified leads">
           {[
-            ["SEARCH VISIBILITY", 360, 20],
-            ["VISITS", 290, 80],
-            ["ENGAGEMENT", 220, 140],
-            ["QUALIFIED LEADS", 150, 200],
+            ["Search visibility", 360, 20],
+            ["Visits", 290, 80],
+            ["Engagement", 220, 140],
+            ["Qualified leads", 150, 200],
           ].map(([l, w, y]) => (
             <Box
               key={l as string}
@@ -99,7 +100,7 @@ export function ServiceVisual({ visual }: { visual: Service["visual"] }) {
               y={y as number}
               w={w as number}
               label={l as string}
-              accent={l === "QUALIFIED LEADS" ? SIG : undefined}
+              accent={l === "Qualified leads" ? SIG : undefined}
             />
           ))}
         </svg>
@@ -114,11 +115,11 @@ export function ServiceVisual({ visual }: { visual: Service["visual"] }) {
               y={y - 12}
               w={110}
               h={30}
-              label={["SPREADSHEET", "EMAIL", "PAPER FORM", "PHONE CALL"][i] ?? ""}
+              label={["Spreadsheet", "Email", "Paper form", "Phone call"][i] ?? ""}
             />
           ))}
           <Line d="M134 37h40v93M134 97h40M134 157h40M134 217h40v-87M174 130h40" />
-          <Box x={214} y={100} w={162} h={60} label="ONE SYSTEM" accent={SIG} />
+          <Box x={214} y={100} w={162} h={60} label="One system" accent={SIG} />
         </svg>
       );
   }

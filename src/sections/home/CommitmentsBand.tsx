@@ -2,9 +2,9 @@ import { commitments } from "../../data/company";
 
 export function CommitmentsBand() {
   return (
-    <section aria-labelledby="why-title" className="border-t border-hairline py-(--section-y)">
+    <section aria-labelledby="why-title" className="border-t border-hairline bg-panel py-(--section-y)">
       <div className="container-page grid gap-12 lg:grid-cols-[1fr_2fr]">
-        <h2 id="why-title" className="font-display text-headline uppercase" data-reveal>
+        <h2 id="why-title" className="font-display text-headline" data-reveal>
           Why TechDesk
         </h2>
         <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2">

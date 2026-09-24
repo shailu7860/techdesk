@@ -81,11 +81,11 @@ export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
 
   if (status === "sent") {
     return (
-      <div className="border border-hairline bg-panel p-8 md:p-12" role="status">
+      <div className="rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card) md:p-12" role="status">
         <Label tone="signal" live>
           Transmission / received
         </Label>
-        <h3 ref={headingRef} tabIndex={-1} className="mt-6 font-display text-headline uppercase focus:outline-none">
+        <h3 ref={headingRef} tabIndex={-1} className="mt-6 font-display text-headline focus:outline-none">
           Thank you, {lead.name.split(" ")[0]}.
         </h3>
         <p className="mt-4 max-w-[50ch] text-muted">
@@ -112,7 +112,11 @@ export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
   };
 
   return (
-    <form onSubmit={onSubmit} noValidate className="border border-hairline bg-void">
+    <form
+      onSubmit={onSubmit}
+      noValidate
+      className="overflow-hidden rounded-md border border-hairline bg-panel shadow-(--shadow-card)"
+    >
       <div className="flex items-center justify-between gap-4 border-b border-hairline px-6 py-4 md:px-8">
         <Label>Step {step} of 5</Label>
         <div aria-hidden="true" className="flex gap-1">
@@ -124,13 +128,13 @@ export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
 
       <div className="grid gap-8 p-6 md:p-8">
         <h3 ref={headingRef} tabIndex={-1} className="font-display text-title focus:outline-none">
-          <span className="font-mono text-label text-muted">{String(step).padStart(2, "0")} / </span>
+          <span className="text-label font-medium text-muted">{String(step).padStart(2, "0")} / </span>
           {STEPS[step - 1]}
         </h3>
 
         {Object.values(errors).some(Boolean) && (
           <p role="alert" className="text-small text-danger">
-            <span aria-hidden="true" className="font-mono">
+            <span aria-hidden="true" className="">
               !{" "}
             </span>
             Please fix the highlighted {Object.values(errors).filter(Boolean).length > 1 ? "fields" : "field"}.
@@ -270,8 +274,8 @@ export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
               </Field>
             </div>
             {lead.estimate && (
-              <p className="border border-hairline bg-panel p-4 text-small">
-                <span className="font-mono text-label uppercase text-muted">Your estimate · </span>
+              <p className="rounded-sm border border-hairline bg-panel-hi p-4 text-small">
+                <span className="text-label font-medium text-muted">Your estimate · </span>
                 {lead.estimate}
               </p>
             )}
@@ -345,12 +349,12 @@ export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
               ] as const
             ).map(([k, v]) => (
               <div key={k} className="border-t border-hairline pt-3">
-                <dt className="font-mono text-label uppercase text-muted">{k}</dt>
+                <dt className="text-label font-medium text-muted">{k}</dt>
                 <dd className="mt-1 break-words">{v}</dd>
               </div>
             ))}
             <div className="border-t border-hairline pt-3 sm:col-span-2">
-              <dt className="font-mono text-label uppercase text-muted">Message</dt>
+              <dt className="text-label font-medium text-muted">Message</dt>
               <dd className="mt-1 whitespace-pre-line break-words">{lead.description}</dd>
             </div>
           </dl>
@@ -359,7 +363,7 @@ export function BriefForm({ prefill }: { prefill: Partial<Lead> }) {
         {failed && (
           <div role="alert" className="border border-danger/60 p-4 text-small">
             <p className="text-danger">
-              <span aria-hidden="true" className="font-mono">
+              <span aria-hidden="true" className="">
                 !{" "}
               </span>
               {errorCopy[failed.reason] ?? errorCopy.rejected}

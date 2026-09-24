@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { Link } from "react-router";
 
-type Variant = "primary" | "secondary" | "ghost";
+type Variant = "primary" | "secondary" | "ghost" | "onBrand" | "onBrandOutline";
 type Size = "md" | "lg";
 
 type Common = {
@@ -17,14 +17,17 @@ type AsLink = Common & { href: string; external?: boolean; onClick?: () => void 
 type AsButton = Common & { href?: never; loading?: boolean } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const base =
-  "group inline-flex items-center justify-center gap-3 rounded-sm font-medium [font-stretch:112%] " +
+  "group inline-flex items-center justify-center gap-2.5 rounded-sm font-semibold " +
   "transition-[background-color,border-color,color] duration-(--duration-base) ease-(--ease-out-quart) " +
   "disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer select-none";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-signal text-void hover:bg-signal-hi",
-  secondary: "border border-hairline text-ink hover:border-ink",
+  primary: "bg-signal text-white shadow-(--shadow-card) hover:bg-signal-hi",
+  secondary: "border border-hairline bg-panel text-ink hover:border-signal hover:text-signal",
   ghost: "text-ink underline-offset-[6px] hover:text-signal hover:underline",
+  // For use on the solid green band.
+  onBrand: "bg-panel text-signal shadow-(--shadow-card) hover:bg-panel-hi",
+  onBrandOutline: "border border-white/50 text-white hover:bg-white/10",
 };
 
 const sizes: Record<Size, string> = {

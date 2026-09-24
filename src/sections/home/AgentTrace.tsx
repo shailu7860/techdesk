@@ -24,15 +24,15 @@ export function AgentTrace() {
     <section
       id="ai"
       aria-labelledby="ai-title"
-      className="border-t border-hairline py-(--section-y)"
+      className="border-t border-hairline bg-panel py-(--section-y)"
       data-agent-section
     >
       <div className="container-page grid gap-16 lg:grid-cols-[1fr_1.2fr]">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <Label tone="agent" live>
-            Module / AI-engine
+            AI & automation
           </Label>
-          <h2 id="ai-title" className="mt-6 font-display text-display uppercase">
+          <h2 id="ai-title" className="mt-6 font-display text-display">
             Intelligence that acts.
           </h2>
           <p className="mt-6 max-w-[46ch] text-muted">
@@ -58,7 +58,7 @@ export function AgentTrace() {
               >
                 <span className="size-[5px] rounded-full bg-agent" data-trace-dot />
               </span>
-              <p className="font-mono text-label uppercase text-agent">
+              <p className="text-label font-medium text-agent">
                 {String(i + 1).padStart(2, "0")} · {t.step}
               </p>
               <p className="mt-2 max-w-[52ch] text-body">{t.text}</p>

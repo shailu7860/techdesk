@@ -74,31 +74,29 @@ test("quick-contact dock links to WhatsApp and phone", async ({ page }) => {
   await expect(dock.getByRole("link", { name: /whatsapp/i })).toHaveAttribute("rel", /noopener/);
 });
 
-test("reduced motion: no WebGL, content fully visible", async ({ browser }) => {
+test("reduced motion: content fully visible", async ({ browser }) => {
   const ctx = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 1440, height: 900 } });
   const page = await ctx.newPage();
   await page.goto("/");
   await page.waitForTimeout(800);
-  await expect(page.locator("canvas")).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 1 })).toHaveCSS("opacity", "1");
   await ctx.close();
 });
 
-test("desktop with motion: WebGL system core mounts lazily and labels its five capabilities", async ({
-  page,
-  isMobile,
-}) => {
-  test.skip(isMobile, "WebGL is desktop-only by design");
-  await page.goto("/");
-  await expect(page.locator("section[aria-labelledby=hero-title] canvas")).toHaveCount(1, { timeout: 10_000 });
-  await expect(page.locator("section[aria-labelledby=hero-title] canvas")).toHaveAttribute("aria-hidden", "true");
-});
 
-test("mobile never downloads the WebGL chunk", async ({ page, isMobile }) => {
-  test.skip(!isMobile, "mobile only");
-  const scripts: string[] = [];
-  page.on("request", (r) => r.resourceType() === "script" && scripts.push(r.url()));
-  await page.goto("/");
-  await page.waitForTimeout(1500);
-  expect(scripts.some((u) => u.includes("SystemCore"))).toBe(false);
+test("hero video plays with motion allowed and is skipped under reduced motion", async ({ browser }) => {
+  const on = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const p1 = await on.newPage();
+  await p1.goto("/");
+  await expect(p1.locator("section[aria-labelledby=hero-title] video")).toHaveAttribute("src", "/media/hero-network.mp4");
+  await on.close();
+  const off = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 1440, height: 900 } });
+  const p2 = await off.newPage();
+  const media: string[] = [];
+  p2.on("request", (r) => r.url().endsWith(".mp4") && media.push(r.url()));
+  await p2.goto("/");
+  await p2.waitForTimeout(800);
+  await expect(p2.locator("section[aria-labelledby=hero-title] video")).toHaveCount(0);
+  expect(media).toEqual([]);
+  await off.close();
 });

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { DESKTOP, loadGsap, MOTION_OK, WIDE } from "./gsap";
+import { DESKTOP, loadGsap, MOTION_OK } from "./gsap";
 import { reveal } from "./reveal";
 
 /**
@@ -56,26 +56,6 @@ export function useHomeMotion() {
               scrollTrigger: { trigger: list, start: "top 75%", end: "bottom 60%", scrub: true },
             },
           );
-      });
-
-      // AN-004 Work: pinned horizontal gallery on wide, fine-pointer screens; a grid everywhere else.
-      mm.add(WIDE, () => {
-        const viewport = root.querySelector<HTMLElement>("[data-work-viewport]");
-        const track = root.querySelector<HTMLElement>("[data-work-track]");
-        if (!viewport || !track) return;
-        const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-        gsap.to(track, {
-          x: () => -distance(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: viewport,
-            start: "center center",
-            end: () => `+=${distance()}`,
-            pin: true,
-            scrub: 0.6,
-            invalidateOnRefresh: true,
-          },
-        });
       });
 
       revert = () => mm.revert();

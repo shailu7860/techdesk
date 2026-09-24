@@ -8,7 +8,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-size-adjust: 100%;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -64,11 +64,10 @@
   padding-inline: var(--gutter);
 }
 
-/* Engineered display voice: Archivo at expanded width. */
+/* Display voice: Archivo bold, normal width, sentence case. */
 @utility font-display {
   font-family: var(--font-sans);
-  font-stretch: 118%;
-  font-weight: 640;
+  font-weight: 700;
 }
 
 @utility skip-link {

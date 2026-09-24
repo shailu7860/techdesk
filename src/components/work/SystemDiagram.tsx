@@ -18,7 +18,7 @@ export function SystemDiagram({
             aria-hidden="true"
             className={`absolute top-1.5 -left-[5px] size-[9px] rounded-full ${dot} md:-top-[5px] md:left-0`}
           />
-          <p className="font-mono text-label text-muted">{String(i + 1).padStart(2, "0")}</p>
+          <p className="text-label font-medium text-muted">{String(i + 1).padStart(2, "0")}</p>
           <p className="mt-1 font-medium text-ink">{n.node}</p>
           <p className="mt-1 text-small text-muted">{n.role}</p>
         </li>

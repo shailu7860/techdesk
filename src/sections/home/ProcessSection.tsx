@@ -6,10 +6,10 @@ export function ProcessSection() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="scroll-mt-20 border-t border-hairline py-(--section-y)"
+      className="scroll-mt-20 border-t border-hairline bg-panel py-(--section-y)"
     >
       <div className="container-page">
-        <h2 id="process-title" className="max-w-[16ch] font-display text-headline uppercase" data-reveal>
+        <h2 id="process-title" className="max-w-[16ch] font-display text-headline" data-reveal>
           From idea → product
         </h2>
         <p className="mt-6 max-w-[55ch] text-muted" data-reveal>
@@ -35,11 +35,11 @@ export function ProcessSection() {
               />
               <details className="group" open>
                 <summary className="flex min-h-11 cursor-pointer list-none flex-col [&::-webkit-details-marker]:hidden">
-                  <span className="font-mono text-label text-muted">{st.code}</span>
+                  <span className="text-label font-medium text-muted">{st.code}</span>
                   <span className="mt-1 font-display text-title">{st.name}</span>
                 </summary>
                 <p className="mt-2 text-small text-ink/90">{st.objective}</p>
-                <p className="mt-4 font-mono text-label uppercase text-muted">You get</p>
+                <p className="mt-4 text-label font-medium text-muted">You get</p>
                 <ul className="mt-1 text-small text-muted">
                   {st.deliverables.map((d) => (
                     <li key={d}>{d}</li>

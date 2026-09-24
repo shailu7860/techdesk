@@ -61,7 +61,7 @@ export function Field(props: InputProps | TextareaProps | SelectProps) {
       {el}
       {error && (
         <p id={errorId} className="flex items-start gap-2 text-small text-danger">
-          <span aria-hidden="true" className="font-mono">
+          <span aria-hidden="true" className="">
             !
           </span>
           {error}

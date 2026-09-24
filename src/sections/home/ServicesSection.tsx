@@ -15,7 +15,7 @@ export function ServicesSection() {
   return (
     <section id="services" aria-labelledby="services-title" className="border-t border-hairline py-(--section-y)">
       <div className="container-page">
-        <h2 id="services-title" className="max-w-[16ch] font-display text-headline uppercase" data-reveal>
+        <h2 id="services-title" className="max-w-[16ch] font-display text-headline" data-reveal>
           What we build
         </h2>
         <p className="mt-6 max-w-[55ch] text-muted" data-reveal>
@@ -35,7 +35,7 @@ export function ServicesSection() {
                     i === active ? "text-ink" : "text-muted hover:text-ink"
                   }`}
                 >
-                  <span className={`pt-1 font-mono text-label ${i === active ? "text-signal" : ""}`}>{s.code}</span>
+                  <span className={`pt-1 text-label font-medium ${i === active ? "text-signal" : ""}`}>{s.code}</span>
                   <span>
                     <span className="block font-display text-title">{s.name}</span>
                     <span className="mt-2 block text-small">{s.outcome}</span>
@@ -45,9 +45,9 @@ export function ServicesSection() {
             ))}
           </ul>
           <div className="sticky top-28 self-start">
-            <div id="service-panel" className="border border-hairline bg-panel p-8">
+            <div id="service-panel" className="rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card)">
               <div className="flex items-center justify-between">
-                <Label tone={current?.visual === "agent" ? "agent" : "signal"}>Module / {current?.code}</Label>
+                <Label tone={current?.visual === "agent" ? "agent" : "signal"}>Service {current?.code}</Label>
                 <Label>{current?.stack.slice(0, 3).join(" · ")}</Label>
               </div>
               <div className="mt-8 aspect-[400/260]">{current && <ServiceVisual visual={current.visual} />}</div>
@@ -60,7 +60,7 @@ export function ServicesSection() {
           {services.map((s) => (
             <details key={s.slug} className="group border-b border-hairline">
               <summary className="flex min-h-11 cursor-pointer list-none items-start gap-4 py-6 [&::-webkit-details-marker]:hidden">
-                <span className="pt-1 font-mono text-label text-muted">{s.code}</span>
+                <span className="pt-1 text-label font-medium text-muted">{s.code}</span>
                 <span className="flex-1">
                   <span className="block font-display text-title">{s.name}</span>
                   <span className="mt-1 block text-small text-muted">{s.outcome}</span>
@@ -70,7 +70,7 @@ export function ServicesSection() {
                 </span>
               </summary>
               <div className="pb-8">
-                <div className="aspect-[400/260] border border-hairline bg-panel p-4">
+                <div className="aspect-[400/260] rounded-md border border-hairline bg-panel p-4">
                   <ServiceVisual visual={s.visual} />
                 </div>
                 <p className="mt-4 text-muted">{s.summary}</p>

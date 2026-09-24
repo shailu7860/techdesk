@@ -14,4 +14,3 @@ export function loadGsap() {
 
 export const MOTION_OK = "(prefers-reduced-motion: no-preference)";
 export const DESKTOP = "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
-export const WIDE = "(min-width: 1280px) and (pointer: fine) and (prefers-reduced-motion: no-preference)";

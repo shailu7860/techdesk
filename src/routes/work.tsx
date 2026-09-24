@@ -24,7 +24,7 @@ export default function Work() {
   return (
     <main id="main">
       <PageIntro
-        label="Work / index"
+        label="Our work"
         title="Systems, shipped."
         lead="Every project here is real and built by us. No stock mockups, no invented numbers. Four flagships as full case studies, plus the builds behind them."
       />
@@ -44,7 +44,7 @@ export default function Work() {
 
       <section aria-labelledby="builds" className="container-page border-t border-hairline py-(--section-y)">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h2 id="builds" className="font-display text-headline uppercase">
+          <h2 id="builds" className="font-display text-headline">
             More builds
           </h2>
           <fieldset className="flex flex-wrap gap-2">
@@ -81,7 +81,7 @@ export default function Work() {
         ) : (
           <table className="mt-12 w-full border-collapse text-left">
             <caption className="sr-only">Other builds with industry and stack</caption>
-            <thead className="font-mono text-label uppercase text-muted">
+            <thead className="text-label font-medium text-muted">
               <tr className="border-b border-hairline">
                 <th scope="col" className="w-16 py-3 font-normal">
                   ID
@@ -100,14 +100,16 @@ export default function Work() {
             <tbody>
               {list.map((p) => (
                 <tr key={p.slug} className="border-b border-hairline align-top">
-                  <td className="py-6 font-mono text-label text-muted">{p.code}</td>
+                  <td className="py-6 text-label font-medium text-muted">{p.code}</td>
                   <td className="py-6 pr-6">
                     <p className="font-medium">{p.title}</p>
                     <p className="mt-1 max-w-[60ch] text-small text-muted">{p.summary}</p>
-                    <p className="mt-2 font-mono text-label text-muted md:hidden">{p.industry}</p>
+                    <p className="mt-2 text-label font-medium text-muted md:hidden">{p.industry}</p>
                   </td>
                   <td className="hidden py-6 pr-6 text-small md:table-cell">{p.industry}</td>
-                  <td className="hidden py-6 font-mono text-label text-ink/80 lg:table-cell">{p.stack.join(" · ")}</td>
+                  <td className="hidden py-6 text-label font-medium text-ink/80 lg:table-cell">
+                    {p.stack.join(" · ")}
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -138,14 +138,14 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
           </ol>
 
           {busy && (
-            <p className="mt-4 flex items-center gap-2 font-mono text-label text-agent">
+            <p className="mt-4 flex items-center gap-2 text-label font-medium text-agent">
               <span aria-hidden="true" className="size-1.5 animate-pulse rounded-full bg-agent" />
               Thinking
             </p>
           )}
 
           {handoff && (
-            <div role="alert" className="mt-6 border border-hairline bg-panel p-4">
+            <div role="alert" className="mt-6 rounded-sm border border-hairline bg-panel-hi p-4">
               <p className="text-small">{handoffCopy[handoff] ?? handoffCopy.unavailable}</p>
               <div className="mt-4 grid gap-2">
                 <Button

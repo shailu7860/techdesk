@@ -71,7 +71,7 @@ export function ContactDock() {
       aria-label="Quick contact"
       className="fixed z-(--z-dock) inset-x-0 bottom-0 md:inset-x-auto md:right-6 md:bottom-6"
     >
-      <ul className="grid grid-cols-3 border-t border-hairline bg-void/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm md:flex md:flex-col md:gap-2 md:border-0 md:bg-transparent md:pb-0 md:backdrop-blur-none">
+      <ul className="grid grid-cols-3 border-t border-hairline bg-panel/95 pb-[env(safe-area-inset-bottom)] shadow-(--shadow-lift) backdrop-blur-sm md:flex md:flex-col md:gap-2 md:border-0 md:bg-transparent md:pb-0 md:backdrop-blur-none">
         {actions.map((a) => (
           <li key={a.key} className="md:relative">
             <a
@@ -85,7 +85,7 @@ export function ContactDock() {
             </a>
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute top-1/2 right-full mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-sm bg-panel px-3 py-1.5 font-mono text-label text-ink opacity-0 transition-opacity duration-(--duration-fast) peer-hover:opacity-100 peer-focus-visible:opacity-100 md:block"
+              className="pointer-events-none absolute top-1/2 right-full mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-sm bg-panel px-3 py-1.5 text-label font-medium text-ink opacity-0 transition-opacity duration-(--duration-fast) peer-hover:opacity-100 peer-focus-visible:opacity-100 md:block"
             >
               {a.detail}
             </span>
@@ -103,7 +103,7 @@ export function ContactDock() {
           </button>
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 right-full mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-sm bg-panel px-3 py-1.5 font-mono text-label text-ink opacity-0 transition-opacity duration-(--duration-fast) peer-hover:opacity-100 peer-focus-visible:opacity-100 md:block"
+            className="pointer-events-none absolute top-1/2 right-full mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-sm bg-panel px-3 py-1.5 text-label font-medium text-ink opacity-0 transition-opacity duration-(--duration-fast) peer-hover:opacity-100 peer-focus-visible:opacity-100 md:block"
           >
             Chat with our AI assistant
           </span>

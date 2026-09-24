@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import type { Route } from "./+types/root";
 import "@fontsource-variable/archivo/wdth.css";
-import "@fontsource-variable/martian-mono/wght.css";
 import "./styles/globals.css";
 // Preload the Latin display face: it is the LCP font and is otherwise discovered only after the CSS.
 import archivoLatin from "@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url";
@@ -24,7 +23,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#090909" />
+        <meta name="theme-color" content="#f8fbf9" />
         <Meta />
         <Links />
       </head>

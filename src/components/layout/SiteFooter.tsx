@@ -7,12 +7,12 @@ import { telLink, waLink } from "../../lib/whatsapp";
 import { Wordmark } from "../brand/Wordmark";
 
 const col = "flex flex-col gap-3 text-small";
-const heading = "mb-2 font-mono text-label uppercase text-muted";
+const heading = "mb-2 text-label font-medium text-muted";
 const link = "text-ink/85 transition-colors hover:text-signal";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-hairline">
+    <footer className="border-t border-hairline bg-panel">
       <div className="container-page grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div className="flex flex-col gap-4">
           <Link to="/" aria-label="TechDesk home" className="self-start">

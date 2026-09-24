@@ -26,7 +26,7 @@ const swatches = [
 ] as const;
 
 const type = [
-  ["text-display font-display uppercase", "Display", "Systems for what's next"],
+  ["text-display font-display", "Display", "Systems for what's next"],
   ["text-headline font-display", "Headline", "Intelligence that acts."],
   ["text-title font-medium", "Title", "Biexor: The Business Exchange"],
   [
@@ -57,8 +57,8 @@ export default function System() {
       </Label>
       <h1 className="font-display text-headline mt-4">TechDesk design system</h1>
       <p className="mt-4 max-w-[60ch] text-muted">
-        Tokens and components from <code className="font-mono text-small">src/styles/tokens.css</code>. Contrast pairs
-        are verified by <code className="font-mono text-small">npm run check:contrast</code>.
+        Tokens and components from <code className=" text-small">src/styles/tokens.css</code>. Contrast pairs are
+        verified by <code className=" text-small">npm run check:contrast</code>.
       </p>
 
       <Section id="brand" title="Brand">
@@ -73,7 +73,7 @@ export default function System() {
           {swatches.map(([name, use]) => (
             <li key={name} className="border-r border-b border-hairline p-4">
               <div className="h-16 rounded-sm border border-hairline" style={{ background: `var(--color-${name})` }} />
-              <p className="mt-3 font-mono text-label text-ink">{name}</p>
+              <p className="mt-3 text-label font-medium text-ink">{name}</p>
               <p className="text-small text-muted">{use}</p>
             </li>
           ))}

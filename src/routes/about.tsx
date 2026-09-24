@@ -19,7 +19,7 @@ export default function About() {
   return (
     <main id="main">
       <PageIntro
-        label="About / TechDesk"
+        label="About us"
         title="A small studio that builds serious systems."
         lead={`We are a technology studio in ${contact.city}, working with founders, businesses and enterprise teams worldwide. We design, build and run the software: AI agents, platforms, automation and the marketing that brings people to them.`}
       />
@@ -28,7 +28,7 @@ export default function About() {
         aria-labelledby="belief"
         className="container-page grid gap-10 border-t border-hairline py-(--section-y) md:grid-cols-[1fr_1.4fr]"
       >
-        <h2 id="belief" className="font-display text-headline uppercase">
+        <h2 id="belief" className="font-display text-headline">
           What we believe
         </h2>
         <div className="grid gap-8 text-title leading-snug">
@@ -45,12 +45,12 @@ export default function About() {
       </section>
 
       <section aria-labelledby="commit" className="container-page border-t border-hairline py-(--section-y)">
-        <h2 id="commit" className="font-display text-headline uppercase">
+        <h2 id="commit" className="font-display text-headline">
           Four commitments
         </h2>
-        <ul className="mt-12 grid gap-px border border-hairline bg-hairline md:grid-cols-2">
+        <ul className="mt-12 grid gap-4 md:grid-cols-2">
           {commitments.map((c) => (
-            <li key={c.title} className="bg-void p-8">
+            <li key={c.title} className="rounded-md border border-hairline bg-panel p-8 shadow-(--shadow-card)">
               <p className="font-display text-title">{c.title}</p>
               <p className="mt-3 text-muted">{c.detail}</p>
             </li>
@@ -59,7 +59,7 @@ export default function About() {
       </section>
 
       <section aria-labelledby="how" className="container-page border-t border-hairline py-(--section-y)">
-        <h2 id="how" className="font-display text-headline uppercase">
+        <h2 id="how" className="font-display text-headline">
           How a project runs
         </h2>
         <ol className="mt-12 grid gap-6 md:grid-cols-7">
@@ -74,7 +74,7 @@ export default function About() {
       </section>
 
       <section className="container-page border-t border-hairline py-(--section-y)">
-        <p className="max-w-[24ch] font-display text-headline uppercase">Talk to the people who will build it.</p>
+        <p className="max-w-[24ch] font-display text-headline">Talk to the people who will build it.</p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Button href="/contact" size="lg" trailing="→">
             Start a project

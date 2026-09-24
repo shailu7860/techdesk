@@ -5,52 +5,56 @@
 @import "tailwindcss";
 
 @theme static {
-  /* ── Color: neutrals (pure, chroma 0) ── */
-  --color-void: oklch(0.14 0 0); /* page canvas */
-  --color-panel: oklch(0.19 0 0); /* raised surfaces: dock, inputs, chat */
-  --color-panel-hi: oklch(0.24 0 0); /* hover on panel */
-  --color-hairline: oklch(0.32 0 0); /* borders, grid lines, corner markers */
-  --color-ink: oklch(0.97 0 0); /* headlines + body */
-  --color-muted: oklch(0.74 0 0); /* secondary text, metadata */
-  --color-subtle: oklch(0.6 0 0); /* disabled, placeholders (≥4.5:1 on void) */
+  /* ── Color: light theme (digital-ascent direction, green accent) ──
+     Token names are roles: "void" = page background, "ink" = text, "signal" = primary accent. */
+  --color-void: oklch(0.985 0.004 155); /* page background: soft off-white, faint green cast */
+  --color-panel: oklch(1 0 0); /* cards, inputs, dock, chat */
+  --color-panel-hi: oklch(0.96 0.008 155); /* hover / tinted surfaces */
+  --color-hairline: oklch(0.9 0.008 155); /* borders */
+  --color-ink: oklch(0.22 0.03 160); /* headlines + body: deep green-slate */
+  --color-muted: oklch(0.46 0.02 160); /* secondary text (≥4.5:1 on white) */
+  --color-subtle: oklch(0.54 0.015 160); /* placeholders, disabled */
 
-  /* ── Color: signal (live / actionable) ── */
-  --color-signal: oklch(0.86 0.13 215); /* electric cyan-blue; fills carry void text */
-  --color-signal-hi: oklch(0.92 0.09 215);
-  --color-signal-lo: oklch(0.86 0.13 215 / 0.14);
+  /* ── Color: signal (primary accent: green) ── */
+  --color-signal: oklch(0.52 0.14 152); /* green buttons/links; carries white text */
+  --color-signal-hi: oklch(0.45 0.13 152); /* hover: deeper green */
+  --color-signal-lo: oklch(0.52 0.14 152 / 0.1); /* tints: selected chips, badges */
 
-  /* ── Color: agent (AI at work, AI surfaces only) ── */
-  --color-agent: oklch(0.72 0.16 294);
-  --color-agent-lo: oklch(0.72 0.16 294 / 0.16);
+  /* ── Color: agent (AI surfaces only) ── */
+  --color-agent: oklch(0.5 0.17 290);
+  --color-agent-lo: oklch(0.5 0.17 290 / 0.1);
 
   /* ── Color: states (always paired with text/icon, never color alone) ── */
-  --color-danger: oklch(0.74 0.16 25);
-  --color-success: oklch(0.82 0.15 160);
+  --color-danger: oklch(0.53 0.19 27);
+  --color-success: oklch(0.52 0.14 152);
 
   /* ── Type ── */
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Martian Mono Variable", ui-monospace, "SFMono-Regular", monospace;
 
-  --text-display: clamp(2.25rem, 1.1rem + 5.6vw, 6rem);
-  --text-display--line-height: 0.95;
-  --text-display--letter-spacing: -0.035em;
-  --text-headline: clamp(2rem, 1.35rem + 2.6vw, 3.5rem);
-  --text-headline--line-height: 1.02;
+  --text-display: clamp(2.5rem, 1.4rem + 4.6vw, 5rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.03em;
+  --text-headline: clamp(1.875rem, 1.35rem + 2vw, 3rem);
+  --text-headline--line-height: 1.12;
   --text-headline--letter-spacing: -0.025em;
   --text-title: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
   --text-title--line-height: 1.2;
   --text-body: 1.0625rem;
-  --text-body--line-height: 1.7;
+  --text-body--line-height: 1.65;
   --text-small: 0.9375rem;
   --text-small--line-height: 1.6;
-  --text-label: 0.75rem;
+  --text-label: 0.8125rem;
   --text-label--line-height: 1.4;
-  --text-label--letter-spacing: 0.02em;
+  --text-label--letter-spacing: 0.01em;
 
-  /* ── Radius: machined, barely rounded ── */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
+  /* ── Radius ── */
+  --radius-sm: 8px; /* rounded like digital-ascent */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Soft elevation (light theme) */
+  --shadow-card: 0 1px 2px oklch(0.22 0.03 160 / 0.05), 0 4px 16px -4px oklch(0.22 0.03 160 / 0.08);
+  --shadow-lift: 0 2px 4px oklch(0.22 0.03 160 / 0.06), 0 16px 32px -12px oklch(0.22 0.03 160 / 0.16);
 
   /* ── Motion ── */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -64,9 +68,9 @@
 
 :root {
   /* Layout */
-  --container: 88rem;
+  --container: 80rem; /* Tailwind max-w-7xl: the "xl" site width */
   --gutter: clamp(1rem, 0.5rem + 2.5vw, 3rem);
-  --section-y: clamp(5rem, 3rem + 8vw, 11rem);
+  --section-y: clamp(4rem, 2.5rem + 4.5vw, 7rem);
   --dock-h: 4rem;
 
   /* Z scale (semantic, never ad-hoc) */

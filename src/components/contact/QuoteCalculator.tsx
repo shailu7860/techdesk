@@ -59,10 +59,10 @@ export function QuoteCalculator({
   const toggle = (a: AddOnId) => setSelected((s) => (s.includes(a) ? s.filter((x) => x !== a) : [...s, a]));
 
   return (
-    <div className="grid gap-px border border-hairline bg-hairline lg:grid-cols-[1.6fr_1fr]">
-      <div className="grid gap-10 bg-void p-6 md:p-8">
+    <div className="grid overflow-hidden rounded-md border border-hairline bg-panel shadow-(--shadow-card) lg:grid-cols-[1.6fr_1fr]">
+      <div className="grid gap-10 p-6 md:p-8">
         <fieldset>
-          <legend className="font-mono text-label uppercase text-muted">01 · What are you building?</legend>
+          <legend className="text-label font-medium text-muted">01 · What are you building?</legend>
           <div className={`mt-4 grid gap-2 ${compact ? "" : "sm:grid-cols-2"}`}>
             {projectTypes.map((t) => (
               <label key={t.id} className={choice}>
@@ -81,7 +81,7 @@ export function QuoteCalculator({
         </fieldset>
 
         <fieldset>
-          <legend className="font-mono text-label uppercase text-muted">02 · How big?</legend>
+          <legend className="text-label font-medium text-muted">02 · How big?</legend>
           <div className="mt-4 grid gap-2 sm:grid-cols-3">
             {sizes.map((s) => (
               <label key={s.id} className={choice}>
@@ -103,7 +103,7 @@ export function QuoteCalculator({
         </fieldset>
 
         <fieldset>
-          <legend className="font-mono text-label uppercase text-muted">03 · Anything extra?</legend>
+          <legend className="text-label font-medium text-muted">03 · Anything extra?</legend>
           <div className="mt-4 grid gap-2 sm:grid-cols-2">
             {addOns.map((a) => (
               <label key={a.id} className={choice}>
@@ -120,7 +120,7 @@ export function QuoteCalculator({
         </fieldset>
       </div>
 
-      <div className="flex flex-col bg-panel p-6 md:p-8">
+      <div className="flex flex-col border-t border-hairline bg-panel-hi p-6 md:p-8 lg:border-t-0 lg:border-l">
         <div className="flex items-center justify-between gap-4">
           <Label tone="signal">Estimate</Label>
           <fieldset className="flex rounded-sm border border-hairline p-0.5">
@@ -128,7 +128,7 @@ export function QuoteCalculator({
             {(["INR", "USD"] as const).map((c) => (
               <label
                 key={c}
-                className="cursor-pointer rounded-[1px] px-3 py-1.5 font-mono text-label has-[:checked]:bg-ink has-[:checked]:text-void has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-signal"
+                className="cursor-pointer rounded-[1px] px-3 py-1.5 text-label font-medium has-[:checked]:bg-ink has-[:checked]:text-void has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-signal"
               >
                 <input
                   type="radio"
@@ -142,10 +142,7 @@ export function QuoteCalculator({
             ))}
           </fieldset>
         </div>
-        <output
-          aria-live="polite"
-          className="mt-10 block font-mono text-[clamp(1.5rem,1.1rem+1.6vw,2.25rem)] leading-tight"
-        >
+        <output aria-live="polite" className="mt-10 block text-[clamp(1.5rem,1.1rem+1.6vw,2.25rem)] leading-tight">
           {range}
         </output>
         <p className="mt-3 text-small text-muted">

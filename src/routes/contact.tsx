@@ -40,19 +40,19 @@ export default function Contact() {
   return (
     <main id="main">
       <PageIntro
-        label="Contact / open channel"
+        label="Contact"
         title="What will you build next?"
         lead={`Pick the fastest route for you. A human answers, usually the engineer who would build it. ${contact.replyPromise}`}
       />
 
       <section aria-label="Direct lines" className="container-page pb-16">
-        <ul className="grid gap-px border border-hairline bg-hairline md:grid-cols-3">
+        <ul className="grid gap-4 md:grid-cols-3">
           {lines.map((l) => (
             <li key={l.label}>
               <a
                 href={l.href}
                 {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group flex h-full flex-col gap-3 bg-void p-6 transition-colors hover:bg-panel md:p-8"
+                className="group flex h-full flex-col gap-3 rounded-md border border-hairline bg-panel p-6 shadow-(--shadow-card) transition-[border-color,box-shadow] hover:border-signal/50 hover:shadow-(--shadow-lift) md:p-8"
               >
                 <Label>{l.label}</Label>
                 <span className="break-all font-display text-title transition-colors group-hover:text-signal">
@@ -74,7 +74,7 @@ export default function Contact() {
       >
         <div className="grid gap-10 lg:grid-cols-[1fr_2fr]">
           <div>
-            <h2 id="brief-title" className="font-display text-headline uppercase">
+            <h2 id="brief-title" className="font-display text-headline">
               Send a brief
             </h2>
             <p className="mt-4 max-w-[36ch] text-muted">
@@ -90,7 +90,7 @@ export default function Contact() {
         aria-labelledby="estimate-title"
         className="container-page scroll-mt-24 border-t border-hairline py-(--section-y)"
       >
-        <h2 id="estimate-title" className="font-display text-headline uppercase">
+        <h2 id="estimate-title" className="font-display text-headline">
           What would it take?
         </h2>
         <p className="mt-4 max-w-[55ch] text-muted">
