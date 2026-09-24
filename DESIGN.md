@@ -162,7 +162,16 @@ Martian Mono, 12px, uppercase, tone muted, signal or agent. The optional live do
 Panel fill, hairline border, 2px radius, 48px minimum height, Subtle placeholder (5:1). Focus turns the border Signal and adds the global 2px Signal focus ring. Errors turn the border Danger and add a `!` message wired through `aria-describedby`, so they never rely on colour alone. Labels are always visible, and required fields say "(required)" in text.
 
 ### Navigation
-The wordmark links home. Full navigation arrives in Phase 3.
+A sticky hairline bar (wordmark · Work · Services · Process · About · primary CTA) that hides on scroll-down and returns on scroll-up or focus. The active route is marked by a Signal underline, never colour alone. Mobile: a full-screen native `<dialog>` with display-size links and WhatsApp/Call buttons.
+
+### Mission file (signature component)
+A flagship project as an instrument panel: mono `PROJECT / 01` plus live status, the name in Display, then Industry / Problem / Stack as labelled rows. The whole panel is one link; hover shifts the border toward Signal. Laid out as a pinned horizontal track on wide screens and a grid or stack elsewhere. Never used as a generic card grid.
+
+### Chat panel
+The only surface with an Agent Violet border and bubbles. It is a modal dialog: a bottom-right panel on desktop, full screen on mobile. Replies are plain text. Failure states always resolve to WhatsApp / Call / Brief buttons, never a dead end.
+
+### Quote calculator
+Native radios and checkboxes styled as bordered choices (the `:has(:checked)` state shows a Signal border and tint). The result sits in a Panel column in Martian Mono, next to an INR/USD segmented toggle. "Indicative range, not a quote" is always visible.
 
 ### Quick-contact dock (signature component)
 Plain anchors (`wa.me`, `tel:`), so it works without JS. On desktop it is a bottom-right stack of 48px Panel squares with mono text tooltips on hover and focus. On mobile it is a full-width bottom bar with labelled buttons (64px tall, safe-area aware) and body padding so no content hides behind it.

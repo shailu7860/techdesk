@@ -28,10 +28,10 @@ Later: Industries, Process, Insights, legal pages.
 | AI chatbot | Answers questions about TechDesk grounded only in site data. Serverless (Amplify function) with a Groq-then-Claude provider chain. Graceful handoff to a human |
 | Quote calculator | Indicative price range from type, size and add-ons. Hands off to the brief or WhatsApp with the selection prefilled |
 | Multi-step brief | Five-step contact flow (spec §26) through a form service behind `submitLead()` |
-| Analytics | Provider-agnostic `track()` events (spec §42) |
+| Analytics | Planned post-launch: one cookieless provider (see ROADMAP) |
 
 ## Technology
-Vite · React 19 · TypeScript (strict) · React Router v7 (framework mode, `ssr: false` plus prerender) · Tailwind CSS v4 plus CSS tokens · GSAP and ScrollTrigger · Lenis · Three.js / React Three Fiber (hero only, lazy) · AWS Amplify Hosting plus one Amplify Gen 2 function (chatbot). Full rationale is in `ARCHITECTURE.md`.
+Vite 8 · React 19 · TypeScript 7 (strict) · React Router 8 (framework mode, `ssr: false` plus prerender) · Tailwind CSS 4 plus CSS tokens · GSAP and ScrollTrigger · Lenis · three.js (hero only, lazy) · AWS Amplify Hosting plus one Amplify Gen 2 function (chatbot). Full rationale is in `ARCHITECTURE.md`.
 
 ## Future roadmap (not built now)
 CMS (content already isolated behind `src/data`), lead management and CRM, blog and Insights, newsletter, client portal, multi-language, personalised landing pages. See spec §79.

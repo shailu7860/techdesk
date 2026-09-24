@@ -17,7 +17,7 @@ Premium futuristic technology-agency website for **TechDesk**. Goal: qualified l
 | Quote calculator | Pure frontend, data-driven (`src/data/pricing.ts`). Shows **indicative ranges**, never a binding price. |
 | Quick contact | Persistent dock: WhatsApp (`wa.me` deep link, prefilled text) + phone (`tel:`) + chat. |
 | Styling | Tailwind CSS v4 + CSS custom-property tokens (`src/styles/tokens.css`). |
-| Motion | GSAP + ScrollTrigger (+ Lenis). Three.js/R3F only where justified, lazy-loaded, desktop only. |
+| Motion | GSAP + ScrollTrigger + Lenis (on demand). three.js (plain, named imports; R3F removed) for the hero only, lazy, desktop only. |
 | Fonts | **Archivo** variable (display at 118% width, body at 100%) + **Martian Mono** (labels only), self-hosted via Fontsource. |
 
 ## Business content (see `docs/DISCOVERY.md` § Business content)
@@ -26,11 +26,11 @@ WhatsApp/call **+91 92033 87375** · **shailendramishra0127@gmail.com** · **Ind
 ## Content rules (non-negotiable)
 - **Never invent** client names, metrics, results, testimonials or stats (spec §71 rules 6–8).
 - Old portfolio testimonials ("Sarah Chen" etc.) and stats ("50+ projects", "30+ clients", "99.9%") are **template content — excluded** unless the owner confirms them.
-- Missing content → `PLACEHOLDER` marker: `{ placeholder: true }` in data + visible `[CONTENT NEEDED]` only in dev builds. Production build fails if a placeholder is rendered on a featured item.
+- Missing content → flag it in data (e.g. `visualsPending: true`): a `[CONTENT NEEDED]` note renders in dev builds only and the section is omitted in production. `tests/unit/data.test.ts` fails on known template filler.
 - BidMaster: describe as procurement automation; do not market CAPTCHA reading.
 
 ## Working rules
-- Work in phases (spec §57). Stop for owner review at the end of each phase.
+- Work in phases (spec §57). Phases 0–12 completed 2026-09-24 (see docs/CHANGELOG.md); deploy steps in docs/DEPLOYMENT.md need the owner.
 - Before each major implementation: Plan / Files / Expected result / Risks (spec §73).
 - After: TypeScript, lint, build, responsive, animation cleanup, console, routes (spec §74).
 - Report changes as: What changed / Why / Files / How it works / How tested / Still required (spec §72).
@@ -42,5 +42,8 @@ WhatsApp/call **+91 92033 87375** · **shailendramishra0127@gmail.com** · **Ind
 - `PRODUCT.md` — register **brand**, platform **web**, users, personality (precise · calm-confident · inventive · warm), anti-references, principles. WCAG 2.2 AA.
 - `DESIGN.md` — visual system (The Instrument in the Dark): restrained near-black + Signal Blue ≤10% + Agent Violet for AI only; display + mono; choreographed motion. Tokens scanned from code after Phase 2; `/system` is the live specimen (noindex).
 
+## Quality gates
+`npm run verify` (lint, types, contrast, build) · `npm test` (unit) · `npm run test:e2e` (Playwright + axe) · lint is **Biome** (typescript-eslint cannot run on TS 7).
+
 ## Docs
-`PRODUCT.md` · `DESIGN.md` (= spec DESIGN_SYSTEM) · `docs/DISCOVERY.md` (Phase 0) · `docs/PROJECT_OVERVIEW.md` · `docs/PRODUCT_REQUIREMENTS.md` · `docs/ARCHITECTURE.md` · `docs/UX_FLOW.md`
+`PRODUCT.md` · `DESIGN.md` (= spec DESIGN_SYSTEM) · `docs/DISCOVERY.md` (Phase 0) · full index in `docs/README.md`

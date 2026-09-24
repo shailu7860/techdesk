@@ -2,36 +2,38 @@
 
 Every dependency has a reason (spec §24, rule 4). If it doesn't earn its line here, it doesn't get installed.
 
-## Runtime
+## Runtime (ships to visitors)
 | Package | Why |
 |---|---|
 | `react`, `react-dom` 19 | UI library required by the spec |
-| `react-router` 8 | Routing and framework mode: `ssr:false` plus prerender gives static HTML per route for SEO (see `ARCHITECTURE.md` §2). v8 is v7 with the future flags promoted to defaults; the prerender API is unchanged |
-| `@react-router/node` | Node adapter the framework build needs for prerendering |
-| `isbot` | Peer of the React Router server entry used during prerender |
-| `@fontsource-variable/archivo` | Self-hosted display and body face (width and weight axes); no Google Fonts request, and `unicode-range` subsets |
-| `@fontsource-variable/martian-mono` | Self-hosted mono for system labels |
+| `react-router` 8 | Routing + framework mode: `ssr:false` + prerender gives static HTML per route (SEO). v8 = v7 with the future flags made default; prerender API unchanged |
+| `@react-router/node`, `isbot` | Required by the framework build during prerendering |
+| `@fontsource-variable/archivo`, `@fontsource-variable/martian-mono` | Self-hosted display/body and label faces; no third-party font requests |
+| `gsap` | Scroll choreography (ScrollTrigger pin/scrub/batch) with `matchMedia` for breakpoint and reduced-motion variants. Loaded on demand |
+| `lenis` | Smooth scrolling tied to the GSAP ticker (desktop only, loaded on demand) |
+| `three` | Hero system core. Named imports only (tree-shaken, 129 KB gz lazy chunk, desktop only) |
 
 ## Build / dev
 | Package | Why |
 |---|---|
-| `@react-router/dev` | Vite plugin, route typegen, prerender build |
-| `vite` 8 | Bundler / dev server (spec) |
+| `@react-router/dev`, `vite` 8 | Build, dev server, route typegen, prerender |
 | `typescript` 7 | Strict typing (spec §45) |
-| `tailwindcss` 4, `@tailwindcss/vite` | Utility CSS generated from the `@theme` tokens in `src/styles/tokens.css` |
-| `@types/*` | Types for React and Node |
+| `tailwindcss` 4, `@tailwindcss/vite` | Utilities generated from the `@theme` tokens |
+| `@biomejs/biome` | Lint + format in one tool. **Replaces the spec's ESLint + Prettier:** typescript-eslint needs TypeScript's JS API, which TypeScript 7 (native compiler) does not provide |
+| `vitest` | Unit tests |
+| `@playwright/test`, `@axe-core/playwright` | End-to-end tests and WCAG scans; also used by the screenshot and OG-image scripts |
+| `@aws-amplify/backend`, `@aws-amplify/backend-cli`, `aws-cdk-lib`, `constructs` | Amplify Gen 2 backend definition and pipeline deploy of the chat function |
+| `@types/*` | Types |
 
-## Deliberately not installed (yet)
-| Package | Reason not yet |
+## Removed / deliberately not used
+| Package | Reason |
 |---|---|
-| GSAP, Lenis | Arrive in Phase 5 (animation), after the static layout is stable (spec §63) |
-| three / @react-three/fiber | Arrive with the hero system core only (Phase 5), lazy-loaded and desktop only |
-| Icon library | Three icons total: the WhatsApp glyph copied from Simple Icons (CC0) and hand-drawn phone and arrow glyphs |
-| Colour library | `scripts/check-contrast.mjs` implements OKLCH to sRGB in about 15 lines |
-| ESLint / Prettier | Added in Phase 3 with the app foundation |
+| `@react-three/fiber` | Tried and removed: it pulls in all of three.js (239 KB gz). Plain three.js with named imports is 129 KB gz for the same scene |
+| ESLint, Prettier | See Biome above |
+| Icon library | Four icons total: the WhatsApp glyph from Simple Icons (CC0) and hand-drawn phone, chat and arrow |
+| Colour library | `scripts/check-contrast.mjs` implements OKLCH → sRGB in about 15 lines |
+| Form/validation library | `src/lib/leads.ts` is about 60 lines of plain validation |
+| Analytics SDK | Deferred (see ROADMAP); will be cookieless |
 
-## Scripts
-- `npm run dev`: dev server
-- `npm run build`: production build (prerendered HTML in `build/client`)
-- `npm run typecheck`: route typegen plus `tsc`
-- `npm run check:contrast`: fails if any colour pairing drops below its WCAG minimum
+## `overrides`
+`lodash ^4.18.1`, `mysql2 ^3.24.4`, `immutable ^3.8.4`: patch dev-tooling advisories inside the Amplify CLI without changing major versions (see SECURITY.md).

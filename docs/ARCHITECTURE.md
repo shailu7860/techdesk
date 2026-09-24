@@ -1,6 +1,6 @@
 # Architecture
 
-Status: Phase 1 proposal. Verified against React Router 7.18 pre-rendering docs and the Amplify Gen 2 functions/secrets docs (Context7, 2026-09-23).
+Status: **implemented** (2026-09-24). Verified against the React Router pre-rendering docs (v7.18 API, shipped on v8.4) and the Amplify Gen 2 functions/secrets docs.
 
 ## 1. Application architecture
 ```
@@ -63,7 +63,7 @@ There is no global store. State is local component state, plus URL state where i
 - Timelines live in `src/animations/*` and sections call them. There are no inline mega-timelines (spec §28).
 - Lenis runs only when motion is allowed and the pointer is fine; it drives ScrollTrigger through `lenis.on('scroll', ScrollTrigger.update)`.
 - **Default-visible rule:** the prerendered HTML is final-state. Animations run `from()` states only after hydration, so no content is ever hidden waiting for JS.
-- WebGL (the hero system core) uses React Three Fiber, loaded with `React.lazy` after `requestIdleCallback`, only when `(pointer: fine) and (min-width: 1024px) and not (prefers-reduced-motion)` and WebGL2 is available. Otherwise the static SVG poster stays in place.
+- WebGL (the hero system core) uses **plain three.js with named imports** (React Three Fiber was removed: 239 → 129 KB gz), loaded with `React.lazy` after `requestIdleCallback`, only when `(pointer: fine) and (min-width: 1024px) and (prefers-reduced-motion: no-preference)` and WebGL2 is available. Otherwise the static SVG poster stays in place.
 
 ## 7. API layer
 ### Leads: `src/lib/leads.ts`
@@ -79,7 +79,7 @@ There is no global store. State is local component state, plus URL state where i
   - Error messages are redacted before logging.
   - Groq goes first for latency; Claude is the quality fallback.
 - **Grounding:** the function imports `src/data/*` directly (esbuild bundles it), so the system prompt holds the real services, projects, process, price bands and contact routes. The rules are: answer only from this data, never invent clients, metrics or prices, and always offer WhatsApp, call or the brief for anything project-specific.
-- **Abuse limits** (requirement SC-02): message of 1,000 characters or fewer, 12 turns or fewer, `max_tokens` about 500, reserved concurrency 5, and a best-effort per-IP token bucket.
+- **Abuse limits** (requirement SC-02): message of 1,000 characters or fewer, 12 turns or fewer, body of 32 KB or less, `max_tokens` 500, opt-in reserved concurrency (`CHAT_MAX_CONCURRENCY`), and a best-effort per-IP limit (20 requests per 10 minutes).
   `// ponytail: in-memory limits reset per cold start; add API Gateway throttling or WAF if abused.`
 - **Response:** v1 returns JSON (non-streaming) and the UI shows a typing state. Streaming through `RESPONSE_STREAM` is a P2 upgrade.
 - **Failure:** every provider failing returns `503 {handoff:true}`, and the UI renders the human handoff (requirement LG-08).
@@ -99,8 +99,8 @@ There is no global store. State is local component state, plus URL state where i
 ## 9. Deployment (AWS Amplify)
 - Amplify Gen 2 **full-stack app** connected to the git repo, so frontend plus the chat function deploy together per branch. `main` is production, and other branches get preview environments.
 - Build runs `npm ci && npm run build`. Artifacts come from `build/client`.
-- Hosting rules: prerendered `*/index.html` files are served as-is. Unknown paths are rewritten to `/__spa-fallback.html` with **404 status**, and the client renders the 404 route. **This must be verified on Amplify in Phase 3**, because Amplify rewrite ordering is order-sensitive.
-- Custom headers (requirement SC-03): `Cache-Control: public, max-age=31536000, immutable` for `/assets/*` and `max-age=0, must-revalidate` for HTML. Security headers include a strict CSP that allows `self`, the form-service origin and the Function URL origin.
+- Hosting rules: prerendered `*/index.html` files are served as-is. Unknown paths are rewritten to the prerendered `/404/index.html` with a **404 status** (see DEPLOYMENT.md). `scripts/serve.mjs` emulates this locally and e2e asserts it. Confirm on Amplify after the first deploy.
+- Headers (requirement SC-03): `customHttp.yml` (generated from `scripts/security-headers.mjs`) sets HSTS, nosniff, `X-Frame-Options: DENY`, referrer/permissions policies and caching (`immutable` for `/assets/**`). The **CSP** is a per-page `<meta>` injected after build by `scripts/csp.mjs`, with SHA-256 hashes of React Router's inline scripts, because those hashes change every build and cannot live in a committed header file.
 - Secrets are set in the Amplify console under **Hosting → Secrets**.
 
 ## 10. Future backend
