@@ -71,7 +71,7 @@
 
 :root {
   /* Layout */
-  --container: 96rem; /* content width 1536px (Tailwind 2xl), matching the owner's reference site; padding sits outside */
+  --container: 117.5rem; /* content width up to 1880px (owner); padding sits outside, so it fills most screens */
   --gutter: clamp(1rem, 0.5rem + 2.5vw, 3rem);
   --section-y: clamp(4rem, 2.5rem + 4.5vw, 7rem);
   --dock-h: 4rem;

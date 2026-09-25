@@ -90,12 +90,12 @@ export function Hero() {
           </p>
         </div>
 
-        <div aria-hidden="true" className="relative mx-auto aspect-square w-full max-w-[34rem]">
+        <div aria-hidden="true" className="relative mx-auto aspect-square w-full max-w-[34rem] xl:max-w-[42rem]">
           <Planet className="absolute inset-0 h-full w-full" />
           {SIGNALS.map((s) => (
             <div
               key={s.label}
-              className={`float glass absolute ${s.pos} hidden w-56 rounded-md p-4 sm:block`}
+              className={`float glass absolute ${s.pos} hidden w-64 rounded-md p-4 sm:block`}
               style={{ animationDelay: s.delay }}
             >
               <div className="flex items-center justify-between gap-3">

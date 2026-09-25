@@ -264,7 +264,8 @@ div[data-hero-reveal] {
 }
 
 /* User paused motion (MotionToggle): freeze every ambient animation in place. */
-html[data-motion="paused"] :is(.nebula, .orbit, .shooting-star, .marquee-track, .float, .caret) {
+html[data-motion="paused"]
+:is(.nebula, .orbit, .shooting-star, .marquee-track, .float, .caret, .planet-spin, .ring-flow) {
   animation-play-state: paused;
 }
 
@@ -293,4 +294,28 @@ html[data-motion="paused"] :is(.nebula, .orbit, .shooting-star, .marquee-track, 
 }
 html[data-motion="paused"] :is(.float, .caret) {
   animation-play-state: paused;
+}
+
+/* ── Planet: surface rotation and drifting ring particles ── */
+@keyframes planet-spin {
+  to {
+    transform: translateX(var(--spin-distance, -300px));
+  }
+}
+.planet-spin {
+  animation: planet-spin 36s linear infinite;
+}
+@keyframes ring-flow {
+  to {
+    stroke-dashoffset: -160;
+  }
+}
+.ring-flow {
+  animation: ring-flow 18s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .planet-spin,
+  .ring-flow {
+    animation: none;
+  }
 }

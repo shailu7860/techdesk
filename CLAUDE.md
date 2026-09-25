@@ -25,7 +25,7 @@ WhatsApp/call **+91 92033 87375** · **shailendramishra0127@gmail.com** · **Ind
 
 ## Visual rules (owner, 2026-09-24)
 - **No gradients and no box shadows anywhere** (incl. glows, drop/text shadows, gradient masks). Enforced by `tests/unit/style-rules.test.ts`.
-- Theme: **green nebula galaxy** (dark space, starfield, solid-colour nebula blurs, green accent). Content width 1536px (96rem, same as the owner's Stratos site), gutter outside. Sentence case, never forced uppercase.
+- Theme: **green nebula galaxy** (dark space, starfield, solid-colour nebula blurs, green accent). Content width up to 1880px (117.5rem, owner 2026-09-25), gutter outside. Sentence case, never forced uppercase.
 - Every ambient animation must obey `prefers-reduced-motion` and the site-wide Pause motion toggle.
 
 ## Content rules (non-negotiable)
