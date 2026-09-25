@@ -17,6 +17,8 @@ import { useRestoreMotionPreference } from "./lib/motion";
 export const links: Route.LinksFunction = () => [
   { rel: "preload", href: archivoLatin, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+  { rel: "apple-touch-icon", href: "/icons/apple-touch-icon.png" },
+  { rel: "manifest", href: "/site.webmanifest" },
 ];
 
 export function Layout({ children }: { children: ReactNode }) {

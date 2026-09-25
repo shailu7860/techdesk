@@ -18,6 +18,7 @@ const types = {
   ".xml": "application/xml",
   ".txt": "text/plain",
   ".json": "application/json",
+  ".webmanifest": "application/manifest+json",
 };
 
 const resolve = (urlPath) => {

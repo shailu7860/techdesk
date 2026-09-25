@@ -3,10 +3,12 @@ import { commitments, engagements } from "../../../src/data/company";
 import { contact } from "../../../src/data/contact";
 import { faqs } from "../../../src/data/faq";
 import { industries } from "../../../src/data/industries";
+import { insights } from "../../../src/data/insights";
 import { projectTypes, sizes } from "../../../src/data/pricing";
 import { process } from "../../../src/data/process";
 import { projects } from "../../../src/data/projects";
 import { services } from "../../../src/data/services";
+import { solutions } from "../../../src/data/solutions";
 
 const money = (n: number, c: "INR" | "USD") =>
   c === "INR" ? `₹${n >= 100_000 ? `${n / 100_000}L` : `${n / 1_000}k`}` : `$${n >= 1_000 ? `${n / 1_000}k` : n}`;
@@ -64,6 +66,12 @@ ${commitments.map((c) => `- ${c.title}: ${c.detail}`).join("\n")}
 
 INDICATIVE PRICE RANGES (INR for India / USD elsewhere; add-ons such as custom design or priority timeline raise them)
 ${prices}
+
+SOLUTION PAGES (link the most relevant one when it helps)
+${solutions.map((s) => `- ${s.title}: ${siteUrl}/solutions/${s.slug}`).join("\n")}
+
+COST GUIDES
+${insights.map((i) => `- ${i.h1}: ${siteUrl}/insights/${i.slug}`).join("\n")}
 
 ENGAGEMENT MODELS
 ${engagements.map((e) => `- ${e.name} (${e.fit}): ${e.points.join("; ")}`).join("\n")}

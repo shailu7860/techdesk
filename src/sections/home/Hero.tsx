@@ -15,7 +15,7 @@ const SIGNALS = [
     delay: "0s",
   },
   {
-    label: "Biexor",
+    label: "Business exchange",
     status: "Live",
     detail: "Business exchange with KYC",
     pos: "top-[40%] -right-[2%]",
@@ -59,9 +59,9 @@ export function Hero() {
             <span aria-hidden="true">for what's next.</span>
           </h1>
           <p className="mt-6 max-w-[52ch] text-body text-muted md:text-[1.1875rem]" data-hero-reveal>
-            We design, build and run AI agents, software platforms and automation for founders, growing businesses and
-            enterprise teams. You talk directly to the engineers, see working software every week, and own everything we
-            build.
+            TechDesk is an AI and software development company in Indore, India, building AI agents, SaaS platforms and
+            automation for founders, growing businesses and enterprise teams worldwide. You talk directly to the
+            engineers, see working software every week, and own everything we build.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4" data-hero-reveal>
             <Button href="/contact" size="lg" trailing="→">

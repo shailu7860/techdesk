@@ -6,15 +6,15 @@ import { Label } from "../components/ui/Label";
 import { commitments, strengths } from "../data/company";
 import { contact } from "../data/contact";
 import { process } from "../data/process";
-import { organizationLd, seo } from "../lib/seo";
+import { seo } from "../lib/seo";
 
 export const meta = () =>
   seo({
-    title: "About | TechDesk",
+    title: "About TechDesk: software development company, Indore",
     description:
       "TechDesk is a technology studio in Indore, India, building AI agents, software platforms and automation for clients worldwide, with engineers you talk to directly.",
     path: "/about",
-    jsonLd: organizationLd,
+    breadcrumbs: [["About", "/about"]],
   });
 
 export default function About() {

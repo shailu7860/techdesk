@@ -18,6 +18,8 @@ export type Service = {
   visual: "platform" | "agent" | "systems" | "growth" | "transform";
   /** Pre-selected project type in the quote calculator (pricing.ts id). */
   estimateType: string;
+  /** Search result title (without the brand suffix) and meta description (≤160 chars). */
+  seo: { title: string; description: string };
 };
 
 export const services: Service[] = [
@@ -40,6 +42,11 @@ export const services: Service[] = [
     ],
     stack: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "MongoDB"],
     visual: "platform",
+    seo: {
+      title: "Web app and SaaS development",
+      description:
+        "Custom web applications, SaaS platforms, dashboards and e-commerce built with React, Next.js and Node.js by TechDesk, Indore. Get an indicative estimate.",
+    },
     estimateType: "web-app",
   },
   {
@@ -60,6 +67,11 @@ export const services: Service[] = [
     ],
     stack: ["Claude", "Groq", "OpenAI-compatible APIs", "Vector search", "Node.js", "Python"],
     visual: "agent",
+    seo: {
+      title: "AI agent and automation development",
+      description:
+        "AI agents, chatbots, RAG search and workflow automation that act inside your tools, with provider failover and a human in the loop. Built by TechDesk, Indore.",
+    },
     estimateType: "ai",
   },
   {
@@ -80,6 +92,11 @@ export const services: Service[] = [
     ],
     stack: ["Node.js", "Fastify", "Express", "PostgreSQL", "Redis", "AWS"],
     visual: "systems",
+    seo: {
+      title: "Backend, API and integration engineering",
+      description:
+        "Backend systems, API architecture, databases and third-party integrations that hold up under real load. Node.js, PostgreSQL, Redis and AWS by TechDesk.",
+    },
     estimateType: "web-app",
   },
   {
@@ -101,6 +118,11 @@ export const services: Service[] = [
     ],
     stack: ["Search Console", "Google Ads", "Meta Ads", "Analytics", "Structured data"],
     visual: "growth",
+    seo: {
+      title: "SEO and digital marketing for leads",
+      description:
+        "Technical SEO, content and performance campaigns measured against qualified leads, run by engineers who can also fix your site. TechDesk, Indore.",
+    },
     estimateType: "marketing",
   },
   {
@@ -120,6 +142,11 @@ export const services: Service[] = [
     ],
     stack: ["Discovery workshops", "Prototyping", "React", "Node.js", "Automation platforms"],
     visual: "transform",
+    seo: {
+      title: "Digital transformation and MVP development",
+      description:
+        "Product strategy, MVPs, legacy modernisation and internal tools that replace spreadsheets and manual steps with software your team uses. TechDesk, Indore.",
+    },
     estimateType: "web-app",
   },
 ];

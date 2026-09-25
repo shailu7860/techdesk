@@ -10,10 +10,11 @@
     "check:contrast": "node scripts/check-contrast.mjs",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "verify": "npm run lint && npm run typecheck && npm run check:contrast && npm run build",
+    "verify": "npm run lint && npm run typecheck && npm run check:contrast && npm run build && npm run seo:audit",
     "preview": "npm run build && node scripts/serve.mjs",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "seo:audit": "node scripts/seo-audit.mjs"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

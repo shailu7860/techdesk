@@ -9,7 +9,7 @@ import { process } from "../data/process";
 import { projects } from "../data/projects";
 import { getService, services } from "../data/services";
 import { formatBand } from "../lib/estimate";
-import { seo } from "../lib/seo";
+import { ORG_ID, seo } from "../lib/seo";
 import { waLink } from "../lib/whatsapp";
 import { FaqSection } from "../sections/home/FaqSection";
 import type { Route } from "./+types/services.$slug";
@@ -23,8 +23,14 @@ export const meta = ({ params }: Route.MetaArgs) => {
   const s = getService(params.slug);
   if (!s) return seo({ title: "Service not found | TechDesk", description: "", path: "/404", noindex: true });
   return seo({
-    title: `${s.name} | TechDesk`,
-    description: `${s.outcome} ${s.summary}`,
+    title: `${s.seo.title} | TechDesk`,
+    description: s.seo.description,
+    image: `/og/service-${s.slug}.png`,
+    imageAlt: `${s.name} by TechDesk`,
+    breadcrumbs: [
+      ["Services", "/services"],
+      [s.name, `/services/${s.slug}`],
+    ],
     path: `/services/${s.slug}`,
     jsonLd: [
       faqLd(serviceFaqs(s.slug)),
@@ -32,7 +38,7 @@ export const meta = ({ params }: Route.MetaArgs) => {
         "@type": "Service",
         name: s.name,
         description: s.summary,
-        provider: { "@type": "Organization", name: "TechDesk" },
+        provider: { "@id": ORG_ID },
         areaServed: "Worldwide",
       },
     ],

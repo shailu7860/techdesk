@@ -17,6 +17,8 @@ export type Project = {
   stack: string[];
   /** Flagships get a full case study page at /work/:slug. */
   caseStudy?: CaseStudy;
+  /** Meta description for the case study page (≤160 chars). */
+  metaDescription?: string;
 };
 
 export type CaseStudy = {
@@ -43,15 +45,16 @@ export type IndustryKey =
 
 export const projects: Project[] = [
   {
-    slug: "biexor",
+    slug: "business-exchange-platform",
+    metaDescription:
+      "Case study: a business exchange platform for buying and selling companies with mandates, auctions, watchlists and Aadhaar KYC. Engineered by TechDesk.",
     code: "01",
-    title: "Biexor",
-    tagline: "The Business Exchange",
+    title: "Business Exchange Platform",
+    tagline: "Buying and selling businesses through structured deals",
     industry: "Marketplaces · M&A",
     industries: ["marketplaces", "fintech"],
     services: ["web-product-engineering", "software-engineering"],
     status: "Live",
-    url: "https://biexor.com",
     summary:
       "A platform for buying and selling businesses through structured, auditable deal processes: clear timelines, verified parties and professional execution.",
     stack: ["React", "Vite", "Material UI", "Digio KYC", "Aadhaar verification"],
@@ -83,6 +86,8 @@ export const projects: Project[] = [
   },
   {
     slug: "stratos",
+    metaDescription:
+      "Case study: Stratos, a no-code algo-trading platform with backtesting, paper-first safety, broker integrations and multi-provider AI research. By TechDesk.",
     code: "02",
     title: "Stratos",
     tagline: "Automated strategies, your broker, your control",
@@ -152,6 +157,8 @@ export const projects: Project[] = [
   },
   {
     slug: "bidmaster",
+    metaDescription:
+      "Case study: BidMaster, a Chrome extension that prepares SAP e-bidding submissions in advance and saves them the instant the window opens. By TechDesk.",
     code: "03",
     title: "BidMaster",
     tagline: "Procurement automation for SAP e-bidding",
@@ -186,6 +193,8 @@ export const projects: Project[] = [
   },
   {
     slug: "1bull",
+    metaDescription:
+      "Case study: 1Bull, a multi-brand gaming platform foundation with a double-entry ledger, idempotent payments and deny-by-default compliance. By TechDesk.",
     code: "04",
     title: "1Bull",
     tagline: "Multi-brand gaming platform architecture",

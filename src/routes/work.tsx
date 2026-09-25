@@ -8,10 +8,11 @@ import { seo } from "../lib/seo";
 
 export const meta = () =>
   seo({
-    title: "Work | TechDesk",
+    title: "Case studies: AI, SaaS and automation projects | TechDesk",
     description:
-      "Selected systems engineered by TechDesk: Biexor, Stratos, BidMaster, 1Bull and more across fintech, marketplaces, procurement, gaming, healthcare and education.",
+      "Case studies of AI, SaaS and automation systems built by TechDesk: trading automation, a business exchange, procurement and gaming platforms.",
     path: "/work",
+    breadcrumbs: [["Work", "/work"]],
   });
 
 const filterable = industries.filter((i) => projects.some((p) => p.industries.includes(i.key)));

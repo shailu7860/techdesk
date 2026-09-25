@@ -3,6 +3,7 @@ import { site } from "../../data/company";
 import { contact } from "../../data/contact";
 import { legalNav, primaryNav } from "../../data/navigation";
 import { services } from "../../data/services";
+import { solutions } from "../../data/solutions";
 import { telLink, waLink } from "../../lib/whatsapp";
 import { Wordmark } from "../brand/Wordmark";
 import { MotionToggle } from "../space/MotionToggle";
@@ -14,7 +15,7 @@ const link = "text-ink/85 transition-colors hover:text-signal";
 export function SiteFooter() {
   return (
     <footer className="border-t border-hairline bg-void/80 backdrop-blur-sm">
-      <div className="container-page grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+      <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_0.8fr_1.1fr]">
         <div className="flex flex-col gap-4">
           <Link to="/" aria-label="TechDesk home" className="self-start">
             <Wordmark />
@@ -31,6 +32,15 @@ export function SiteFooter() {
           ))}
         </nav>
 
+        <nav aria-label="Solutions" className={col}>
+          <h2 className={heading}>Solutions</h2>
+          {solutions.map((s) => (
+            <Link key={s.slug} to={`/solutions/${s.slug}`} className={link}>
+              {s.title.replace(/ for .*$| company.*$/i, "")}
+            </Link>
+          ))}
+        </nav>
+
         <nav aria-label="Company" className={col}>
           <h2 className={heading}>Company</h2>
           {primaryNav.map((item) => (
@@ -38,6 +48,9 @@ export function SiteFooter() {
               {item.label}
             </Link>
           ))}
+          <Link to="/#process" className={link}>
+            Process
+          </Link>
           <Link to="/contact" className={link}>
             Contact
           </Link>

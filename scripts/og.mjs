@@ -9,8 +9,11 @@ import { chromium } from "@playwright/test";
 const font = (p) =>
   `data:font/woff2;base64,${readFileSync(resolve("node_modules/@fontsource-variable", p)).toString("base64")}`;
 const { flagships } = await import(pathToFileURL(resolve("src/data/projects.ts")).href);
+const { services } = await import(pathToFileURL(resolve("src/data/services.ts")).href);
+const { solutions } = await import(pathToFileURL(resolve("src/data/solutions.ts")).href);
+const { insights } = await import(pathToFileURL(resolve("src/data/insights.ts")).href);
 
-const card = ({ kicker, title, sub }) => `<!doctype html><html><head><style>
+const card = ({ title, sub }) => `<!doctype html><html><head><style>
 @font-face{font-family:A;src:url(${font("archivo/files/archivo-latin-wdth-normal.woff2")}) format("woff2");font-stretch:62% 125%;font-weight:100 900}
 *{margin:0;box-sizing:border-box}body{width:1200px;height:630px;background:#0b1a14;color:#f3f8f5;font-family:A;padding:72px;display:flex;flex-direction:column;justify-content:center;gap:56px;border:1px solid #1f3a2e}
 .k{font-size:24px;font-weight:600;color:#007f3d}
@@ -26,15 +29,16 @@ const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 const jobs = [
   {
     file: "default",
-    kicker: "TechDesk · Engineering studio",
     title: "We engineer digital systems for what's next.",
     sub: "AI agents, software platforms and intelligent automation for ambitious businesses.",
   },
-  ...flagships.map((p) => ({
-    file: p.slug,
-    kicker: `Case study · ${p.industry}`,
-    title: p.title,
-    sub: p.tagline,
+  ...flagships.map((p) => ({ file: p.slug, title: `${p.title} case study`, sub: p.tagline })),
+  ...services.map((s) => ({ file: `service-${s.slug}`, title: s.name, sub: s.outcome })),
+  ...solutions.map((s) => ({ file: `solution-${s.slug}`, title: s.title, sub: s.description })),
+  ...insights.map((i) => ({
+    file: `insight-${i.slug}`,
+    title: i.h1,
+    sub: i.description.split("? ").slice(1).join("? ") || i.description,
   })),
 ];
 for (const j of jobs) {

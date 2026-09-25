@@ -4,8 +4,9 @@ import { seo } from "../lib/seo";
 
 export const meta = () =>
   seo({
-    title: "Terms of use | TechDesk",
-    description: "Terms for using the TechDesk website, estimates and chat assistant.",
+    title: "Terms of use for the TechDesk website",
+    description:
+      "Terms for using the TechDesk website: indicative estimates, the AI chat assistant, our content and acceptable use. Governed by Indian law.",
     path: "/terms",
   });
 

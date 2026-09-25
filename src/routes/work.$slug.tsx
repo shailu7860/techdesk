@@ -6,7 +6,7 @@ import { Label } from "../components/ui/Label";
 import { SystemDiagram } from "../components/work/SystemDiagram";
 import { flagships, getProject } from "../data/projects";
 import { getService } from "../data/services";
-import { seo } from "../lib/seo";
+import { ORG_ID, seo } from "../lib/seo";
 import { waLink } from "../lib/whatsapp";
 import type { Route } from "./+types/work.$slug";
 
@@ -15,8 +15,13 @@ export const meta = ({ params }: Route.MetaArgs) => {
   if (!p?.caseStudy)
     return seo({ title: "Project not found | TechDesk", description: "", path: "/404", noindex: true });
   return seo({
-    title: `${p.title}: ${p.tagline} | TechDesk case study`,
-    description: p.summary,
+    title: `${p.title} case study: ${p.industry.split(" · ")[0]} | TechDesk`,
+    description: p.metaDescription ?? p.summary,
+    imageAlt: `${p.title} case study by TechDesk`,
+    breadcrumbs: [
+      ["Work", "/work"],
+      [p.title, `/work/${p.slug}`],
+    ],
     path: `/work/${p.slug}`,
     image: `/og/${p.slug}.png`,
     type: "article",
@@ -25,7 +30,7 @@ export const meta = ({ params }: Route.MetaArgs) => {
       name: p.title,
       headline: `${p.title}: ${p.tagline}`,
       description: p.summary,
-      creator: { "@type": "Organization", name: "TechDesk" },
+      creator: { "@id": ORG_ID },
       keywords: p.stack.join(", "),
       ...(p.url ? { url: p.url } : {}),
     },

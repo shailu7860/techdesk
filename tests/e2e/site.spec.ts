@@ -7,6 +7,11 @@ const routes = [
   "/work/stratos",
   "/services",
   "/services/ai-automation",
+  "/solutions",
+  "/solutions/whatsapp-ai-agent-development",
+  "/solutions/algo-trading-software-development",
+  "/insights",
+  "/insights/ai-agent-development-cost",
   "/about",
   "/contact",
   "/privacy",
@@ -42,7 +47,7 @@ test("unknown URLs return 404 with the designed page", async ({ page }) => {
 
 test("sitemap and robots are generated", async ({ request }) => {
   const sitemap = await (await request.get("/sitemap.xml")).text();
-  expect(sitemap).toContain("/work/biexor");
+  expect(sitemap).toContain("/work/business-exchange-platform");
   expect(sitemap).not.toContain("/system");
   expect(await (await request.get("/robots.txt")).text()).toContain("Disallow: /system");
 });

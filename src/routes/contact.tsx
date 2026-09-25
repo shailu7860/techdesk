@@ -16,9 +16,10 @@ import { FaqSection } from "../sections/home/FaqSection";
 
 export const meta = () =>
   seo({
-    title: "Contact | Start a project with TechDesk",
+    title: "Contact TechDesk: get a software project estimate",
     description: `Tell us what you're building. WhatsApp or call ${contact.phoneDisplay}, get an indicative estimate, or send a short project brief. ${contact.replyPromise}`,
     path: "/contact",
+    breadcrumbs: [["Contact", "/contact"]],
     jsonLd: faqLd(faqs),
   });
 

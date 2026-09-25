@@ -10,7 +10,7 @@ export const site = {
   name: "TechDesk",
   tagline: "We engineer digital systems for what's next.",
   description:
-    "TechDesk engineers AI agents, software platforms, intelligent automation and high-performance digital experiences for ambitious businesses. Indore, India, serving clients worldwide.",
+    "TechDesk is an AI and software development company in Indore, India. We build AI agents, SaaS platforms and automation for clients worldwide.",
 } as const;
 
 // Engagement models (delegated by the owner). Prices live in pricing.ts; these describe how we work together.
@@ -52,7 +52,8 @@ export const stackGroups = [
 export const strengths = [
   {
     title: "Products that handle money and trust",
-    detail: "Ledgers, KYC, consent and audit logs, built to be correct first (Stratos, Biexor, 1Bull).",
+    detail:
+      "Ledgers, KYC, consent and audit logs, built to be correct first (Stratos, a business exchange platform, 1Bull).",
   },
   {
     title: "AI that stays up",

@@ -2,10 +2,11 @@ import { useHomeMotion } from "../animations/home";
 import { faqLd } from "../components/content/FaqList";
 import { site } from "../data/company";
 import { faqs } from "../data/faq";
-import { organizationLd, seo } from "../lib/seo";
+import { seo } from "../lib/seo";
 import { AgentTrace } from "../sections/home/AgentTrace";
 import { CommitmentsBand } from "../sections/home/CommitmentsBand";
 import { EstimateSection } from "../sections/home/EstimateSection";
+import { Explore } from "../sections/home/Explore";
 import { FaqSection } from "../sections/home/FaqSection";
 import { FinalCTA } from "../sections/home/FinalCTA";
 import { Hero } from "../sections/home/Hero";
@@ -20,10 +21,10 @@ const homeFaqs = faqs.slice(0, 7);
 
 export const meta = () =>
   seo({
-    title: "TechDesk | AI agents, software platforms and automation",
+    title: "AI Agent & Software Development Company | TechDesk",
     description: site.description,
     path: "/",
-    jsonLd: [organizationLd, faqLd(homeFaqs)],
+    jsonLd: faqLd(homeFaqs),
   });
 
 export default function Home() {
@@ -40,6 +41,7 @@ export default function Home() {
       <CommitmentsBand />
       <HowWeWork />
       <EstimateSection />
+      <Explore />
       <FaqSection items={homeFaqs} />
       <FinalCTA />
     </main>

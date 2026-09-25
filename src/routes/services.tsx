@@ -6,10 +6,11 @@ import { seo } from "../lib/seo";
 
 export const meta = () =>
   seo({
-    title: "Services | TechDesk",
+    title: "Software, AI and digital marketing services | TechDesk",
     description:
       "Web and product engineering, AI agents and automation, software engineering, digital marketing and digital transformation, built around business outcomes.",
     path: "/services",
+    breadcrumbs: [["Services", "/services"]],
   });
 
 export default function Services() {

@@ -28,7 +28,7 @@ const swatches = [
 const type = [
   ["text-display font-display", "Display", "Systems for what's next"],
   ["text-headline font-display", "Headline", "Intelligence that acts."],
-  ["text-title font-medium", "Title", "Biexor: The Business Exchange"],
+  ["text-title font-medium", "Title", "Business Exchange Platform"],
   [
     "text-body",
     "Body",

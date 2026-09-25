@@ -26,7 +26,7 @@ export const industries: Industry[] = [
     example:
       "A business exchange with mandates, auctions, watchlists and identity verification built into the deal flow.",
     services: ["web-product-engineering", "software-engineering"],
-    project: "biexor",
+    project: "business-exchange-platform",
   },
   {
     key: "enterprise",
