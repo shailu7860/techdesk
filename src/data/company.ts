@@ -53,7 +53,7 @@ export const strengths = [
   {
     title: "Products that handle money and trust",
     detail:
-      "Ledgers, KYC, consent and audit logs, built to be correct first (Stratos, a business exchange platform, 1Bull).",
+      "Ledgers, KYC, consent and audit logs, built to be correct first (our trading, business exchange and gaming platforms).",
   },
   {
     title: "AI that stays up",

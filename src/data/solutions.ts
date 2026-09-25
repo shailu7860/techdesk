@@ -61,7 +61,7 @@ export const solutions: Solution[] = [
       {
         title: "Agents that stay up",
         detail:
-          "Our AI layers run a provider chain with timeouts and fallbacks, the same pattern we built for the Stratos trading platform, so one model outage does not take your support line down.",
+          "Our AI layers run a provider chain with timeouts and fallbacks, the same pattern we built for our algo trading platform, so one model outage does not take your support line down.",
       },
       {
         title: "Grounded answers only",
@@ -74,7 +74,7 @@ export const solutions: Solution[] = [
           "A focused WhatsApp agent starts at an indicative ₹75k in India or $2k worldwide. See the estimate tool for your case.",
       },
     ],
-    proof: ["stratos"],
+    proof: ["algo-trading-platform"],
     services: ["ai-automation"],
     estimateType: "ai",
     guide: "ai-agent-development-cost",
@@ -103,11 +103,11 @@ export const solutions: Solution[] = [
     ],
     title: "Algo trading software and platform development",
     description:
-      "Custom algo trading platforms: strategy builders, backtesting, paper trading, broker APIs and AI research. From the team that built the Stratos platform.",
+      "Custom algo trading platforms: strategy builders, backtesting, paper trading, broker APIs and AI research, from a team that runs a live one.",
     h1: "Algo trading software development, from strategy builder to live execution",
     intro: [
       "Trading software has to be right every time: a duplicate order or a missed stop-loss costs real money. We build algorithmic trading platforms and bots with the safety rails designed in from the start.",
-      "We engineered Stratos, a live platform where traders build strategies without code, backtest them, paper trade by default and go live through their own broker. We bring that experience to your platform.",
+      "We engineered a live algo trading platform where traders build strategies without code, backtest them, paper trade by default and go live through their own broker. We bring that experience to your platform.",
     ],
     build: [
       "No-code strategy builders with indicators, opening range and risk settings",
@@ -136,7 +136,7 @@ export const solutions: Solution[] = [
       {
         title: "We have shipped one",
         detail:
-          "Stratos runs strategies for Indian derivatives through Angel One and crypto through Delta Exchange, with AI research on a 5-minute cycle.",
+          "Our algo trading platform runs strategies for Indian derivatives through Angel One and crypto through Delta Exchange, with AI research on a 5-minute cycle.",
       },
       {
         title: "Correctness before features",
@@ -148,7 +148,7 @@ export const solutions: Solution[] = [
           "Paper-first defaults, recorded live consent, audit logs and encrypted broker tokens are part of the design, not an afterthought.",
       },
     ],
-    proof: ["stratos", "financial-analytics"],
+    proof: ["algo-trading-platform", "financial-analytics"],
     services: ["software-engineering", "ai-automation"],
     estimateType: "web-app",
     faq: [
@@ -238,7 +238,7 @@ export const solutions: Solution[] = [
     h1: "Chrome extension development that removes repetitive work from your team's day",
     intro: [
       "Many business processes still live inside a website you do not control: a supplier portal, a government system, a CRM. A browser extension can automate the repetitive parts right where your team already works.",
-      "We built BidMaster, a Manifest V3 extension for vendors on SAP e-bidding portals: the bid is prepared in advance and saved the instant the bidding window opens, with the vendor still confirming.",
+      "We built a Manifest V3 extension for vendors on SAP e-bidding portals: the bid is prepared in advance and saved the instant the bidding window opens, with the vendor still confirming.",
     ],
     build: [
       "Manifest V3 extensions for Chrome and Chromium-based browsers",
@@ -263,7 +263,7 @@ export const solutions: Solution[] = [
     why: [
       {
         title: "Real portal experience",
-        detail: "BidMaster works on live SAP e-bidding portals where seconds matter.",
+        detail: "Our e-bidding extension works on live SAP e-bidding portals where seconds matter.",
       },
       {
         title: "Privacy by design",
@@ -274,7 +274,7 @@ export const solutions: Solution[] = [
         detail: "Automation prepares and speeds up the work; the person still approves the action.",
       },
     ],
-    proof: ["bidmaster"],
+    proof: ["e-bidding-automation"],
     services: ["ai-automation", "digital-transformation"],
     estimateType: "extension",
     faq: [
@@ -302,7 +302,7 @@ export const solutions: Solution[] = [
     h1: "SaaS development from first version to the product customers pay for",
     intro: [
       "A SaaS product has more moving parts than it looks: accounts and roles, subscriptions and billing, admin tools, reporting and an API, all while staying fast and secure. We design and build all of it, and we keep the first version small enough to launch.",
-      "Our own products include Stratos, a subscription trading platform with Starter, Pro and Ultra Pro plans, and a real-time task management SaaS for teams.",
+      "Our own products include a subscription algo trading platform with Starter, Pro and Ultra Pro plans, and a real-time task management SaaS for teams.",
     ],
     build: [
       "Multi-user accounts, roles and permissions",
@@ -324,7 +324,7 @@ export const solutions: Solution[] = [
     why: [
       {
         title: "We run our own SaaS",
-        detail: "Stratos has plans, billing cycles, plan enforcement and an admin console in production.",
+        detail: "Our trading platform has plans, billing cycles, plan enforcement and an admin console in production.",
       },
       {
         title: "Launch small, grow safely",
@@ -335,7 +335,7 @@ export const solutions: Solution[] = [
         detail: "A focused SaaS MVP starts at an indicative ₹1.5L in India or $3k worldwide.",
       },
     ],
-    proof: ["stratos", "task-management-saas", "learning-platform"],
+    proof: ["algo-trading-platform", "task-management-saas", "learning-platform"],
     services: ["web-product-engineering", "software-engineering"],
     estimateType: "web-app",
     guide: "saas-development-cost",
@@ -395,11 +395,10 @@ export const solutions: Solution[] = [
       { title: "Visible progress", detail: "Weekly demos and a repository you own, so nothing happens out of sight." },
       {
         title: "Proven stack",
-        detail:
-          "The same engineers built Stratos, a business exchange platform, BidMaster and the 1Bull platform foundation.",
+        detail: "The same engineers built our algo trading, business exchange, e-bidding and gaming platforms.",
       },
     ],
-    proof: ["stratos", "business-exchange-platform", "1bull"],
+    proof: ["algo-trading-platform", "business-exchange-platform", "gaming-platform"],
     services: ["web-product-engineering", "ai-automation"],
     estimateType: "web-app",
     faq: [
@@ -423,7 +422,7 @@ export const solutions: Solution[] = [
     secondary: ["fintech app development", "trading platform development", "financial software development"],
     title: "Fintech software development company",
     description:
-      "Fintech software built to be correct first: trading platforms, marketplaces with KYC, ledgers and analytics, from the team behind Stratos and 1Bull.",
+      "Fintech software built to be correct first: trading platforms, marketplaces with KYC, ledgers and analytics, from a team with live fintech systems.",
     h1: "Fintech software development where every number has to be right",
     intro: [
       "Financial software is judged on correctness. Money must never be lost to a rounding error, an order must never fire twice, and every sensitive action must leave an audit trail. We build with those rules enforced in code and in the database.",
@@ -447,18 +446,19 @@ export const solutions: Solution[] = [
       {
         title: "Money as integers",
         detail:
-          "In 1Bull, money is bigint minor units with an explicit currency, and floats on money are a lint error.",
+          "In our gaming platform, money is bigint minor units with an explicit currency, and floats on money are a lint error.",
       },
       {
         title: "Trust built in",
-        detail: "Stratos and our business exchange platform ship consent records, audit logs and KYC as core features.",
+        detail:
+          "Our trading and business exchange platforms ship consent records, audit logs and KYC as core features.",
       },
       {
         title: "Compliance-aware engineering",
         detail: "Server-side, deny-by-default rules, never hidden only in the interface.",
       },
     ],
-    proof: ["stratos", "business-exchange-platform", "1bull", "financial-analytics"],
+    proof: ["algo-trading-platform", "business-exchange-platform", "gaming-platform", "financial-analytics"],
     services: ["software-engineering", "web-product-engineering"],
     estimateType: "web-app",
     faq: [
@@ -513,11 +513,12 @@ export const solutions: Solution[] = [
       },
       {
         title: "Work at a global standard",
-        detail: "The same team built platforms such as Stratos and a business exchange platform used beyond Indore.",
+        detail:
+          "The same team built platforms such as an algo trading platform and a business exchange, used beyond Indore.",
       },
       { title: "Clear pricing in rupees", detail: "Indicative INR ranges for every kind of project, before we meet." },
     ],
-    proof: ["stratos", "business-exchange-platform", "bidmaster"],
+    proof: ["algo-trading-platform", "business-exchange-platform", "e-bidding-automation"],
     services: ["web-product-engineering", "ai-automation", "digital-marketing"],
     estimateType: "web-app",
     faq: [

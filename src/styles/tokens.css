@@ -53,7 +53,7 @@
   --text-label--letter-spacing: 0.01em;
 
   /* ── Radius ── */
-  --radius-sm: 8px; /* rounded like digital-ascent */
+  --radius-sm: 8px; /* soft rounded corners */
   --radius-md: 12px;
   --radius-lg: 16px;
 
@@ -71,7 +71,7 @@
 
 :root {
   /* Layout */
-  --container: 96rem; /* content width 1536px (Tailwind 2xl), matching the owner's Stratos site; padding sits outside */
+  --container: 96rem; /* content width 1536px (Tailwind 2xl), matching the owner's reference site; padding sits outside */
   --gutter: clamp(1rem, 0.5rem + 2.5vw, 3rem);
   --section-y: clamp(4rem, 2.5rem + 4.5vw, 7rem);
   --dock-h: 4rem;

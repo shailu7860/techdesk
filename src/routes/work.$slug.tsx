@@ -15,7 +15,7 @@ export const meta = ({ params }: Route.MetaArgs) => {
   if (!p?.caseStudy)
     return seo({ title: "Project not found | TechDesk", description: "", path: "/404", noindex: true });
   return seo({
-    title: `${p.title} case study: ${p.industry.split(" · ")[0]} | TechDesk`,
+    title: `${p.title} case study | TechDesk`,
     description: p.metaDescription ?? p.summary,
     imageAlt: `${p.title} case study by TechDesk`,
     breadcrumbs: [

@@ -18,7 +18,7 @@ export const industries: Industry[] = [
     name: "Fintech",
     example: "Trading automation with paper-first safety, broker integrations and an AI research layer.",
     services: ["ai-automation", "software-engineering"],
-    project: "stratos",
+    project: "algo-trading-platform",
   },
   {
     key: "marketplaces",
@@ -33,7 +33,7 @@ export const industries: Industry[] = [
     name: "Enterprise & procurement",
     example: "Browser automation that prepares vendor bids ahead of time and saves them the instant the window opens.",
     services: ["ai-automation", "digital-transformation"],
-    project: "bidmaster",
+    project: "e-bidding-automation",
   },
   {
     key: "gaming",
@@ -41,7 +41,7 @@ export const industries: Industry[] = [
     example:
       "A multi-brand platform foundation with a double-entry ledger, idempotent money movement and deny-by-default compliance.",
     services: ["software-engineering"],
-    project: "1bull",
+    project: "gaming-platform",
   },
   {
     key: "ecommerce",

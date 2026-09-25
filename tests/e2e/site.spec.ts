@@ -4,7 +4,7 @@ import { expect, test } from "./fixtures";
 const routes = [
   "/",
   "/work",
-  "/work/stratos",
+  "/work/algo-trading-platform",
   "/services",
   "/services/ai-automation",
   "/solutions",

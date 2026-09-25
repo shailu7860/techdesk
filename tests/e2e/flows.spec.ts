@@ -12,8 +12,8 @@ test("navigate from home to a case study and back to work", async ({ page, isMob
     await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Work" }).click();
   }
   await expect(page).toHaveURL(/\/work$/);
-  await page.getByRole("link", { name: "Stratos", exact: true }).click();
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/stratos/i);
+  await page.getByRole("link", { name: "Algo Trading Platform", exact: true }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/algo trading platform/i);
   await expect(page.getByText("System architecture")).toBeVisible();
 });
 

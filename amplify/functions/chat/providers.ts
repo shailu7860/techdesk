@@ -1,4 +1,4 @@
-// Provider chain for the chat assistant. Pattern adapted from the owner's Stratos LLM layer
+// Provider chain for the chat assistant. Pattern adapted from the owner's trading-platform LLM layer
 // (env-driven provider:model pairs, per-attempt timeout, overall deadline, classified failures,
 // per-provider cooldown, secret redaction), rewritten small and fetch-only.
 

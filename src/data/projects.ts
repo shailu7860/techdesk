@@ -85,17 +85,16 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "stratos",
+    slug: "algo-trading-platform",
     metaDescription:
-      "Case study: Stratos, a no-code algo-trading platform with backtesting, paper-first safety, broker integrations and multi-provider AI research. By TechDesk.",
+      "Case study: a no-code algo-trading platform with backtesting, paper-first safety, broker integrations and multi-provider AI research. By TechDesk.",
     code: "02",
-    title: "Stratos",
+    title: "Algo Trading Platform",
     tagline: "Automated strategies, your broker, your control",
     industry: "Fintech · Trading automation",
     industries: ["fintech", "saas"],
     services: ["ai-automation", "web-product-engineering", "software-engineering"],
     status: "Live",
-    url: "https://shailendratradingbot.shop",
     summary:
       "A cloud algorithmic-trading platform: build strategies without code, backtest them, paper trade by default and go live through the trader's own broker, with AI research running alongside.",
     stack: [
@@ -156,11 +155,11 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "bidmaster",
+    slug: "e-bidding-automation",
     metaDescription:
-      "Case study: BidMaster, a Chrome extension that prepares SAP e-bidding submissions in advance and saves them the instant the window opens. By TechDesk.",
+      "Case study: a Chrome extension that prepares SAP e-bidding submissions in advance and saves them the instant the window opens. By TechDesk.",
     code: "03",
-    title: "BidMaster",
+    title: "E-bidding Automation Extension",
     tagline: "Procurement automation for SAP e-bidding",
     industry: "Enterprise · Procurement",
     industries: ["enterprise"],
@@ -192,11 +191,11 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "1bull",
+    slug: "gaming-platform",
     metaDescription:
-      "Case study: 1Bull, a multi-brand gaming platform foundation with a double-entry ledger, idempotent payments and deny-by-default compliance. By TechDesk.",
+      "Case study: a multi-brand gaming platform foundation with a double-entry ledger, idempotent payments and deny-by-default compliance. By TechDesk.",
     code: "04",
-    title: "1Bull",
+    title: "Gaming Platform",
     tagline: "Multi-brand gaming platform architecture",
     industry: "Gaming · Platform architecture",
     industries: ["gaming", "fintech"],
@@ -242,9 +241,9 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "digital-ascent",
+    slug: "agency-website",
     code: "05",
-    title: "Digital Ascent",
+    title: "Agency Website",
     tagline: "Agency website with AI chatbot and quote calculator",
     industry: "Professional services",
     industries: ["saas"],

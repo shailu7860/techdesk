@@ -8,7 +8,7 @@ const PHRASES = ["AI agents", "SaaS platforms", "trading systems", "marketplaces
 // Floating "live system" cards: every line is a real project fact from projects.ts.
 const SIGNALS = [
   {
-    label: "Stratos",
+    label: "Trading platform",
     status: "Live",
     detail: "Paper-first trading automation",
     pos: "top-[6%] left-[2%]",

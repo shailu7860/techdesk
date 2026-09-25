@@ -17,7 +17,7 @@ type Seo = {
   type?: "website" | "article";
   /** schema.org nodes for this page (emitted as one @graph together with the site-wide nodes). */
   jsonLd?: Ld | Ld[];
-  /** Breadcrumb trail after "Home", e.g. [["Work", "/work"], ["Stratos", "/work/stratos"]]. */
+  /** Breadcrumb trail after "Home", e.g. [["Work", "/work"], ["Project", "/work/project"]]. */
   breadcrumbs?: [string, string][];
 };
 
