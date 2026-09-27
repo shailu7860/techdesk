@@ -51,7 +51,7 @@ Uniqueness of primary keywords is enforced by `tests/unit/seo-content.test.ts`.
 - Real 404 status for unknown URLs (Amplify rewrite rule in DEPLOYMENT.md).
 
 ## Owner actions after launch (these matter as much as the code)
-1. **Set `SITE_URL` to the real domain** in Amplify and redeploy, so canonical URLs and the sitemap use it. Until then they point at the Amplify URL.
+1. Canonical URLs and the sitemap use `https://techdesks.in` on Amplify builds (set in `vite.config.ts`).
 2. **Google Search Console:** verify the domain, submit `/sitemap.xml`, and request indexing of the solution pages and guides.
 3. **Google Business Profile** for "TechDesk, Indore": the strongest single lever for the Indore keywords. Use the same name, phone and address as the site.
 4. **Bing Webmaster Tools:** import from Search Console (also feeds ChatGPT search and Copilot).
