@@ -3,7 +3,7 @@ import { Button } from "../../components/ui/Button";
 import { contact } from "../../data/contact";
 import { Planet } from "./Planet";
 
-const PHRASES = ["AI agents", "SaaS platforms", "trading systems", "marketplaces", "automation"] as const;
+const PHRASES = ["AI agent", "SaaS platform", "trading system", "marketplace", "automation"] as const;
 
 // Floating "live system" cards: every line is a real project fact from projects.ts.
 const SIGNALS = [
@@ -53,10 +53,11 @@ export function Hero() {
             data-hero-title
           >
             <span className="sr-only">
-              We engineer AI agents, SaaS platforms, trading systems, marketplaces and automation for what's next.
+              Build the AI agent, SaaS platform, trading system, marketplace or automation your competitors wish they
+              had.
             </span>
-            <span aria-hidden="true">We engineer</span> <Typewriter phrases={PHRASES} className="text-signal" />{" "}
-            <span aria-hidden="true">for what's next.</span>
+            <span aria-hidden="true">Build the</span> <Typewriter phrases={PHRASES} className="text-signal" />{" "}
+            <span aria-hidden="true">your competitors wish they had.</span>
           </h1>
           <p className="mt-6 max-w-[52ch] text-body text-muted md:text-[1.1875rem]" data-hero-reveal>
             TechDesk is an AI and software development company in Indore, India, building AI agents, SaaS platforms and

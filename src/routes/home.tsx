@@ -36,17 +36,17 @@ export default function Home() {
       <Hero />
       <TechMarquee />
       <ServicesSection />
-      <AgentTrace />
       <WorkSection />
       <TestimonialsSection />
+      <AgentTrace />
+      <CommitmentsBand />
       <ProcessSection />
       <IndustriesSection />
-      <CommitmentsBand />
       <HowWeWork />
       <EstimateSection />
       <BlogSection />
-      <Explore />
       <FaqSection items={homeFaqs} />
+      <Explore />
       <FinalCTA />
     </main>
   );
