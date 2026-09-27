@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 (2026-09-27): static-only
+- Removed the AI chat assistant and its Amplify Lambda backend (owner: deploy on Amplify with no server for now). Dock is now WhatsApp + Call; the home AI section links to /contact.
+- Dropped AWS backend devDependencies (`@aws-amplify/backend*`, `aws-cdk-lib`, `constructs`) and the `mysql2`/`immutable` overrides; `amplify.yml` is frontend-only.
+- Removed unused screenshot scripts (`scripts/shots.mjs`, `scripts/sections.mjs`).
+- Moved the project into the GitHub repository (history preserved).
+
 ## 0.1.0 (2026-09-24): first production-ready build
 - Phase 0–1: discovery, product/design context, requirements, architecture, UX flow
 - Phase 2: design system (OKLCH tokens, Archivo + Martian Mono, wordmark, core components, contact dock)

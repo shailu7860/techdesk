@@ -13,7 +13,7 @@ Founders and startup leaders, business owners (India-first, SMB), and enterprise
 "We engineer digital systems for what's next." A near-future technology studio: precise, calm-confident, inventive and warm. It sells business outcomes first and technology second, and never over-claims.
 
 ## Core experience
-A single cinematic homepage scroll with one WebGL signature moment (the hero "system core"), scroll-choreographed AI and work sequences, and calm clarity everywhere else. A human contact route is always one tap away: WhatsApp, call, AI chat, quote calculator and project brief. See `briefs/homepage.md`.
+A single cinematic homepage scroll with one WebGL signature moment (the hero "system core"), scroll-choreographed AI and work sequences, and calm clarity everywhere else. A human contact route is always one tap away: WhatsApp, call, quote calculator and project brief.
 
 ## Major pages (milestone 1)
 Home · Services (overview plus five service lines) · Work (index) · Project detail `/work/:slug` · About · Contact · 404.
@@ -25,13 +25,12 @@ Later: Industries, Process, Insights, legal pages.
 | Cinematic homepage | Hero system core (WebGL, SVG fallback), services, AI agent trace, work gallery, process, industries, estimate, final CTA |
 | Project system | Data-driven case studies (`src/data/projects.ts`). Adding a project needs no component changes, and each one is prerendered to its own SEO page |
 | Quick-contact dock | WhatsApp deep link (prefilled), `tel:` call, chat launcher. Persistent and thumb-friendly |
-| AI chatbot | Answers questions about TechDesk grounded only in site data. Serverless (Amplify function) with a Groq-then-Claude provider chain. Graceful handoff to a human |
 | Quote calculator | Indicative price range from type, size and add-ons. Hands off to the brief or WhatsApp with the selection prefilled |
 | Multi-step brief | Five-step contact flow (spec §26) through a form service behind `submitLead()` |
 | Analytics | Planned post-launch: one cookieless provider (see ROADMAP) |
 
 ## Technology
-Vite 8 · React 19 · TypeScript 7 (strict) · React Router 8 (framework mode, `ssr: false` plus prerender) · Tailwind CSS 4 plus CSS tokens · GSAP and ScrollTrigger · Lenis · three.js (hero only, lazy) · AWS Amplify Hosting plus one Amplify Gen 2 function (chatbot). Full rationale is in `ARCHITECTURE.md`.
+Vite 8 · React 19 · TypeScript 7 (strict) · React Router 8 (framework mode, `ssr: false` plus prerender) · Tailwind CSS 4 plus CSS tokens · GSAP and ScrollTrigger · Lenis · three.js (hero only, lazy) · AWS Amplify Hosting (static, no server). Full rationale is in `ARCHITECTURE.md`.
 
 ## Future roadmap (not built now)
 CMS (content already isolated behind `src/data`), lead management and CRM, blog and Insights, newsletter, client portal, multi-language, personalised landing pages. See spec §79.

@@ -1,6 +1,6 @@
 # TechDesk — Project Rules
 
-Source of truth for every session. Full product spec: [`SPEC.md`](./SPEC.md). Decisions below override the spec where they differ.
+Source of truth for every session. Full product spec: [`docs/SPEC.md`](./docs/SPEC.md). Decisions below override the spec where they differ.
 
 ## What this is
 Premium futuristic technology-agency website for **TechDesk**. Goal: qualified leads + proof of engineering capability. The site itself is the portfolio piece.
@@ -11,11 +11,11 @@ Premium futuristic technology-agency website for **TechDesk**. Goal: qualified l
 | Brand | **TechDesk** (wordmark `TECHDESK`). No logo exists — SVG wordmark designed in Phase 2. |
 | Stack | Vite 8 + React 19 + TypeScript 7 (strict) + React Router 8 framework mode (v7 API; prerender unchanged) |
 | Rendering | `ssr: false` + `prerender()` → static HTML per route incl. every `/work/:slug` (SEO, spec §32) |
-| Hosting | **AWS Amplify** Hosting (static). No domain yet — use Amplify default URL, domain later. |
+| Hosting | **AWS Amplify** Hosting, static only, no backend. No domain yet — use Amplify default URL, domain later. |
 | Leads | Form service (Formspree/Web3Forms class) behind ONE `submitLead()` in `src/lib/leads.ts`. Public form ID only. |
-| AI chatbot | Amplify Gen 2 function (Lambda) — keys via `secret()`, never in frontend. Provider chain env-driven: Groq first, Claude fallback. Grounded ONLY on `src/data/*`. |
+| AI chatbot | **Removed 2026-09-27** (owner: static-only deploy, no server). If re-added, it needs a server-side function; LLM keys never go in the frontend. Recoverable from git history before commit "remove chatbot". |
 | Quote calculator | Pure frontend, data-driven (`src/data/pricing.ts`). Shows **indicative ranges**, never a binding price. |
-| Quick contact | Persistent dock: WhatsApp (`wa.me` deep link, prefilled text) + phone (`tel:`) + chat. |
+| Quick contact | Persistent dock: WhatsApp (`wa.me` deep link, prefilled text) + phone (`tel:`). |
 | Styling | Tailwind CSS v4 + CSS custom-property tokens (`src/styles/tokens.css`). |
 | Motion | GSAP + ScrollTrigger + Lenis (on demand). three.js (plain, named imports; R3F removed) for the hero only, lazy, desktop only. |
 | Fonts | **Archivo** variable (display at 118% width, body at 100%) + **Martian Mono** (labels only), self-hosted via Fontsource. |

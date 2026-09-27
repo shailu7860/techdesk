@@ -1,8 +1,7 @@
 import { Button } from "../../components/ui/Button";
-import { openChat } from "../../lib/chat-events";
 
 // A real, concrete workflow (brief §5 section 3). Each step names what actually happens.
-export const trace = [
+const trace = [
   { step: "User", text: "A lead messages on WhatsApp at 11pm: “Do you build booking systems for clinics?”" },
   {
     step: "Agent",
@@ -36,8 +35,8 @@ export function AgentTrace() {
             in the loop where it matters.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button onClick={() => openChat("agent-section")} size="lg" trailing="→">
-              Ask our agent
+            <Button href="/contact" size="lg" trailing="→">
+              Discuss your AI project
             </Button>
             <Button href="/services/ai-automation" variant="secondary" size="lg">
               AI & automation

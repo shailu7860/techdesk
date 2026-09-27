@@ -21,7 +21,7 @@ export type Project = {
   metaDescription?: string;
 };
 
-export type CaseStudy = {
+type CaseStudy = {
   problem: string[];
   approach: string;
   architecture: { node: string; role: string }[];

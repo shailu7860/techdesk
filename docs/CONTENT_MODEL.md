@@ -1,6 +1,6 @@
 # Content Model
 
-All content is typed TypeScript in `src/data/`. It is the single source for pages, prerender paths, the sitemap, JSON-LD and the chat assistant's knowledge. To move to a CMS later, replace each module's exports with build-time fetches that return the same types.
+All content is typed TypeScript in `src/data/`. It is the single source for pages, prerender paths, the sitemap and JSON-LD. To move to a CMS later, replace each module's exports with build-time fetches that return the same types.
 
 | File | Type | Key fields | Used by |
 |---|---|---|---|

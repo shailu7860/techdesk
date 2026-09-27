@@ -9,7 +9,7 @@
 ## Next (after launch)
 - Field Core Web Vitals review; subset the display font if mobile LCP stays above 2.5s
 - Cookieless analytics (Plausible or similar) behind the existing CTA hooks: page_view, cta_click, contact_start/complete, calc_complete, chat_open
-- Streaming chat responses (Lambda response streaming)
+- AI chat assistant (needs a server-side function for LLM keys; previous implementation is in git history)
 - API Gateway throttling or WAF in front of chat if abuse appears
 - Insights/blog and industry landing pages (spec §5, not in milestone 1)
 

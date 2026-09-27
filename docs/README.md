@@ -5,12 +5,11 @@
 | [`../CLAUDE.md`](../CLAUDE.md) | Project rules and locked decisions |
 | [`../PRODUCT.md`](../PRODUCT.md) | Users, purpose, personality, anti-references, principles |
 | [`../DESIGN.md`](../DESIGN.md) | Visual system: tokens, type, components, do's and don'ts (the spec's DESIGN_SYSTEM) |
-| [`../SPEC.md`](../SPEC.md) | Original master specification |
+| [SPEC](SPEC.md) | Original master specification |
 | [DISCOVERY](DISCOVERY.md) | Phase 0 findings, portfolio inventory, business content decisions |
 | [PROJECT_OVERVIEW](PROJECT_OVERVIEW.md) | What the site is and does |
 | [PRODUCT_REQUIREMENTS](PRODUCT_REQUIREMENTS.md) | Requirements with ID, priority and status |
-| [UX_FLOW](UX_FLOW.md) | Journeys, CTAs, navigation, contact/estimate/chat flows |
-| [briefs/homepage](briefs/homepage.md) | Confirmed homepage design brief |
+| [UX_FLOW](UX_FLOW.md) | Journeys, CTAs, navigation, contact/estimate flows |
 | [ARCHITECTURE](ARCHITECTURE.md) | Rendering, routing, data, animation, API, deployment |
 | [COMPONENT_ARCHITECTURE](COMPONENT_ARCHITECTURE.md) | Component tree and responsibilities |
 | [CONTENT_MODEL](CONTENT_MODEL.md) | Data types and content rules |

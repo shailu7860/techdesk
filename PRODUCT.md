@@ -16,7 +16,7 @@ Three buyer types, weighted equally; the page must work for all of them without 
 - **Business owners (India-first, SMB)** who want automation, web presence, marketing and internal tools. They judge trust and plainness, and prefer WhatsApp or a phone call over forms.
 - **Enterprise / CTO buyers** who need systems, integrations and AI agents. They judge engineering depth, architecture thinking and reliability.
 
-Context: first visit is usually from a referral, LinkedIn or search, often on mobile. The job is to decide within a minute whether TechDesk is serious enough to contact, then to contact them with as little friction as possible (WhatsApp, call, quote calculator, chatbot or multi-step brief).
+Context: first visit is usually from a referral, LinkedIn or search, often on mobile. The job is to decide within a minute whether TechDesk is serious enough to contact, then to contact them with as little friction as possible (WhatsApp, call, quote calculator or multi-step brief).
 
 ## Product Purpose
 
@@ -27,7 +27,7 @@ It is also TechDesk's strongest portfolio piece: the build quality of the site i
 Success looks like:
 - Visitors understand what TechDesk does, in business outcomes, within the first screen.
 - Real projects (Biexor, Stratos, BidMaster, 1Bull and client builds) read as engineered systems, not screenshots.
-- Qualified leads arrive through WhatsApp, calls, the quote calculator, the chatbot and the contact brief.
+- Qualified leads arrive through WhatsApp, calls, the quote calculator and the contact brief.
 
 ## Brand Personality
 

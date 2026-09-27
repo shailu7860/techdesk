@@ -1,6 +1,5 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { buildSystemPrompt } from "../../amplify/functions/chat/knowledge";
 import { securityHeaders } from "../../scripts/security-headers.mjs";
 import { industries } from "../../src/data/industries";
 import { projectTypes } from "../../src/data/pricing";
@@ -37,18 +36,6 @@ describe("content integrity", () => {
     const text = JSON.stringify({ projects, services, industries }).toLowerCase();
     for (const bad of ["lorem", "sarah chen", "hipaa", "50+ projects", "99.9%", "captcha"])
       expect(text).not.toContain(bad);
-  });
-});
-
-describe("chat grounding", () => {
-  it("includes every service, project and the human contact route", () => {
-    const p = buildSystemPrompt("https://site.test");
-    for (const s of services) expect(p).toContain(s.name);
-    for (const pr of projects) expect(p).toContain(pr.title);
-    expect(p).toContain("+91 92033 87375");
-    expect(p).toContain("Who owns the code and designs?");
-    expect(p).toContain("Discovery sprint");
-    expect(p).toMatch(/never invent/i);
   });
 });
 

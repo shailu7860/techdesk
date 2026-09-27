@@ -1,6 +1,6 @@
 # UX Flow
 
-Homepage section detail lives in `briefs/homepage.md` (confirmed). This file covers journeys across the site.
+This file covers journeys across the site.
 
 ## 1. Visitor journey
 ```
@@ -10,7 +10,7 @@ Hero: understands the offer in outcomes (BR-01) ──────────�
   ↓                                                           │ any moment:
 Services: "they build what I need"                            │ Dock → WhatsApp · Call · Chat
   ↓                                                           │
-AI trace: "they build real agents" → Ask our agent (chatbot)  │
+AI trace: "they build real agents" → Discuss your AI project  │
   ↓                                                           │
 Proof: flagship mission files → case study /work/:slug        │
   ↓                                                           │
@@ -25,7 +25,7 @@ Contact: brief · WhatsApp · Call ◄──────────────
 | Level | CTA | Where | Goes to |
 |---|---|---|---|
 | Primary | **Start a project** | Nav, hero, final CTA, case study end | `/contact` (brief step 1) |
-| Instant | **WhatsApp** | Dock, final CTA, calculator result, chatbot handoff, contact page | `wa.me` with context-prefilled text (page, project or estimate) |
+| Instant | **WhatsApp** | Dock, final CTA, calculator result, contact page | `wa.me` with context-prefilled text (page, project or estimate) |
 | Instant | **Call** | Dock, final CTA, contact page | `tel:` (on desktop the number is shown and copyable, since many desktops cannot dial) |
 | Secondary | **Explore our work ↓** | Hero | Scrolls to Work |
 | Secondary | **View case study** | Work files, industries panel | `/work/:slug` |

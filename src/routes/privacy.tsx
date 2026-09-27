@@ -19,9 +19,6 @@ export default function Privacy() {
           details you type into the contact form.
         </li>
         <li>
-          <strong className="text-ink">Chat assistant:</strong> the messages you send to the assistant on this site.
-        </li>
-        <li>
           <strong className="text-ink">Technical logs:</strong> our hosting provider keeps standard request logs (IP
           address, browser, time) to operate and protect the site.
         </li>
@@ -36,12 +33,8 @@ export default function Privacy() {
 
       <h2>Who processes it</h2>
       <ul>
-        <li>Amazon Web Services (AWS Amplify and Lambda): hosting and the chat assistant's server.</li>
+        <li>Amazon Web Services (AWS Amplify): hosting.</li>
         <li>Web3Forms: delivers the project brief to our email inbox.</li>
-        <li>
-          Groq and Anthropic: generate the chat assistant's replies. Your chat messages are sent to them for that
-          purpose only. Please do not share sensitive personal data in chat.
-        </li>
         <li>WhatsApp (Meta) and your phone carrier: if you choose to message or call us.</li>
       </ul>
 

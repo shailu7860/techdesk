@@ -3,7 +3,7 @@
 Every component has one job. Data comes from `src/data`, never hard-coded in components.
 
 ```
-root.tsx ── SiteHeader · <Outlet/> · SiteFooter · ContactDock · ChatLauncher (lazy ChatPanel)
+root.tsx ── SiteHeader · <Outlet/> · SiteFooter · ContactDock
 routes/
   home.tsx ─ Hero(SystemCorePoster | lazy SystemCore) · ServicesSection(ServiceVisual) · AgentTrace
              · WorkSection(MissionFile) · ProcessSection · IndustriesSection · CommitmentsBand
@@ -21,7 +21,6 @@ routes/
 | `components/brand` | `Mark`, `Wordmark` | Live text, not text in an SVG |
 | `components/layout` | `SiteHeader` (hide on scroll, `<dialog>` menu), `SiteFooter`, `PageIntro`, `LegalPage` | |
 | `components/contact` | `ContactDock`, `BriefForm` (5 steps, all states), `QuoteCalculator` (native radios/checkboxes) | |
-| `components/chat` | `ChatLauncher` (event listener + lazy import), `ChatPanel` (modal dialog, text-only output) | Opened through `openChat()` in `lib/chat-events.ts` |
 | `components/work` | `MissionFile` (whole-card link), `SystemDiagram` (architecture chain) | |
 | `sections/home` | One component per homepage section | |
 

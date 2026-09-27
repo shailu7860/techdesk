@@ -2,7 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 // E2E runs against a separate production build with test-only endpoint values; the endpoints
 // themselves are intercepted with page.route, so no real emails or AI calls are made.
-const env = "BUILD_DIR=build-e2e VITE_WEB3FORMS_KEY=e2e-key VITE_CHAT_URL=https://chat.e2e.test/";
+const env = "BUILD_DIR=build-e2e VITE_WEB3FORMS_KEY=e2e-key";
 
 export default defineConfig({
   testDir: "tests/e2e",

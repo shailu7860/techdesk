@@ -70,7 +70,7 @@ export function seo({
 export const ORG_ID = `${SITE_URL}/#organization`;
 
 /** The business as Google should understand it: a professional service, based in Indore, serving the world. */
-export const organizationLd: Ld = {
+const organizationLd: Ld = {
   "@type": "ProfessionalService",
   "@id": ORG_ID,
   name: site.name,
@@ -132,7 +132,7 @@ const websiteLd: Ld = {
   inLanguage: "en",
 };
 
-export function breadcrumbLd(trail: [string, string][]): Ld {
+function breadcrumbLd(trail: [string, string][]): Ld {
   return {
     "@type": "BreadcrumbList",
     itemListElement: [["Home", "/"] as [string, string], ...trail].map(([name, path], i) => ({

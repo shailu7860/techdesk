@@ -8,10 +8,9 @@ Browser ──► Amplify Hosting (CDN, static files)
              ├─ /index.html, /work/biexor/index.html …   ← prerendered at build
              ├─ /assets/*.js|css (hashed, immutable)     ← code-split chunks
              └─ /__spa-fallback.html                     ← client-rendered 404 / unknown routes
-Browser ──► Lambda Function URL (chat)  ──► Groq ──(fail)──► Anthropic Claude
 Browser ──► Form service endpoint (leads)
 ```
-It is a static-first site. The only server code is **one function** (the chatbot). Leads go to a form service. There is no database.
+It is a fully static site with no server code (the AI chatbot was removed 2026-09-27). Leads go to a form service. There is no database.
 
 ## 2. Rendering and routing
 - **React Router v7 framework mode** with `ssr: false` and a `prerender()` config. Every static route and every `/work/:slug` and `/services/:slug` is built to HTML at build time. Slugs come from `src/data`, the same data the pages render, so adding a project automatically adds a page.
@@ -39,22 +38,21 @@ src/
   routes.ts              # route table
   routes/                # one file per route: home.tsx, work.tsx, work.$slug.tsx …
   sections/home/         # Hero/, Services/, AgentTrace/, Work/, Process/, Industries/, Estimate/, FinalCTA/
-  components/            # ui primitives (Button, Label, Field…), layout (Nav, Footer), contact (Dock, ChatPanel, QuoteCalculator, BriefForm)
+  components/            # ui primitives (Button, Label, Field…), layout (Nav, Footer), contact (Dock, QuoteCalculator, BriefForm)
   animations/            # reusable GSAP utilities: reveal.ts, scrub.ts, pin.ts, pageTransition.ts
   hooks/                 # useReducedMotion, useMediaQuery, useGsap (context + cleanup)
   data/                  # projects.ts, services.ts, industries.ts, process.ts, pricing.ts, contact.ts, navigation.ts
-  lib/                   # leads.ts (submitLead), chat.ts (client), analytics.ts (track), seo.ts (meta builders), whatsapp.ts
+  lib/                   # leads.ts (submitLead), analytics.ts (track), seo.ts (meta builders), whatsapp.ts
   styles/                # tokens.css (DESIGN.md tokens), globals.css
   three/                 # HeroCore scene, lazy-loaded
-amplify/                 # Amplify Gen 2 backend: backend.ts, functions/chat/
 public/                  # fonts, og/, favicons, robots.txt
 ```
 
 ## 4. State management
-There is no global store. State is local component state, plus URL state where it should be shareable (the selected industry and calculator selections go in query params, so a WhatsApp or brief handoff can link back). Chat history lives in component state and is lost on reload by design (privacy).
+There is no global store. State is local component state, plus URL state where it should be shareable (the selected industry and calculator selections go in query params, so a WhatsApp or brief handoff can link back).
 
 ## 5. Data layer
-- `src/data/*.ts` holds typed content and is the **single source** for pages, prerender paths, sitemap, JSON-LD **and chatbot grounding**.
+- `src/data/*.ts` holds typed content and is the **single source** for pages, prerender paths, sitemap, JSON-LD.
 - Types live next to the data (`Project`, `Service`, `Industry`, `PriceBand`). Every content object has an optional `placeholder?: true`. A build-time check fails the production build if any `featured` item or rendered field is a placeholder (requirement PF-05).
 - CMS migration path: replace the data module's exports with build-time fetches, keeping the same types.
 
@@ -69,20 +67,8 @@ There is no global store. State is local component state, plus URL state where i
 ### Leads: `src/lib/leads.ts`
 `submitLead(payload): Promise<Result>` is the only function that knows the destination. v1 posts to a form service (Web3Forms or Formspree class) using a **public** form key, with a honeypot field. Client-side validation mirrors what the form service enforces. A later Node backend replaces the function body; no caller changes.
 
-### Chatbot: `amplify/functions/chat` plus `src/lib/chat.ts`
-- **Runtime:** an Amplify Gen 2 `defineFunction`, exposed through a **Lambda Function URL** (added in `amplify/backend.ts` with CDK `addFunctionUrl`). `authType: NONE`, and CORS limited to the site origins (Amplify URL now, domain later).
-- **Secrets:** `GROQ_API_KEY` and `ANTHROPIC_API_KEY` come from `secret()` and are read from `env` at runtime. They never touch the frontend.
-- **Provider chain.** This pattern is adapted from `Some learnings/algo-backend/src/utils/llmProvider.js`, as a small `fetch`-based implementation with no LangChain.
-  - `CHAT_CHAIN="groq:openai/gpt-oss-20b,anthropic:claude-haiku-4-5"` is env-driven, so switching models is a config change.
-  - Each attempt gets a timeout (8s), and the whole request has a deadline (15s).
-  - Failures are classified as `rate_limit`, `timeout`, `auth`, `not_found` or `server`, and the failing provider is parked for a cooldown (in memory, per warm instance).
-  - Error messages are redacted before logging.
-  - Groq goes first for latency; Claude is the quality fallback.
-- **Grounding:** the function imports `src/data/*` directly (esbuild bundles it), so the system prompt holds the real services, projects, process, price bands and contact routes. The rules are: answer only from this data, never invent clients, metrics or prices, and always offer WhatsApp, call or the brief for anything project-specific.
-- **Abuse limits** (requirement SC-02): message of 1,000 characters or fewer, 12 turns or fewer, body of 32 KB or less, `max_tokens` 500, opt-in reserved concurrency (`CHAT_MAX_CONCURRENCY`), and a best-effort per-IP limit (20 requests per 10 minutes).
-  `// ponytail: in-memory limits reset per cold start; add API Gateway throttling or WAF if abused.`
-- **Response:** v1 returns JSON (non-streaming) and the UI shows a typing state. Streaming through `RESPONSE_STREAM` is a P2 upgrade.
-- **Failure:** every provider failing returns `503 {handoff:true}`, and the UI renders the human handoff (requirement LG-08).
+### Chatbot
+Removed 2026-09-27 (static-only deploy). Re-adding it requires a server-side function so LLM keys never reach the browser; the previous Amplify Lambda implementation is in git history.
 
 ### Quick contact: `src/lib/whatsapp.ts`
 `waLink(text)` returns `https://wa.me/<E.164 number>?text=<encoded>` and `tel:` links come from `src/data/contact.ts`. There is no SDK and no third-party widget script.
@@ -97,7 +83,7 @@ There is no global store. State is local component state, plus URL state where i
 - OG images are 1200×630 static files per route in `public/og/`.
 
 ## 9. Deployment (AWS Amplify)
-- Amplify Gen 2 **full-stack app** connected to the git repo, so frontend plus the chat function deploy together per branch. `main` is production, and other branches get preview environments.
+- Amplify Hosting (static) connected to the git repo. `main` is production, and other branches get preview environments.
 - Build runs `npm ci && npm run build`. Artifacts come from `build/client`.
 - Hosting rules: prerendered `*/index.html` files are served as-is. Unknown paths are rewritten to the prerendered `/404/index.html` with a **404 status** (see DEPLOYMENT.md). `scripts/serve.mjs` emulates this locally and e2e asserts it. Confirm on Amplify after the first deploy.
 - Headers (requirement SC-03): `customHttp.yml` (generated from `scripts/security-headers.mjs`) sets HSTS, nosniff, `X-Frame-Options: DENY`, referrer/permissions policies and caching (`immutable` for `/assets/**`). The **CSP** is a per-page `<meta>` injected after build by `scripts/csp.mjs`, with SHA-256 hashes of React Router's inline scripts, because those hashes change every build and cannot live in a committed header file.
@@ -110,6 +96,4 @@ When lead management or a CMS arrives: Node/Express (or more Amplify functions) 
 | Decision | Alternatives rejected | Why |
 |---|---|---|
 | RR7 framework mode with prerender | Plain SPA (weak SEO) · Next.js static export (off-spec stack) | Static HTML per route on the spec's stack |
-| One Lambda for chat | Keys in the frontend (forbidden) · Express server (ops cost) | Secrets stay server-side and cost nothing at idle |
 | Form service for leads | Backend now · EmailJS | No ops; spam protection included; swappable |
-| Groq then Claude chain | A single provider | The owner's own production experience shows single-provider layers fail silently |

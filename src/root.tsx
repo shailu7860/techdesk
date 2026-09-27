@@ -6,7 +6,6 @@ import "./styles/globals.css";
 // Preload the Latin display face: it is the LCP font and is otherwise discovered only after the CSS.
 import archivoLatin from "@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url";
 import { useSmoothScroll } from "./animations/smoothScroll";
-import { ChatLauncher } from "./components/chat/ChatLauncher";
 import { ContactDock } from "./components/contact/ContactDock";
 import { SiteFooter } from "./components/layout/SiteFooter";
 import { SiteHeader } from "./components/layout/SiteHeader";
@@ -53,7 +52,6 @@ export default function App() {
       <Outlet />
       <SiteFooter />
       <ContactDock />
-      <ChatLauncher />
     </>
   );
 }

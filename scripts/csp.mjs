@@ -1,16 +1,10 @@
 // Post-build: inject a strict Content-Security-Policy <meta> into every prerendered HTML page.
 // Executable inline scripts (React Router hydration) are allowed by exact SHA-256 hash, not 'unsafe-inline'.
 import { createHash } from "node:crypto";
-import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const root = process.argv[2] ?? "build/client";
-
-let chatOrigin = "";
-let chatUrl = process.env.VITE_CHAT_URL;
-if (!chatUrl && existsSync("amplify_outputs.json"))
-  chatUrl = JSON.parse(readFileSync("amplify_outputs.json", "utf8")).custom?.chat_url;
-if (chatUrl) chatOrigin = new URL(chatUrl).origin;
 
 const walk = (d) =>
   readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
@@ -35,7 +29,7 @@ for (const file of files) {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self'",
     "font-src 'self'",
-    `connect-src 'self' https://api.web3forms.com${chatOrigin ? ` ${chatOrigin}` : ""}`,
+    "connect-src 'self' https://api.web3forms.com",
     "form-action 'self' https://api.web3forms.com",
     "base-uri 'self'",
     "object-src 'none'",
@@ -46,6 +40,4 @@ for (const file of files) {
   writeFileSync(file, out);
   total++;
 }
-console.log(
-  `CSP injected into ${total} HTML files${chatOrigin ? ` (chat: ${chatOrigin})` : " (no chat endpoint configured)"}`,
-);
+console.log(`CSP injected into ${total} HTML files`);

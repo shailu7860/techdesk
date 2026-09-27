@@ -31,9 +31,9 @@ Status: `Planned` · `In progress` · `Done` · `Blocked (content)`, where Block
 | LG-04 | Spam protection: honeypot plus the form service's built-in filtering; no captcha friction by default | P0 | Done |
 | LG-05 | Quote calculator: type, size and add-ons give an **indicative range**, with a clear disclaimer | P0 | Done |
 | LG-06 | The calculator hands off to the brief (prefilled) or WhatsApp (prefilled summary) | P0 | Done |
-| LG-07 | AI chatbot answers from site data only, shows a typing state (streaming is P2), and suggests prompts | P1 | Done (needs owner API keys to go live) |
-| LG-08 | When every provider is unavailable, the chatbot shows a handoff (WhatsApp, call, brief), never a dead end | P0 (if LG-07 ships) | Done |
-| LG-09 | The chatbot never quotes prices outside the calculator's ranges and never invents claims | P0 (if LG-07 ships) | Done |
+| LG-07 | AI chatbot answers from site data only, shows a typing state (streaming is P2), and suggests prompts | P1 | Removed 2026-09-27 (static-only) |
+| LG-08 | When every provider is unavailable, the chatbot shows a handoff (WhatsApp, call, brief), never a dead end | P0 (if LG-07 ships) | Removed 2026-09-27 (static-only) |
+| LG-09 | The chatbot never quotes prices outside the calculator's ranges and never invents claims | P0 (if LG-07 ships) | Removed 2026-09-27 (static-only) |
 
 ## Portfolio (PF)
 | ID | Description | Priority | Status |
@@ -63,8 +63,8 @@ Status: `Planned` · `In progress` · `Done` · `Blocked (content)`, where Block
 | ID | Description | Priority | Status |
 |---|---|---|---|
 | PE-01 | LCP ≤ 2.5s, CLS ≤ 0.1, INP ≤ 200ms (p75, mid-range mobile on 4G) | P0 | Partly met: CLS/TBT met; lab mobile LCP 2.7–2.9s (verify field data) |
-| PE-02 | Initial JS for `/` ≤ 170 KB gzip, excluding lazy WebGL and chatbot chunks | P0 | Done |
-| PE-03 | WebGL and chatbot are lazy chunks loaded after idle or interaction; no WebGL on mobile or reduced motion | P0 | Done |
+| PE-02 | Initial JS for `/` ≤ 170 KB gzip, excluding the lazy WebGL chunk | P0 | Done |
+| PE-03 | WebGL is a lazy chunk loaded after idle or interaction; no WebGL on mobile or reduced motion | P0 | Done |
 | PE-04 | Self-hosted, subset fonts with `font-display: swap` and at most 2 families | P0 | Done |
 | PE-05 | Images in AVIF/WebP with explicit dimensions; videos lazy-loaded with posters | P0 | Done |
 
@@ -75,13 +75,13 @@ Status: `Planned` · `In progress` · `Done` · `Blocked (content)`, where Block
 | AC-02 | `prefers-reduced-motion` gives instant or crossfade equivalents; no pinning, scrubbing or WebGL | P0 | Done |
 | AC-03 | Content is visible without JS and never gated on a reveal animation | P0 | Done |
 | AC-04 | Touch targets of at least 44px; colour is never the only carrier of state | P0 | Done |
-| AC-05 | The chatbot is keyboard- and screen-reader-operable (dialog semantics, live region for replies) | P0 (if LG-07) | Done |
+| AC-05 | The chatbot is keyboard- and screen-reader-operable (dialog semantics, live region for replies) | P0 (if LG-07) | Removed 2026-09-27 (static-only) |
 
 ## Non-functional: Security (SC)
 | ID | Description | Priority | Status |
 |---|---|---|---|
 | SC-01 | No secrets in the frontend bundle; LLM keys live only in Amplify `secret()` | P0 | Done |
-| SC-02 | Chatbot endpoint: CORS limited to the site origin, input length and turn caps, reserved-concurrency cap, output rendered as text (no HTML injection) | P0 (if LG-07) | Done |
+| SC-02 | Chatbot endpoint: CORS limited to the site origin, input length and turn caps, reserved-concurrency cap, output rendered as text (no HTML injection) | P0 (if LG-07) | Removed 2026-09-27 (static-only) |
 | SC-03 | Security headers through Amplify custom headers (CSP, HSTS, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) | P0 | Done |
 | SC-04 | A `security-audit` pass before every deploy, with no open Critical or High findings | P0 | Done |
 

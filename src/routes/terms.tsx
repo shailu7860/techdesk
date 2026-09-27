@@ -6,7 +6,7 @@ export const meta = () =>
   seo({
     title: "Terms of use for the TechDesk website",
     description:
-      "Terms for using the TechDesk website: indicative estimates, the AI chat assistant, our content and acceptable use. Governed by Indian law.",
+      "Terms for using the TechDesk website: indicative estimates, our content and acceptable use. Governed by Indian law.",
     path: "/terms",
   });
 
@@ -21,14 +21,8 @@ export default function Terms() {
 
       <h2>Estimates are indicative</h2>
       <p>
-        Ranges from the estimate tool, the chat assistant or this site are indicative only and are not quotes or offers.
-        A binding price is given only in a written proposal after we understand your scope.
-      </p>
-
-      <h2>Chat assistant</h2>
-      <p>
-        The assistant is automated and can be wrong. It answers from the information on this site; for anything that
-        matters, confirm with us directly. Do not share passwords, payment details or sensitive personal data in chat.
+        Ranges from the estimate tool or this site are indicative only and are not quotes or offers. A binding price is
+        given only in a written proposal after we understand your scope.
       </p>
 
       <h2>Our content</h2>

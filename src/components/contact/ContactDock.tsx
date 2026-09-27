@@ -1,5 +1,4 @@
 import { contact } from "../../data/contact";
-import { openChat } from "../../lib/chat-events";
 import { telLink, waLink } from "../../lib/whatsapp";
 
 // Official WhatsApp glyph, Simple Icons v16.32.0 (CC0).
@@ -46,21 +45,6 @@ const actions = [
     external: false,
   },
 ] as const;
-const ChatIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    className="size-5"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.75"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <path d="M4 5h16v11H9l-5 4z" strokeLinejoin="round" />
-    <path d="M8 10h8M8 13h5" />
-  </svg>
-);
-
 /**
  * Persistent quick-contact dock. Desktop: bottom-right cluster with text tooltips.
  * Mobile: labelled bottom bar in the thumb zone. Plain anchors, so it works without JS.
@@ -71,7 +55,7 @@ export function ContactDock() {
       aria-label="Quick contact"
       className="fixed z-(--z-dock) inset-x-0 bottom-0 md:inset-x-auto md:right-6 md:bottom-6"
     >
-      <ul className="grid grid-cols-3 border-t border-hairline bg-void/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm md:flex md:flex-col md:gap-2 md:border-0 md:bg-transparent md:pb-0 md:backdrop-blur-none">
+      <ul className="grid grid-cols-2 border-t border-hairline bg-void/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm md:flex md:flex-col md:gap-2 md:border-0 md:bg-transparent md:pb-0 md:backdrop-blur-none">
         {actions.map((a) => (
           <li key={a.key} className="md:relative">
             <a
@@ -91,23 +75,6 @@ export function ContactDock() {
             </span>
           </li>
         ))}
-        <li className="md:relative">
-          <button
-            type="button"
-            onClick={() => openChat("dock")}
-            aria-label="Chat with our AI assistant"
-            className="peer flex h-(--dock-h) w-full cursor-pointer items-center justify-center gap-2.5 text-small font-medium text-ink transition-colors duration-(--duration-base) ease-(--ease-out-quart) hover:text-agent md:size-12 md:h-12 md:rounded-sm md:border md:border-agent/50 md:bg-panel md:hover:border-agent"
-          >
-            <ChatIcon />
-            <span className="md:sr-only">Chat</span>
-          </button>
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 right-full mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-sm bg-panel px-3 py-1.5 text-label font-medium text-ink opacity-0 transition-opacity duration-(--duration-fast) peer-hover:opacity-100 peer-focus-visible:opacity-100 md:block"
-          >
-            Chat with our AI assistant
-          </span>
-        </li>
       </ul>
     </nav>
   );

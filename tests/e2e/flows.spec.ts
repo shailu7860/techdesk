@@ -117,34 +117,6 @@ test("brief: network failure keeps answers and offers WhatsApp", async ({ page }
   await expect(brief.getByRole("button", { name: "Try again" })).toBeEnabled();
 });
 
-test("chat: answers from the assistant, then a human handoff when it is down", async ({ page }) => {
-  let calls = 0;
-  await page.route("https://chat.e2e.test/", async (route) => {
-    calls++;
-    const body = route.request().postDataJSON() as { messages: { role: string; content: string }[] };
-    expect(body.messages.at(-1)?.role).toBe("user");
-    if (calls === 1)
-      await route.fulfill({ json: { reply: "We build AI agents, platforms and automation. <b>not html</b>" } });
-    else await route.fulfill({ status: 503, json: { handoff: true } });
-  });
-  await page.goto("/");
-  await page.getByRole("button", { name: /chat with our ai assistant/i }).click();
-  const chat = page.getByRole("dialog", { name: "Ask TechDesk" });
-  await expect(chat).toBeVisible();
-  await chat.getByRole("button", { name: "What do you build?" }).click();
-  // Model output is rendered as text: the tag appears literally, no <b> element is created.
-  await expect(chat.getByText("<b>not html</b>", { exact: false })).toBeVisible();
-  await expect(chat.locator("b")).toHaveCount(0);
-
-  await chat.getByLabel("Your message").fill("How much for a clinic app?");
-  await chat.getByRole("button", { name: "Send" }).click();
-  const handoff = chat.getByRole("alert");
-  await expect(handoff).toContainText("unavailable");
-  await expect(handoff.getByRole("link", { name: /whatsapp/i })).toHaveAttribute("href", /wa\.me.*clinic/);
-  await page.keyboard.press("Escape");
-  await expect(chat).toBeHidden();
-});
-
 test("sending an estimate keeps what the visitor already typed in the brief", async ({ page }) => {
   await page.goto("/contact");
   await page.locator("#brief").getByLabel("Your name").fill("Asha Rao");

@@ -112,11 +112,11 @@ This system explicitly rejects **generic agency templates** (hero plus three ico
 - **Signal Blue** (electric cyan-blue, pale enough that void text sits on it at 13:1): the only accent on the canvas. Used for primary CTAs, focus rings, active states, live indicators and links. It covers at most 10% of any viewport.
 
 ### Secondary
-- **Agent Violet** (indigo-violet, hue 294, the palette seed; used as text and lines, never as a fill carrying text): appears **only** in the AI agent section, the chatbot and AI-specific project states. Never used for decoration, never on generic UI.
+- **Agent Violet** (indigo-violet, hue 294, the palette seed; used as text and lines, never as a fill carrying text): appears **only** in the AI agent section and AI-specific project states. Never used for decoration, never on generic UI.
 
 ### Neutral
 - **Void** (pure near-black, chroma 0): the page canvas. Never tinted warm or blue.
-- **Panel** (Void lifted slightly toward white): raised surfaces such as the dock, chatbot, calculator and inputs.
+- **Panel** (Void lifted slightly toward white): raised surfaces such as the dock, calculator and inputs.
 - **Ink** (near-white): headlines and body text. At least 7:1 contrast against Void.
 - **Muted Ink**: secondary text and metadata. At least 4.5:1 against Void, because it carries real information.
 - **Hairline** (low-contrast white): thin structural borders, grid lines and corner markers.

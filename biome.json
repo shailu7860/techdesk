@@ -9,7 +9,6 @@
     "includes": [
       "src/**",
       "scripts/**",
-      "amplify/**",
       "tests/**",
       "*.ts",
       "!**/.react-router",
