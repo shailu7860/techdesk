@@ -4,6 +4,7 @@ import { site } from "../data/company";
 import { faqs } from "../data/faq";
 import { seo } from "../lib/seo";
 import { AgentTrace } from "../sections/home/AgentTrace";
+import { BlogSection } from "../sections/home/BlogSection";
 import { CommitmentsBand } from "../sections/home/CommitmentsBand";
 import { EstimateSection } from "../sections/home/EstimateSection";
 import { Explore } from "../sections/home/Explore";
@@ -15,6 +16,7 @@ import { IndustriesSection } from "../sections/home/IndustriesSection";
 import { ProcessSection } from "../sections/home/ProcessSection";
 import { ServicesSection } from "../sections/home/ServicesSection";
 import { TechMarquee } from "../sections/home/TechMarquee";
+import { TestimonialsSection } from "../sections/home/TestimonialsSection";
 import { WorkSection } from "../sections/home/WorkSection";
 
 const homeFaqs = faqs.slice(0, 7);
@@ -36,11 +38,13 @@ export default function Home() {
       <ServicesSection />
       <AgentTrace />
       <WorkSection />
+      <TestimonialsSection />
       <ProcessSection />
       <IndustriesSection />
       <CommitmentsBand />
       <HowWeWork />
       <EstimateSection />
+      <BlogSection />
       <Explore />
       <FaqSection items={homeFaqs} />
       <FinalCTA />

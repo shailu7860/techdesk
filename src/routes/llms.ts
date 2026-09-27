@@ -24,8 +24,8 @@ ${solutions.map((s) => link(s.title, `/solutions/${s.slug}`, s.description)).joi
 ## Case studies
 ${flagships.map((p) => link(p.title, `/work/${p.slug}`, p.summary)).join("\n")}
 
-## Guides
-${insights.map((i) => link(i.h1, `/insights/${i.slug}`, i.description)).join("\n")}
+## Blog
+${insights.map((i) => link(i.h1, `/blog/${i.slug}`, i.description)).join("\n")}
 `;
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

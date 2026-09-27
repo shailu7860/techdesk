@@ -265,8 +265,23 @@ div[data-hero-reveal] {
 
 /* User paused motion (MotionToggle): freeze every ambient animation in place. */
 html[data-motion="paused"]
-:is(.nebula, .orbit, .shooting-star, .marquee-track, .float, .caret, .planet-spin, .ring-flow) {
+:is(.nebula, .orbit, .shooting-star, .marquee-track, .float, .caret, .planet-spin, .ring-flow, .signal-blink) {
   animation-play-state: paused;
+}
+
+/* ── Logo: the signal block blinks like a live indicator (slow, well under 3 flashes/s) ── */
+@keyframes signal-blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+.signal-blink {
+  animation: signal-blink 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .signal-blink {
+    animation: none;
+  }
 }
 
 /* ── Hero: floating system cards + typewriter caret ── */

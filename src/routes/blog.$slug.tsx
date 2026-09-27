@@ -5,7 +5,7 @@ import { Button } from "../components/ui/Button";
 import { type Block, getInsight } from "../data/insights";
 import { getSolution } from "../data/solutions";
 import { ORG_ID, SITE_URL, seo } from "../lib/seo";
-import type { Route } from "./+types/insights.$slug";
+import type { Route } from "./+types/blog.$slug";
 
 export const meta = ({ params }: Route.MetaArgs) => {
   const a = getInsight(params.slug);
@@ -13,25 +13,27 @@ export const meta = ({ params }: Route.MetaArgs) => {
   return seo({
     title: `${a.title} | TechDesk`,
     description: a.description,
-    path: `/insights/${a.slug}`,
+    path: `/blog/${a.slug}`,
     type: "article",
+    article: { published: a.published, section: a.category },
     image: `/og/insight-${a.slug}.png`,
     imageAlt: a.h1,
     breadcrumbs: [
-      ["Insights", "/insights"],
-      [a.title, `/insights/${a.slug}`],
+      ["Blog", "/blog"],
+      [a.title, `/blog/${a.slug}`],
     ],
     jsonLd: [
       {
-        "@type": "Article",
+        "@type": "BlogPosting",
         headline: a.h1,
         description: a.description,
         datePublished: a.published,
         dateModified: a.published,
         author: { "@id": ORG_ID },
         publisher: { "@id": ORG_ID },
-        mainEntityOfPage: `${SITE_URL}/insights/${a.slug}`,
+        mainEntityOfPage: `${SITE_URL}/blog/${a.slug}`,
         image: `${SITE_URL}/og/insight-${a.slug}.png`,
+        articleSection: a.category,
         inLanguage: "en",
       },
       faqLd(a.faq),
@@ -104,7 +106,7 @@ function Render({ b }: { b: Block }) {
 
 export default function InsightPage({ params }: Route.ComponentProps) {
   const a = getInsight(params.slug);
-  if (!a) return <NotFound title="Article not found." body="That article does not exist. See all insights." />;
+  if (!a) return <NotFound title="Article not found." body="That article does not exist. See all blog posts." />;
   const date = new Date(a.published).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
 
   return (
@@ -112,14 +114,14 @@ export default function InsightPage({ params }: Route.ComponentProps) {
       <article className="container-page pt-16 pb-(--section-y) md:pt-24">
         <div className="max-w-[72ch]">
           <nav aria-label="Breadcrumb" className="text-small text-muted">
-            <Link to="/insights" className="hover:text-ink">
-              Insights
+            <Link to="/blog" className="hover:text-ink">
+              Blog
             </Link>{" "}
             / {a.title}
           </nav>
           <h1 className="mt-6 font-display text-headline md:text-display">{a.h1}</h1>
           <p className="mt-6 text-small text-muted">
-            TechDesk · <time dateTime={a.published}>{date}</time> · {a.readMinutes} min read
+            {a.category} · TechDesk · <time dateTime={a.published}>{date}</time> · {a.readMinutes} min read
           </p>
           <section aria-labelledby="short-answer" className="glass mt-10 rounded-lg p-6 md:p-8">
             <h2 id="short-answer" className="font-display text-title">

@@ -21,7 +21,7 @@ Premium futuristic technology-agency website for **TechDesk**. Goal: qualified l
 | Fonts | **Archivo** variable (display at 118% width, body at 100%) + **Martian Mono** (labels only), self-hosted via Fontsource. |
 
 ## Business content (see `docs/DISCOVERY.md` § Business content)
-WhatsApp/call **+91 92033 87375** · **shailendramishra0127@gmail.com** · **Indore, India, serving clients worldwide** · INR and USD toggle · Mon–Sat 10–19 IST · replies within one business day · four "Why TechDesk" commitments and price bands are in DISCOVERY.md (delegated by the owner; editable).
+WhatsApp/call **+91 92033 87375** · **business.techdesk@gmail.com** · **Indore, India, serving clients worldwide** · INR and USD toggle · Mon–Sat 10–19 IST · replies within one business day · four "Why TechDesk" commitments and price bands are in DISCOVERY.md (delegated by the owner; editable).
 
 ## Visual rules (owner, 2026-09-24)
 - **No gradients and no box shadows anywhere** (incl. glows, drop/text shadows, gradient masks). Enforced by `tests/unit/style-rules.test.ts`.

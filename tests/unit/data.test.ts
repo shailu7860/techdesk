@@ -5,6 +5,7 @@ import { industries } from "../../src/data/industries";
 import { projectTypes } from "../../src/data/pricing";
 import { getProject, projects } from "../../src/data/projects";
 import { services } from "../../src/data/services";
+import { testimonials } from "../../src/data/testimonials";
 import { waLink } from "../../src/lib/whatsapp";
 
 describe("content integrity", () => {
@@ -36,6 +37,14 @@ describe("content integrity", () => {
     const text = JSON.stringify({ projects, services, industries }).toLowerCase();
     for (const bad of ["lorem", "sarah chen", "hipaa", "50+ projects", "99.9%", "captcha"])
       expect(text).not.toContain(bad);
+  });
+});
+
+describe("testimonials", () => {
+  it("have unique names and never name a client brand", () => {
+    expect(new Set(testimonials.map((t) => t.name)).size).toBe(testimonials.length);
+    const text = JSON.stringify(testimonials).toLowerCase();
+    for (const bad of ["lorem", "sarah chen", "bidmaster", "http"]) expect(text).not.toContain(bad);
   });
 });
 

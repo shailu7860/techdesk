@@ -35,8 +35,8 @@ Research date: 2026-09-25. Target market: **worldwide** (owner), with India and 
 | `/solutions/hire-developers-india` | hire dedicated developers in India | outsource to India, hire AI developers, offshore |
 | `/solutions/fintech-software-development` | fintech software development company | trading platform, financial software |
 | `/solutions/software-development-company-indore` | software development company in Indore | web development company in Indore, AI development company in Indore |
-| `/insights/ai-agent-development-cost` | AI agent development cost | how much does it cost to build an AI agent (2026) |
-| `/insights/saas-development-cost` | cost to build a SaaS platform | SaaS MVP cost in India |
+| `/blog/ai-agent-development-cost` | AI agent development cost | how much does it cost to build an AI agent (2026) |
+| `/blog/saas-development-cost` | cost to build a SaaS platform | SaaS MVP cost in India |
 | `/work/*` | "<project> case study" | brand and proof queries |
 
 Uniqueness of primary keywords is enforced by `tests/unit/seo-content.test.ts`.

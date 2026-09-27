@@ -19,6 +19,8 @@ type Seo = {
   jsonLd?: Ld | Ld[];
   /** Breadcrumb trail after "Home", e.g. [["Work", "/work"], ["Project", "/work/project"]]. */
   breadcrumbs?: [string, string][];
+  /** Open Graph article tags (blog posts). */
+  article?: { published: string; section: string };
 };
 
 /** Title, description, canonical, Open Graph, X and structured data for one route. */
@@ -32,6 +34,7 @@ export function seo({
   type = "website",
   jsonLd,
   breadcrumbs,
+  article,
 }: Seo) {
   const url = `${SITE_URL}${path === "/" ? "/" : path}`;
   const img = `${SITE_URL}${image}`;
@@ -50,6 +53,7 @@ export function seo({
     { property: "og:description", content: description },
     { property: "og:url", content: url },
     { property: "og:image", content: img },
+    { property: "og:image:type", content: "image/png" },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
     { property: "og:image:alt", content: imageAlt },
@@ -59,6 +63,13 @@ export function seo({
     { name: "twitter:image", content: img },
     { name: "twitter:image:alt", content: imageAlt },
   ];
+  if (article)
+    tags.push(
+      { property: "article:published_time", content: article.published },
+      { property: "article:modified_time", content: article.published },
+      { property: "article:section", content: article.section },
+      { property: "article:author", content: `${SITE_URL}/about` },
+    );
   if (noindex) return tags;
 
   const graph: Ld[] = [organizationLd, websiteLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];

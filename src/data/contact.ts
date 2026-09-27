@@ -3,7 +3,7 @@ export const contact = {
   phoneE164: "+919203387375",
   phoneDisplay: "+91 92033 87375",
   whatsapp: "919203387375",
-  email: "shailendramishra0127@gmail.com",
+  email: "business.techdesk@gmail.com",
   city: "Indore, India",
   reach: "Serving clients worldwide",
   hours: "Mon–Sat, 10:00–19:00 IST",

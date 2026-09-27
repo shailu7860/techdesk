@@ -48,7 +48,7 @@ Owner-supplied items are marked **(owner)**. Items the owner delegated ("decide 
 | Item | Value |
 |---|---|
 | WhatsApp and call | **+91 92033 87375** (owner). `wa.me/919203387375`, `tel:+919203387375` |
-| Email | **shailendramishra0127@gmail.com** (owner). Swap to a TechDesk-domain address once the domain exists |
+| Email | **business.techdesk@gmail.com** (owner). Swap to a TechDesk-domain address once the domain exists |
 | Location | **Indore, India. Serving clients worldwide** (owner) |
 | Currency | **INR and USD**, with a toggle (owner). Default is INR for visitors in the `Asia/Kolkata` timezone and USD otherwise, and the choice is remembered (delegated). Bands are priced per market, not FX-converted |
 | Hours | Mon–Sat, 10:00–19:00 IST; WhatsApp messages accepted anytime (delegated) |

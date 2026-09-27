@@ -142,7 +142,7 @@ export default function SolutionPage({ params }: Route.ComponentProps) {
               <>
                 {" "}
                 Read the full guide:{" "}
-                <Link to={`/insights/${guide.slug}`} className="text-signal underline underline-offset-4">
+                <Link to={`/blog/${guide.slug}`} className="text-signal underline underline-offset-4">
                   {guide.h1}
                 </Link>
               </>

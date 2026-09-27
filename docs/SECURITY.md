@@ -35,4 +35,4 @@ Counts: Critical 0 · High 0 · Medium 2 (fixed) · Low 6 (4 fixed, 2 accepted).
 Authentication, sessions, JWT, password storage, cookies, SQL/NoSQL injection, file upload and IDOR do not apply: the site has no accounts, no cookies, no database and no uploads. SSRF does not apply: there is no server.
 
 ## Reporting
-Security issues: email shailendramishra0127@gmail.com. Please do not open public issues.
+Security issues: email business.techdesk@gmail.com. Please do not open public issues.

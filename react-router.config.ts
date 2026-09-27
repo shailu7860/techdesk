@@ -15,7 +15,7 @@ export default {
       ...flagships.map((p) => `/work/${p.slug}`),
       ...services.map((s) => `/services/${s.slug}`),
       ...solutions.map((s) => `/solutions/${s.slug}`),
-      ...insights.map((i) => `/insights/${i.slug}`),
+      ...insights.map((i) => `/blog/${i.slug}`),
       "/404", // served by Amplify for unknown URLs with a 404 status (amplify customRules)
     ];
   },

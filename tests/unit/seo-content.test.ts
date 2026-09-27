@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { insights } from "../../src/data/insights";
+import { categories, insights } from "../../src/data/insights";
 import { projectTypes } from "../../src/data/pricing";
 import { getProject, projects } from "../../src/data/projects";
 import { services } from "../../src/data/services";
@@ -34,9 +34,15 @@ describe("solution landing pages", () => {
 });
 
 describe("guides", () => {
+  it("have unique slugs and keywords", () => {
+    expect(new Set(insights.map((i) => i.slug)).size).toBe(insights.length);
+    expect(new Set(insights.map((i) => i.keyword.toLowerCase())).size).toBe(insights.length);
+  });
   it.each(insights)("$slug is well formed", (a) => {
     expect(`${a.title} | TechDesk`.length).toBeLessThanOrEqual(60);
+    expect(a.description.length).toBeGreaterThanOrEqual(70);
     expect(a.description.length).toBeLessThanOrEqual(160);
+    expect(categories).toContain(a.category);
     expect(a.body.filter((b) => b.type === "h2").length).toBeGreaterThanOrEqual(3);
     for (const r of a.related)
       expect(

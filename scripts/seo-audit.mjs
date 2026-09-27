@@ -35,6 +35,9 @@ const exists = (p) => {
 };
 
 const errors = [];
+// Dev-only placeholder content must never reach a production build.
+for (const f of walk(root).filter((f) => /\.(html|js)$/.test(f)))
+  if (readFileSync(f, "utf8").includes("CONTENT NEEDED")) errors.push(`${f}: placeholder content in production build`);
 const warnings = [];
 const titles = new Map();
 const descs = new Map();
