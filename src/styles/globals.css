@@ -1,0 +1,321 @@
+@import "./tokens.css";
+
+@layer base {
+  html {
+    background: var(--color-void);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    color-scheme: dark;
+  }
+
+  body {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-void);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Mobile: the contact dock is a bottom bar; keep content clear of it. */
+  @media (width < 48rem) {
+    body {
+      padding-bottom: calc(var(--dock-h) + env(safe-area-inset-bottom));
+    }
+  }
+
+  /* Safety net. Components still declare their own reduced-motion alternative. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Display voice: Archivo bold, normal width, sentence case. */
+@utility font-display {
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+
+@utility skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: var(--z-toast);
+  padding: 0.75rem 1rem;
+  background: var(--color-signal);
+  color: var(--color-void);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+  &:focus-visible {
+    transform: none;
+  }
+}
+
+/* AN-000 Hero entrance: CSS-only so it runs at first paint, before hydration.
+   Starts from a visible state (opacity 0.35), so a paused animation never hides content. */
+@keyframes hero-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(28px);
+  }
+}
+[data-hero-title],
+[data-hero-reveal] {
+  animation: hero-in 1.1s var(--ease-out-expo) both;
+}
+[data-hero-reveal]:nth-of-type(1) {
+  animation-delay: 0s;
+}
+[data-hero-title] {
+  animation-delay: 0.05s;
+}
+p[data-hero-reveal] {
+  animation-delay: 0.2s;
+}
+div[data-hero-reveal] {
+  animation-delay: 0.32s;
+}
+
+/* AN-007 Page transition: short crossfade via the View Transitions API (FR-05). */
+::view-transition-old(root) {
+  animation: 160ms var(--ease-in-quart) both vt-out;
+}
+::view-transition-new(root) {
+  animation: 260ms var(--ease-out-quart) both vt-in;
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+/* AN-003 Agent trace lighting (class added by JS; without JS every step is fully lit). */
+.trace-armed [data-trace-step] > p:last-child {
+  color: var(--color-muted);
+  transition: color var(--duration-slow) var(--ease-out-quart);
+}
+.trace-armed [data-trace-step].is-lit > p:last-child {
+  color: var(--color-ink);
+}
+
+/* ── Space: nebula clouds (decorative light, behind everything) ── */
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px); /* solid colour softened by blur: no gradient */
+  opacity: 0.2;
+  will-change: transform;
+}
+.nebula-a {
+  width: 60vmax;
+  height: 42vmax;
+  left: -12vmax;
+  top: -10vmax;
+  background: var(--color-nebula-a);
+  animation: nebula-drift-a 60s ease-in-out infinite alternate;
+}
+.nebula-b {
+  width: 55vmax;
+  height: 40vmax;
+  right: -14vmax;
+  top: 30vh;
+  background: var(--color-nebula-b);
+  opacity: 0.24;
+  animation: nebula-drift-b 75s ease-in-out infinite alternate;
+}
+.nebula-c {
+  width: 45vmax;
+  height: 30vmax;
+  left: 20vw;
+  bottom: -14vmax;
+  background: var(--color-nebula-c);
+  opacity: 0.18;
+  animation: nebula-drift-a 90s ease-in-out infinite alternate-reverse;
+}
+@keyframes nebula-drift-a {
+  to {
+    transform: translate3d(8vw, 6vh, 0) scale(1.12) rotate(8deg);
+  }
+}
+@keyframes nebula-drift-b {
+  to {
+    transform: translate3d(-10vw, -8vh, 0) scale(1.08) rotate(-10deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nebula {
+    animation: none;
+  }
+}
+
+/* ── Space glass: translucent panels over the starfield ── */
+@utility glass {
+  background: color-mix(in oklch, var(--color-panel) 72%, transparent);
+  backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid color-mix(in oklch, var(--color-hairline) 80%, transparent);
+}
+
+/* ── Marquee: infinite horizontal strip (duplicated track, pauses on hover/focus) ── */
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ── Hero planet: slow spin, orbiting moons, occasional shooting stars ── */
+.orbit {
+  animation: orbit-spin var(--orbit-s, 40s) linear infinite;
+  transform-origin: 50% 50%;
+}
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.shooting-star {
+  position: absolute;
+  height: 1px;
+  width: 140px;
+  background: oklch(1 0 0 / 0.8);
+  border-radius: 1px;
+  transform: rotate(-24deg);
+  opacity: 0;
+  animation: shoot 9s ease-in infinite;
+}
+@keyframes shoot {
+  0%,
+  86% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: -420px 190px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit,
+  .shooting-star {
+    animation: none;
+  }
+  .shooting-star {
+    display: none;
+  }
+}
+
+/* User paused motion (MotionToggle): freeze every ambient animation in place. */
+html[data-motion="paused"]
+:is(.nebula, .orbit, .shooting-star, .marquee-track, .float, .caret, .planet-spin, .ring-flow) {
+  animation-play-state: paused;
+}
+
+/* ── Hero: floating system cards + typewriter caret ── */
+@keyframes float {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret-blink 1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .float,
+  .caret {
+    animation: none;
+  }
+}
+html[data-motion="paused"] :is(.float, .caret) {
+  animation-play-state: paused;
+}
+
+/* ── Planet: surface rotation and drifting ring particles ── */
+@keyframes planet-spin {
+  to {
+    transform: translateX(var(--spin-distance, -300px));
+  }
+}
+.planet-spin {
+  animation: planet-spin 36s linear infinite;
+}
+@keyframes ring-flow {
+  to {
+    stroke-dashoffset: -160;
+  }
+}
+.ring-flow {
+  animation: ring-flow 18s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .planet-spin,
+  .ring-flow {
+    animation: none;
+  }
+}
