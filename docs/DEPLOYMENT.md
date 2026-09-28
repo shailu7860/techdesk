@@ -15,7 +15,7 @@ The site is fully static: no server, no Lambda, no database. The steps below nee
 2. **Create the app:** AWS console → Amplify → *Create new app* → connect the repository → branch `main`. Amplify detects `amplify.yml`. Region: Mumbai (`ap-south-1`) is closest to the owner's market.
 3. **Environment variables** (*Hosting* → *Environment variables*):
    - `VITE_WEB3FORMS_KEY`: free access key from web3forms.com, created with `business.techdesk@gmail.com`. Public by design; it only allows sending to that inbox.
-   - `SITE_URL`: not needed; Amplify builds default to `https://www.techdesks.in` (`vite.config.ts`). Set it only to override.
+   - `SITE_URL`: not needed; Amplify builds default to `https://techdesks.in` (`vite.config.ts`). Set it only to override.
 4. **Rewrites and redirects** (*Hosting* → *Rewrites and redirects* → *Manage* → JSON editor). This serves the designed 404 page with a real 404 status:
    ```json
    [

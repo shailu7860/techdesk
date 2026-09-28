@@ -7,7 +7,7 @@
 | Structured data | `Organization` (home, about), `CreativeWork` (case studies), `Service` (service pages) |
 | Sitemap / robots | Prerendered from data: `/sitemap.xml`, `/robots.txt` (excludes `/system`) |
 | OG images | `public/og/default.png` + one per case study (`node scripts/og.mjs`) |
-| Canonical base | `https://www.techdesks.in` on Amplify builds (`vite.config.ts`); `SITE_URL` overrides |
+| Canonical base | `https://techdesks.in` on Amplify builds (`vite.config.ts`); `SITE_URL` overrides |
 | 404 | Real 404 status (Amplify rewrite) with a `noindex` designed page |
 | Headings | Exactly one `h1` per page (asserted in e2e) |
 
