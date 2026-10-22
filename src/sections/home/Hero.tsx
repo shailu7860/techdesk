@@ -1,35 +1,9 @@
+import { LoopVideo } from "../../components/space/LoopVideo";
 import { Typewriter } from "../../components/space/Typewriter";
 import { Button } from "../../components/ui/Button";
 import { contact } from "../../data/contact";
-import { Planet } from "./Planet";
 
 const PHRASES = ["AI agent", "SaaS platform", "trading system", "marketplace", "automation"] as const;
-
-// Floating "live system" cards: every line is a real project fact from projects.ts.
-const SIGNALS = [
-  {
-    label: "Trading platform",
-    status: "Live",
-    detail: "Paper-first trading automation",
-    pos: "top-[6%] left-[2%]",
-    delay: "0s",
-  },
-  {
-    label: "Enterprise software",
-    status: "Delivered",
-    detail: "ERP, HRMS and management systems",
-    pos: "top-[40%] -right-[2%]",
-    delay: "1.2s",
-  },
-  {
-    label: "AI agent",
-    status: "Running",
-    detail: "Qualifying a lead on WhatsApp",
-    pos: "bottom-[8%] left-[8%]",
-    delay: "2.4s",
-    ai: true,
-  },
-] as const;
 
 const FACTS = [
   { k: "Based in", v: "Indore, India" },
@@ -38,7 +12,7 @@ const FACTS = [
   { k: "Pricing", v: "INR and USD" },
 ] as const;
 
-/** Split hero: copy with a typewriter headline on the left, planet and live-system cards on the right. */
+/** Split hero: copy with a typewriter headline on the left, a reel of our products (one design style each) on the right. */
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative isolate overflow-hidden">
@@ -91,28 +65,8 @@ export function Hero() {
           </p>
         </div>
 
-        <div aria-hidden="true" className="relative mx-auto aspect-square w-full max-w-[34rem] xl:max-w-[42rem]">
-          <Planet className="absolute inset-0 h-full w-full" />
-          {SIGNALS.map((s) => (
-            <div
-              key={s.label}
-              className={`float glass absolute ${s.pos} hidden w-64 rounded-md p-4 sm:block`}
-              style={{ animationDelay: s.delay }}
-            >
-              <div className="flex items-center justify-between gap-3">
-                <span className="font-semibold text-ink">{s.label}</span>
-                <span
-                  className={`inline-flex items-center gap-1.5 text-label font-semibold ${"ai" in s ? "text-agent" : "text-signal"}`}
-                >
-                  <span
-                    className={`size-1.5 rounded-full ${"ai" in s ? "bg-agent" : "bg-signal"} motion-safe:animate-pulse`}
-                  />
-                  {s.status}
-                </span>
-              </div>
-              <p className="mt-1 text-small text-muted">{s.detail}</p>
-            </div>
-          ))}
+        <div className="relative mx-auto aspect-square w-full max-w-[34rem] overflow-hidden rounded-lg border border-hairline xl:max-w-[42rem]">
+          <LoopVideo name="hero" width={720} height={720} eager />
         </div>
       </div>
     </section>

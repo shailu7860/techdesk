@@ -1,8 +1,9 @@
+import { LoopVideo } from "../../components/space/LoopVideo";
 import { Button } from "../../components/ui/Button";
 import { MissionFile } from "../../components/work/MissionFile";
 import { builds, flagships } from "../../data/projects";
 
-/** Selected work: the four flagship case studies in a grid, then the build index. */
+/** Selected work: the four flagship case studies in a grid, then the other builds as short product clips. */
 export function WorkSection() {
   return (
     <section id="work" aria-labelledby="work-title" className="border-t border-hairline py-(--section-y)">
@@ -27,18 +28,19 @@ export function WorkSection() {
 
       <div className="container-page mt-20">
         <h3 className="text-label font-medium text-muted">Also built</h3>
-        <ul className="mt-6 border-t border-hairline">
+        <ul className="mt-6 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {builds.map((p) => (
-            <li
-              key={p.slug}
-              className="grid grid-cols-[3rem_1fr] gap-4 border-b border-hairline py-4 md:grid-cols-[3rem_1.2fr_1fr_1.4fr]"
-            >
-              <span className="text-label font-medium text-muted">{p.code}</span>
-              <span className="font-medium">{p.title}</span>
-              <span className="col-start-2 text-small text-muted md:col-start-auto">{p.industry}</span>
-              <span className="col-start-2 hidden text-label font-medium text-muted md:col-start-auto md:block">
-                {p.stack.slice(0, 4).join(" · ")}
-              </span>
+            <li key={p.slug}>
+              <div className="overflow-hidden rounded-md border border-hairline">
+                <LoopVideo name={p.slug} width={640} height={480} />
+              </div>
+              <div className="mt-4 flex items-baseline gap-3">
+                <span className="text-label font-medium text-muted">{p.code}</span>
+                <span className="font-medium">{p.title}</span>
+              </div>
+              <p className="mt-1 text-small text-muted">
+                {p.industry} · {p.stack.slice(0, 3).join(", ")}
+              </p>
             </li>
           ))}
         </ul>

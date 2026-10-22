@@ -11,4 +11,6 @@ export const securityHeaders = {
 export const cacheRules = [
   { pattern: "/assets/**", value: "public, max-age=31536000, immutable" },
   { pattern: "**/*.html", value: "public, max-age=0, must-revalidate" },
+  // Showcase videos keep stable names (re-rendered rarely): cache a week, then revalidate.
+  { pattern: "/video/**", value: "public, max-age=604800, stale-while-revalidate=86400" },
 ];

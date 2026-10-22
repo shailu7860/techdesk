@@ -24,6 +24,11 @@ Every dependency has a reason (spec §24, rule 4). If it doesn't earn its line h
 | `@playwright/test`, `@axe-core/playwright` | End-to-end tests and WCAG scans; also used by the screenshot and OG-image scripts |
 | `@types/*` | Types |
 
+## Video (separate project in `video/`, never shipped to visitors)
+| Package | Why |
+|---|---|
+| `remotion`, `@remotion/cli` 4.0.530 (pinned) | Renders the homepage showcase videos (hero reel, "Also built" clips) from React, frame by frame. Lives in its own `video/package.json`, so it adds nothing to the site bundle or install. Visitors get plain WebM/MP4 files from `public/video/`. Re-render with `cd video && npm install && npm run render` (needs Chrome and ffmpeg) |
+
 ## Removed / deliberately not used
 | Package | Reason |
 |---|---|

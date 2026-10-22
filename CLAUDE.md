@@ -27,6 +27,7 @@ WhatsApp/call **+91 92033 87375** · **business.techdesk@gmail.com** · **Indore
 - **No gradients and no box shadows anywhere** (incl. glows, drop/text shadows, gradient masks). Enforced by `tests/unit/style-rules.test.ts`.
 - Theme: **green nebula galaxy** (dark space, starfield, solid-colour nebula blurs, green accent). Content width up to 1600px (100rem, owner 2026-09-27), gutter outside. Sentence case, never forced uppercase.
 - Every ambient animation must obey `prefers-reduced-motion` and the site-wide Pause motion toggle.
+- **Showcase videos** (owner, 2026-10-23): the hero reel and "Also built" clips show product mockups in many design styles (glassmorphism, neumorphism, claymorphism, material and others). Those styles, shadows included, live **inside the rendered video only** (`video/`, played by `LoopVideo`); the site's own CSS stays flat. Mockups only, no screenshots of third-party products; no business-exchange content.
 
 ## Content rules (non-negotiable)
 - **Never invent** client names, metrics, results, testimonials or stats (spec §71 rules 6–8).

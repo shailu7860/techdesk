@@ -1,0 +1,15 @@
+{
+  "name": "techdesk-video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.530",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.530"
+  }
+}

@@ -1,6 +1,13 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Homepage hero: the planet and floating cards are replaced by a looping reel of our real products recreated as mockups, each in a different design style (trading platform in glassmorphism, ERP/HRMS in neumorphism, gaming in neon, the e-bidding extension in claymorphism, the WhatsApp AI agent in flat). Owner request: show the products, not a globe.
+- Homepage "Also built": the text list is now a grid of short product clips, one style each (bento, neo-brutalism, skeuomorphism, aurora glass, editorial, material, terminal, Swiss minimal).
+- `LoopVideo` component: muted, plays only on screen, stays on its poster under reduced motion or the Pause motion toggle; below-the-fold clips download nothing until scrolled near.
+- `video/` Remotion project (pinned 4.0.530, own package.json, not shipped) with `npm run render` to rebuild every clip; `/video/**` cached for a week.
+**Files:** src/components/space/LoopVideo.tsx, src/sections/home/{Hero,WorkSection}.tsx, video/**, public/video/*, scripts/security-headers.mjs, customHttp.yml, tsconfig.json, CLAUDE.md, docs/TECH_STACK.md · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** see verify/e2e run
+
 ### Fixed
 - Corrected a client testimonial name: "Murari Mishra" is now "Gaurav Fadnavis" (owner request).
 **Files:** src/data/testimonials.ts · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** npm test
