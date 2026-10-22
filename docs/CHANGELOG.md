@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Fixed
-- Corrected a client testimonial name: "Murari Mishra" is now "Gaurav Fadanavis" (owner request).
+- Corrected a client testimonial name: "Murari Mishra" is now "Gaurav Fadnavis" (owner request).
 **Files:** src/data/testimonials.ts · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** npm test
 
 ### Added
