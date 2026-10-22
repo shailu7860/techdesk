@@ -7,6 +7,7 @@ import "./styles/globals.css";
 import archivoLatin from "@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url";
 import { useSmoothScroll } from "./animations/smoothScroll";
 import { ContactDock } from "./components/contact/ContactDock";
+import { ContactPrompt } from "./components/contact/ContactPrompt";
 import { SiteFooter } from "./components/layout/SiteFooter";
 import { SiteHeader } from "./components/layout/SiteHeader";
 import { NotFound } from "./components/NotFound";
@@ -52,6 +53,7 @@ export default function App() {
       <Outlet />
       <SiteFooter />
       <ContactDock />
+      <ContactPrompt />
     </>
   );
 }

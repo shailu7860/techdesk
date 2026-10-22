@@ -334,3 +334,19 @@ html[data-motion="paused"] :is(.float, .caret) {
     animation: none;
   }
 }
+
+/* ── Contact prompt: rises in once (a one-off entrance, not ambient motion) ── */
+@keyframes prompt-in {
+  from {
+    opacity: 0;
+    translate: 0 1rem;
+  }
+}
+.prompt-in {
+  animation: prompt-in var(--duration-slow) var(--ease-out-expo);
+}
+@media (prefers-reduced-motion: reduce) {
+  .prompt-in {
+    animation: none;
+  }
+}

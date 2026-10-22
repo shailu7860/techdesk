@@ -1,7 +1,16 @@
 import { test as base, expect } from "@playwright/test";
 
 /** Fails any test that logs a console error or throws in the page (includes CSP violations). */
-export const test = base.extend<{ consoleErrors: string[] }>({
+export const test = base.extend<{ consoleErrors: string[]; quietPrompt: undefined }>({
+  // The 5 s contact prompt would cover controls mid-test: treat it as already closed (its own test opts out).
+  quietPrompt: [
+    async ({ page }, use, info) => {
+      if (!info.tags.includes("@prompt"))
+        await page.addInitScript(() => localStorage.setItem("techdesk.contactPrompt.closedAt", String(Date.now())));
+      await use(undefined);
+    },
+    { auto: true },
+  ],
   consoleErrors: [
     async ({ page }, use) => {
       const errors: string[] = [];

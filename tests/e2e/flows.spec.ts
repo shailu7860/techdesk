@@ -125,3 +125,29 @@ test("sending an estimate keeps what the visitor already typed in the brief", as
   await expect(page).toHaveURL(/type=marketing/);
   await expect(page.locator("#brief").getByLabel("Your name")).toHaveValue("Asha Rao");
 });
+
+test("contact prompt appears after landing, prefills WhatsApp, and stays closed", { tag: "@prompt" }, async ({
+  page,
+}) => {
+  await page.clock.install();
+  await page.goto("/", { waitUntil: "networkidle" }); // the 5 s timer starts once the app has hydrated
+  const prompt = page.getByRole("dialog", { name: "Tell us what you need" });
+  await expect(prompt).toBeHidden();
+  await page.clock.runFor(5200);
+  await expect(prompt).toBeVisible();
+  await prompt.getByRole("button", { name: "ERP or HRMS" }).click();
+  await expect(prompt.getByRole("link", { name: "WhatsApp us" })).toHaveAttribute("href", /ERP%20or%20HRMS/);
+  await expect(prompt.getByRole("link", { name: "Send a brief" })).toHaveAttribute("href", "/contact?type=web-app");
+  await page.keyboard.press("Escape");
+  await expect(prompt).toBeHidden();
+  await page.reload({ waitUntil: "networkidle" });
+  await page.clock.runFor(6000);
+  await expect(prompt).toBeHidden();
+});
+
+test("contact prompt never shows on the contact page", { tag: "@prompt" }, async ({ page }) => {
+  await page.clock.install();
+  await page.goto("/contact", { waitUntil: "networkidle" });
+  await page.clock.runFor(6000);
+  await expect(page.getByRole("dialog", { name: "Tell us what you need" })).toBeHidden();
+});

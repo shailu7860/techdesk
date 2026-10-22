@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- "Tell us what you need" contact prompt, 5 s after landing (owner request): pick a need (AI agent, SaaS, ERP/HRMS, gaming, website), then WhatsApp with the need prefilled, send a brief (calculator type preselected) or call. Non-modal so the page stays usable and Google's intrusive-interstitial rule is respected; once per session, snoozed a week after closing, never on /contact, waits while someone types, Escape closes, no motion under reduced motion.
+**Files:** src/components/contact/ContactPrompt.tsx, src/root.tsx, src/styles/globals.css, tests/e2e/{fixtures,flows.spec}.ts · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** 2 e2e added
+
 ### Changed
 - Quick-contact dock: WhatsApp and Call now sit on solid green (round 56 px buttons on desktop, green icon badges in the mobile bar) so the fastest way to reach us stands out (owner request).
 - Hero, first screen: the typed phrase sits on its own line, so the headline no longer reflows while it types. The product reel now plays inside an app window whose tabs (Trading, ERP and HRMS, Gaming, E-bidding, AI agent) follow the video and jump to a product on click; the reel itself is rendered without its old in-video caption, and the window footer names the product and style.
