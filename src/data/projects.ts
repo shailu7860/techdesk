@@ -30,6 +30,8 @@ type CaseStudy = {
   role: string;
   /** No screenshots supplied yet: the page renders the system diagram instead. */
   visualsPending?: true;
+  /** Mockup product clip at public/video/case-<slug>.* (rendered from video/). */
+  video?: true;
 };
 
 export type IndustryKey =
@@ -80,6 +82,7 @@ export const projects: Project[] = [
       ],
       role: "Design and engineering",
       visualsPending: true,
+      video: true,
     },
   },
   {
@@ -150,6 +153,7 @@ export const projects: Project[] = [
       ],
       role: "Design, engineering and operations",
       visualsPending: true,
+      video: true,
     },
   },
   {
@@ -186,6 +190,7 @@ export const projects: Project[] = [
       ],
       role: "Design and engineering",
       visualsPending: true,
+      video: true,
     },
   },
   {
@@ -236,6 +241,7 @@ export const projects: Project[] = [
       ],
       role: "Architecture and engineering",
       visualsPending: true,
+      video: true,
     },
   },
   {

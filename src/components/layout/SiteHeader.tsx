@@ -13,10 +13,12 @@ const linkCls = ({ isActive }: { isActive: boolean }) =>
 
 /**
  * Top bar: hides on scroll-down, returns on scroll-up or keyboard focus (FR-03).
+ * At the very top it is transparent, part of the banner; once the page scrolls it lifts off as a solid bar.
  * Mobile: full-screen <dialog> menu (native focus containment, Esc to close).
  */
 export function SiteHeader() {
   const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDialogElement>(null);
   const { pathname, hash } = useLocation();
 
@@ -25,8 +27,10 @@ export function SiteHeader() {
     const onScroll = () => {
       const y = window.scrollY;
       setHidden(y > 120 && y > last);
+      setScrolled(y > 8);
       last = y;
     };
+    onScroll(); // a reload can restore a scrolled position
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -40,9 +44,9 @@ export function SiteHeader() {
   return (
     <header
       onFocusCapture={() => setHidden(false)}
-      className={`sticky top-0 z-(--z-sticky) border-b border-hairline/70 bg-void/70 backdrop-blur-md transition-transform duration-(--duration-slow) ease-(--ease-out-expo) ${
-        hidden ? "-translate-y-full" : ""
-      }`}
+      className={`sticky top-0 z-(--z-sticky) border-b transition-[translate,background-color,border-color] duration-(--duration-slow) ease-(--ease-out-expo) ${
+        scrolled ? "border-hairline/70 bg-void/85 backdrop-blur-md" : "border-transparent bg-transparent"
+      } ${hidden ? "-translate-y-full" : ""}`}
     >
       <div className="container-page flex h-18 items-center justify-between gap-6">
         <Link to="/" aria-label="TechDesk home" className="shrink-0">

@@ -1,6 +1,15 @@
 # Changelog
 
 ## [Unreleased]
+### Changed
+- Quick-contact dock: WhatsApp and Call now sit on solid green (round 56 px buttons on desktop, green icon badges in the mobile bar) so the fastest way to reach us stands out (owner request).
+- Hero, first screen: the typed phrase sits on its own line, so the headline no longer reflows while it types. The product reel now plays inside an app window whose tabs (Trading, ERP and HRMS, Gaming, E-bidding, AI agent) follow the video and jump to a product on click; the reel itself is rendered without its old in-video caption, and the window footer names the product and style.
+- Header: transparent and borderless at the top of the page, so it reads as part of the banner; it becomes a solid bar with a hairline once the page scrolls (owner request).
+**Files:** src/sections/home/{Hero,HeroShowcase}.tsx, src/components/space/LoopVideo.tsx, src/components/layout/SiteHeader.tsx, video/src/Root.tsx, public/video/hero.* · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** verify, unit, e2e
+### Added
+- Case study pages (trading, ERP/HRMS, e-bidding, gaming) now show a product mockup video next to "Key features", captioned as a mockup with sample data. Clips are the hero scenes without their caption (`case-<slug>` compositions), enabled per project by `caseStudy.video`.
+**Files:** src/routes/work.$slug.tsx, src/data/projects.ts, video/src/Root.tsx, video/render.mjs, public/video/case-* · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** verify, unit, e2e
+
 ### Added
 - Homepage hero: the planet and floating cards are replaced by a looping reel of our real products recreated as mockups, each in a different design style (trading platform in glassmorphism, ERP/HRMS in neumorphism, gaming in neon, the e-bidding extension in claymorphism, the WhatsApp AI agent in flat). Owner request: show the products, not a globe.
 - Homepage "Also built": the text list is now a grid of short product clips, one style each (bento, neo-brutalism, skeuomorphism, aurora glass, editorial, material, terminal, Swiss minimal).

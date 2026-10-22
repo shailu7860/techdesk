@@ -1,7 +1,7 @@
-import { LoopVideo } from "../../components/space/LoopVideo";
 import { Typewriter } from "../../components/space/Typewriter";
 import { Button } from "../../components/ui/Button";
 import { contact } from "../../data/contact";
+import { HeroShowcase } from "./HeroShowcase";
 
 const PHRASES = ["AI agent", "SaaS platform", "trading system", "marketplace", "automation"] as const;
 
@@ -30,8 +30,16 @@ export function Hero() {
               Build the AI agent, SaaS platform, trading system, marketplace or automation your competitors wish they
               had.
             </span>
-            <span aria-hidden="true">Build the</span> <Typewriter phrases={PHRASES} className="text-signal" />{" "}
-            <span aria-hidden="true">your competitors wish they had.</span>
+            {/* The typed phrase always sits on its own line, so the headline never reflows while it types. */}
+            <span aria-hidden="true" className="block">
+              Build the
+            </span>
+            <span className="block">
+              <Typewriter phrases={PHRASES} className="text-signal" />
+            </span>
+            <span aria-hidden="true" className="block">
+              your competitors wish they had.
+            </span>
           </h1>
           <p className="mt-6 max-w-[52ch] text-body text-muted md:text-[1.1875rem]" data-hero-reveal>
             TechDesk is an AI and software development company in Indore, India, building AI agents, SaaS platforms and
@@ -65,9 +73,7 @@ export function Hero() {
           </p>
         </div>
 
-        <div className="relative mx-auto aspect-square w-full max-w-[34rem] overflow-hidden rounded-lg border border-hairline xl:max-w-[42rem]">
-          <LoopVideo name="hero" width={720} height={720} eager />
-        </div>
+        <HeroShowcase />
       </div>
     </section>
   );

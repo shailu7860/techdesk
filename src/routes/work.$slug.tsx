@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router";
 import { NotFound } from "../components/NotFound";
+import { LoopVideo } from "../components/space/LoopVideo";
 import { Button } from "../components/ui/Button";
 import { Label } from "../components/ui/Label";
 import { SystemDiagram } from "../components/work/SystemDiagram";
@@ -133,16 +134,31 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
               ))}
             </ul>
           </Block>
-          <Block n={++n} title="Key features">
-            <ul className="grid gap-4">
-              {cs.features.map((f) => (
-                <li key={f} className="flex gap-3">
-                  <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 bg-signal" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </Block>
+          <section aria-labelledby="features" className="border-t border-hairline py-16">
+            <h2 id="features" className="font-display text-title">
+              Key features
+            </h2>
+            <div className="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-16">
+              {cs.video && (
+                <figure>
+                  <div className="overflow-hidden rounded-lg border border-hairline">
+                    <LoopVideo name={`case-${p.slug}`} width={720} height={626} />
+                  </div>
+                  <figcaption className="mt-3 text-small text-muted">
+                    Product mockup recreated by TechDesk, with sample data.
+                  </figcaption>
+                </figure>
+              )}
+              <ul className="grid gap-4">
+                {cs.features.map((f) => (
+                  <li key={f} className="flex gap-3">
+                    <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 bg-signal" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
           {cs.challenges && (
             <Block n={++n} title="Challenges solved">
               <div className="grid gap-8">

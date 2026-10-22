@@ -46,7 +46,7 @@ const actions = [
   },
 ] as const;
 /**
- * Persistent quick-contact dock. Desktop: bottom-right cluster with text tooltips.
+ * Persistent quick-contact dock, in the brand green. Desktop: bottom-right round buttons with text tooltips.
  * Mobile: labelled bottom bar in the thumb zone. Plain anchors, so it works without JS.
  */
 export function ContactDock() {
@@ -62,9 +62,12 @@ export function ContactDock() {
               href={a.href}
               aria-label={a.detail}
               {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="peer flex h-(--dock-h) items-center justify-center gap-2.5 text-small font-medium text-ink transition-colors duration-(--duration-base) ease-(--ease-out-quart) hover:text-signal md:size-12 md:h-12 md:rounded-sm md:border md:border-hairline md:bg-panel md:hover:border-signal"
+              className="peer flex h-(--dock-h) items-center justify-center gap-2.5 text-small font-medium text-ink transition-colors duration-(--duration-base) ease-(--ease-out-quart) hover:text-signal md:size-14 md:h-14 md:rounded-full md:bg-signal md:text-void md:hover:bg-signal-hi md:hover:text-void"
             >
-              {a.icon}
+              {/* Green icon badge: the quickest way to reach us should be the most visible thing on screen. */}
+              <span className="grid size-9 place-items-center rounded-full bg-signal text-void md:size-auto md:bg-transparent md:text-current">
+                {a.icon}
+              </span>
               <span className="md:sr-only">{a.label}</span>
             </a>
             <span

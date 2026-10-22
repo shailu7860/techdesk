@@ -10,6 +10,12 @@ mkdirSync(out, { recursive: true });
 
 const jobs = [
   { id: "Hero", name: "hero", width: 720, poster: 2 },
+  ...["algo-trading-platform", "enterprise-software", "e-bidding-automation", "gaming-platform"].map((c) => ({
+    id: `case-${c}`,
+    name: `case-${c}`,
+    width: 720,
+    poster: 3.2,
+  })),
   ...[
     "task-management-saas",
     "agency-website",
@@ -22,8 +28,9 @@ const jobs = [
   ].map((t) => ({ id: `tile-${t}`, name: t, width: 640, poster: 2.6 })),
 ];
 
+const only = process.argv[2];
 const run = (cmd, args) => execFileSync(cmd, args, { stdio: "inherit" });
-for (const j of jobs) {
+for (const j of jobs.filter((x) => !only || x.id.startsWith(only))) {
   const master = `out/${j.name}.mp4`;
   run("npx", ["remotion", "render", "src/index.ts", j.id, master, "--codec", "h264", "--crf", "16", "--overwrite", `--browser-executable=${chrome}`]);
   const scale = `scale=${j.width}:-2:flags=lanczos`;

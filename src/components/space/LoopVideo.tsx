@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { type RefObject, useEffect, useRef } from "react";
 import { isMotionPaused, onMotionChange } from "../../lib/motion";
 
 /**
@@ -12,6 +12,7 @@ export function LoopVideo({
   height,
   eager = false,
   className = "",
+  videoRef,
 }: {
   name: string;
   width: number;
@@ -19,9 +20,13 @@ export function LoopVideo({
   /** Above the fold: fetch metadata now. Below the fold: fetch nothing until it scrolls near. */
   eager?: boolean;
   className?: string;
+  /** Lets a parent read playback (e.g. tabs that follow the video). */
+  videoRef?: RefObject<HTMLVideoElement | null>;
 }) {
-  const ref = useRef<HTMLVideoElement>(null);
+  const own = useRef<HTMLVideoElement>(null);
+  const ref = videoRef ?? own;
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: the ref object is fixed for the element's lifetime
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
