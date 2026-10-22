@@ -13,7 +13,7 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       "TechDesk understood our business quickly and delivered exactly what we asked for, on time. Any change we needed was handled the same day.",
-    name: "Murari Mishra",
+    name: "Gaurav Fadanavis",
     project: "Business website",
   },
   {

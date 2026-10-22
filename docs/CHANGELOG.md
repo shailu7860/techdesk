@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Corrected a client testimonial name: "Murari Mishra" is now "Gaurav Fadanavis" (owner request).
+**Files:** src/data/testimonials.ts · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** npm test
+
 ### Added
 - Three SEO landing pages for the queries the owner wants to rank for: `/solutions/ai-agent-development` (AI agent developers), `/solutions/custom-software-development` (custom software, servers and APIs) and `/solutions/gaming-platform-development` (gaming platforms). Each targets one keyword and cites only real projects; footer, sitemap, llms.txt and share images pick them up automatically.
 ### Changed
