@@ -172,11 +172,11 @@ export const solutions: Solution[] = [
     secondary: ["online marketplace development", "B2B marketplace development", "marketplace platform development"],
     title: "Marketplace development company for B2B and B2C",
     description:
-      "Online marketplace development with listings, search, bidding, KYC, payments and admin. Built by the team behind a live business exchange platform.",
+      "Online marketplace development with listings, search, bidding, KYC, payments and admin. Planned around trust, verification and clear deal flow.",
     h1: "Marketplace development for platforms where trust decides the deal",
     intro: [
       "A marketplace lives or dies on trust and liquidity: buyers must find the right listing quickly, and both sides must believe the other is real. We build marketplaces where verification, structure and clear timelines are part of the product.",
-      "We engineered a business exchange platform for buying and selling businesses through structured, auditable deal processes, with mandates, auctions, watchlists and identity verification.",
+      "We design the deal flow first (who lists, who buys, what must be verified) and build listings, search, bidding and admin around it, on the same engineering base as our e-commerce and enterprise platforms.",
     ],
     build: [
       "Listings with rich filters for category, location, size and price",
@@ -197,9 +197,9 @@ export const solutions: Solution[] = [
     ],
     why: [
       {
-        title: "Proof in production",
+        title: "Built on real platforms",
         detail:
-          "Our business exchange platform is live, with Aadhaar KYC through Digio and Standard and Enterprise subscription tiers.",
+          "Payments, inventory, roles and approvals come from systems we have already shipped, such as our e-commerce platform and enterprise software.",
       },
       {
         title: "Search-ready by default",
@@ -210,7 +210,7 @@ export const solutions: Solution[] = [
         detail: "We model the deal as steps you can audit, which is what serious buyers and sellers expect.",
       },
     ],
-    proof: ["business-exchange-platform", "ecommerce-platform"],
+    proof: ["ecommerce-platform", "enterprise-software"],
     services: ["web-product-engineering", "software-engineering"],
     estimateType: "web-app",
     faq: [
@@ -225,6 +225,64 @@ export const solutions: Solution[] = [
       {
         q: "How long does a marketplace MVP take?",
         a: "A focused marketplace MVP with listings, search, accounts and admin usually takes 6 to 10 weeks.",
+      },
+    ],
+  },
+  {
+    slug: "erp-hrms-software-development",
+    keyword: "ERP software development company",
+    secondary: ["HRMS software development", "custom ERP development", "enterprise management software"],
+    title: "ERP and HRMS software development company",
+    description:
+      "Custom ERP, HRMS and management software: inventory, purchase, attendance, payroll, approvals and reporting, built around how your company works.",
+    h1: "ERP, HRMS and management software built around your business",
+    intro: [
+      "Off-the-shelf ERP makes you change how you work to fit the software. We build enterprise software the other way round: your departments, roles and approvals become the system, on one shared data core.",
+      "Our enterprise work covers ERP for operations and inventory, HRMS for people, attendance and payroll, and management systems for projects, assets and approvals.",
+    ],
+    build: [
+      "ERP modules for purchase, sales, inventory and vendors",
+      "HRMS with employee records, attendance, leave and payroll",
+      "Approval workflows with a full audit trail",
+      "Role-based access by department, branch and action",
+      "Dashboards and exportable management reports",
+      "Integrations with accounting, biometric devices and existing tools",
+    ],
+    steps: [
+      { name: "Map the business", detail: "Departments, roles, approvals and the reports management actually reads." },
+      { name: "Build the core module", detail: "The one workflow that hurts most today, live first." },
+      { name: "Connect the rest", detail: "Add modules on the same data, so nothing is entered twice." },
+      { name: "Roll out", detail: "Data migration, team training and support after go-live." },
+    ],
+    why: [
+      {
+        title: "Fits how you work",
+        detail: "Modules follow your process and hierarchy instead of forcing a generic template on every team.",
+      },
+      {
+        title: "One source of truth",
+        detail: "Operations, people and finance share one data core, so reports agree across departments.",
+      },
+      {
+        title: "Access done properly",
+        detail: "Permissions are enforced on the server for every action, not just hidden in the interface.",
+      },
+    ],
+    proof: ["enterprise-software", "e-bidding-automation", "real-estate-crm"],
+    services: ["software-engineering", "digital-transformation"],
+    estimateType: "web-app",
+    faq: [
+      {
+        q: "Should we build a custom ERP or buy one?",
+        a: "Buy when a standard product fits your process. Build when your workflows, approvals or reporting are what set you apart, or when licences per user get expensive as you grow.",
+      },
+      {
+        q: "Can you migrate data from spreadsheets or our old system?",
+        a: "Yes. We map your existing data, clean it and import it, then run both side by side until the team is confident.",
+      },
+      {
+        q: "Can we start with HRMS only and add ERP later?",
+        a: "Yes. Each module sits on the same core, so you can start with the one you need most and add the rest later.",
       },
     ],
   },
@@ -395,10 +453,10 @@ export const solutions: Solution[] = [
       { title: "Visible progress", detail: "Weekly demos and a repository you own, so nothing happens out of sight." },
       {
         title: "Proven stack",
-        detail: "The same engineers built our algo trading, business exchange, e-bidding and gaming platforms.",
+        detail: "The same engineers built our algo trading, ERP and HRMS, e-bidding and gaming platforms.",
       },
     ],
-    proof: ["algo-trading-platform", "business-exchange-platform", "gaming-platform"],
+    proof: ["algo-trading-platform", "enterprise-software", "gaming-platform"],
     services: ["web-product-engineering", "ai-automation"],
     estimateType: "web-app",
     faq: [
@@ -426,7 +484,7 @@ export const solutions: Solution[] = [
     h1: "Fintech software development where every number has to be right",
     intro: [
       "Financial software is judged on correctness. Money must never be lost to a rounding error, an order must never fire twice, and every sensitive action must leave an audit trail. We build with those rules enforced in code and in the database.",
-      "Our fintech work includes a live algo trading platform, a business exchange with KYC, a multi-brand platform foundation with a double-entry ledger, and a financial analytics tool.",
+      "Our fintech work includes a live algo trading platform, payroll inside our HRMS, a multi-brand platform foundation with a double-entry ledger, and a financial analytics tool.",
     ],
     build: [
       "Trading and investment platforms",
@@ -451,20 +509,20 @@ export const solutions: Solution[] = [
       {
         title: "Trust built in",
         detail:
-          "Our trading and business exchange platforms ship consent records, audit logs and KYC as core features.",
+          "Our trading platform ships consent records and audit logs as core features, and our ERP and HRMS keep an audit trail on every approval.",
       },
       {
         title: "Compliance-aware engineering",
         detail: "Server-side, deny-by-default rules, never hidden only in the interface.",
       },
     ],
-    proof: ["algo-trading-platform", "business-exchange-platform", "gaming-platform", "financial-analytics"],
+    proof: ["algo-trading-platform", "gaming-platform", "financial-analytics", "enterprise-software"],
     services: ["software-engineering", "web-product-engineering"],
     estimateType: "web-app",
     faq: [
       {
         q: "Do you handle KYC integrations?",
-        a: "Yes. Our business exchange platform uses Aadhaar verification through Digio inside onboarding, and we can integrate other KYC providers.",
+        a: "Yes. We integrate KYC and identity providers (for example Aadhaar-based verification) inside onboarding, so users are verified before they can transact.",
       },
       {
         q: "Are you a licensed financial institution?",
@@ -493,7 +551,7 @@ export const solutions: Solution[] = [
       "Meet us in person or talk on WhatsApp: you work directly with the engineers who build your product, and see it working every week.",
     ],
     build: [
-      "Custom software and internal business tools",
+      "ERP, HRMS and internal business software",
       "Websites and web applications",
       "SaaS platforms and dashboards",
       "AI agents, chatbots and WhatsApp automation",
@@ -514,11 +572,11 @@ export const solutions: Solution[] = [
       {
         title: "Work at a global standard",
         detail:
-          "The same team built platforms such as an algo trading platform and a business exchange, used beyond Indore.",
+          "The same team built platforms such as an algo trading platform and ERP and HRMS software, used beyond Indore.",
       },
       { title: "Clear pricing in rupees", detail: "Indicative INR ranges for every kind of project, before we meet." },
     ],
-    proof: ["algo-trading-platform", "business-exchange-platform", "e-bidding-automation"],
+    proof: ["algo-trading-platform", "enterprise-software", "e-bidding-automation"],
     services: ["web-product-engineering", "ai-automation", "digital-marketing"],
     estimateType: "web-app",
     faq: [

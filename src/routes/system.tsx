@@ -28,12 +28,8 @@ const swatches = [
 const type = [
   ["text-display font-display", "Display", "Systems for what's next"],
   ["text-headline font-display", "Headline", "Intelligence that acts."],
-  ["text-title font-medium", "Title", "Business Exchange Platform"],
-  [
-    "text-body",
-    "Body",
-    "Structured, auditable deal processes for buying and selling businesses, from mandate to close.",
-  ],
+  ["text-title font-medium", "Title", "Enterprise Software Suite"],
+  ["text-body", "Body", "ERP, HRMS and management systems that put operations, people and approvals on one platform."],
   ["text-small text-muted", "Small", "Indicative range, not a quote."],
 ] as const;
 

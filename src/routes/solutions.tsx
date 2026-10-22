@@ -7,7 +7,7 @@ export const meta = () =>
   seo({
     title: "Software solutions: AI agents, SaaS, fintech | TechDesk",
     description:
-      "WhatsApp AI agents, algo trading software, marketplaces, SaaS, Chrome extensions and dedicated developers in India. Solutions backed by real projects.",
+      "WhatsApp AI agents, algo trading, ERP and HRMS, marketplaces, SaaS, Chrome extensions and dedicated developers in India. Backed by real projects.",
     path: "/solutions",
     breadcrumbs: [["Solutions", "/solutions"]],
   });

@@ -33,7 +33,7 @@ WhatsApp/call **+91 92033 87375** · **business.techdesk@gmail.com** · **Indore
 - Old portfolio testimonials ("Sarah Chen" etc.) and stats ("50+ projects", "30+ clients", "99.9%") are **template content — excluded** unless the owner confirms them.
 - Missing content → flag it in data (e.g. `visualsPending: true`): a `[CONTENT NEEDED]` note renders in dev builds only and the section is omitted in production. `tests/unit/data.test.ts` fails on known template filler.
 - BidMaster: describe as procurement automation; do not market CAPTCHA reading.
-- **No client or project brand names, and no links to them, anywhere on the site** (owner, 2026-09-25). Name projects by what they are: Business Exchange Platform, Algo Trading Platform, E-bidding Automation Extension, Gaming Platform, Agency Website.
+- **No client or project brand names, and no links to them, anywhere on the site** (owner, 2026-09-25). Name projects by what they are: Enterprise Software Suite (ERP, HRMS, management systems), Algo Trading Platform, E-bidding Automation Extension, Gaming Platform, Agency Website.
 
 ## Working rules
 - Work in phases (spec §57). Phases 0–12 completed 2026-09-24 (see docs/CHANGELOG.md); deploy steps in docs/DEPLOYMENT.md need the owner.

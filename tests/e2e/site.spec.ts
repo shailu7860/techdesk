@@ -47,7 +47,7 @@ test("unknown URLs return 404 with the designed page", async ({ page }) => {
 
 test("sitemap and robots are generated", async ({ request }) => {
   const sitemap = await (await request.get("/sitemap.xml")).text();
-  expect(sitemap).toContain("/work/business-exchange-platform");
+  expect(sitemap).toContain("/work/enterprise-software");
   expect(sitemap).not.toContain("/system");
   expect(await (await request.get("/robots.txt")).text()).toContain("Disallow: /system");
 });

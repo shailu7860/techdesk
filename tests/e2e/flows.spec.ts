@@ -43,10 +43,10 @@ test("industries tabs work with the keyboard", async ({ page, isMobile }) => {
   const first = page.getByRole("tab", { name: "Fintech" });
   await first.focus();
   await page.keyboard.press("ArrowDown");
-  const second = page.getByRole("tab", { name: "Marketplaces" });
+  const second = page.getByRole("tab", { name: "Enterprise software" });
   await expect(second).toBeFocused();
   await expect(second).toHaveAttribute("aria-selected", "true");
-  await expect(page.getByRole("tabpanel")).toContainText("business exchange");
+  await expect(page.getByRole("tabpanel")).toContainText("ERP, HRMS");
 });
 
 test("calculator: currency switch, then hand the estimate to the brief", async ({ page }) => {

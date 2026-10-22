@@ -121,6 +121,8 @@ const organizationLd: Ld = {
     "Custom software development",
     "Algorithmic trading software",
     "Marketplace development",
+    "ERP software development",
+    "HRMS software development",
     "Chrome extension development",
     "Technical SEO",
   ],

@@ -34,7 +34,6 @@ type CaseStudy = {
 
 export type IndustryKey =
   | "fintech"
-  | "marketplaces"
   | "ecommerce"
   | "healthcare"
   | "education"
@@ -45,42 +44,41 @@ export type IndustryKey =
 
 export const projects: Project[] = [
   {
-    slug: "business-exchange-platform",
+    slug: "enterprise-software",
     metaDescription:
-      "Case study: a business exchange platform for buying and selling companies with mandates, auctions, watchlists and Aadhaar KYC. Engineered by TechDesk.",
+      "Case study: enterprise software by TechDesk. ERP, HRMS and management systems for operations, people and reporting, with role-based access.",
     code: "01",
-    title: "Business Exchange Platform",
-    tagline: "Buying and selling businesses through structured deals",
-    industry: "Marketplaces · M&A",
-    industries: ["marketplaces", "fintech"],
-    services: ["web-product-engineering", "software-engineering"],
-    status: "Live",
+    title: "Enterprise Software Suite",
+    tagline: "ERP, HRMS and management systems",
+    industry: "Enterprise · ERP and HRMS",
+    industries: ["enterprise", "saas"],
+    services: ["software-engineering", "digital-transformation", "web-product-engineering"],
+    status: "Delivered",
     summary:
-      "A platform for buying and selling businesses through structured, auditable deal processes: clear timelines, verified parties and professional execution.",
-    stack: ["React", "Vite", "Material UI", "Digio KYC", "Aadhaar verification"],
+      "Enterprise software that runs the business: ERP for operations and inventory, HRMS for people, attendance and payroll, and management systems that bring approvals and reporting into one place.",
+    stack: ["React", "TypeScript", "Node.js", "MongoDB", "PostgreSQL"],
     caseStudy: {
       problem: [
-        "Buying or selling a business usually runs on email threads, spreadsheets and counterparties nobody has verified.",
-        "Serious buyers need to find the right mandates quickly; sellers need every step to be traceable.",
+        "Growing companies run operations, people and finance on spreadsheets and disconnected tools, so nobody sees one version of the truth.",
+        "Approvals happen over chat and email, which leaves no trail and slows every decision.",
       ],
       approach:
-        "Model the deal as a structured process instead of a listing board. Every mandate, bid and expression of interest becomes an auditable step, with identity verification built into the flow instead of bolted on after.",
+        "Model the business, not the screens. Each department becomes a module on one shared data core, with roles and approvals defined once and enforced everywhere, so a purchase, a leave request or a payroll run follows the same auditable path.",
       architecture: [
-        { node: "Discovery", role: "Mandates filtered by industry, location, asset type and ticket size" },
-        { node: "Watchlists", role: "Private watchlists plus an auto-watchlist that tracks new matches" },
-        { node: "Deal flow", role: "Expressions of interest, auctions and bidding, verified events" },
-        { node: "Trust layer", role: "Aadhaar KYC through Digio before a party can transact" },
-        { node: "Plans", role: "Standard and Enterprise subscriptions gate advanced features" },
+        { node: "ERP", role: "Purchase, sales, inventory and vendor management on one record" },
+        { node: "HRMS", role: "Employee records, attendance, leave and payroll" },
+        { node: "Management", role: "Projects, tasks, assets and approval workflows" },
+        { node: "Access layer", role: "Role-based permissions per department, branch and action" },
+        { node: "Reporting", role: "Dashboards and exports across every module" },
       ],
       features: [
-        "Mandate discovery with multi-select filters for industry, location, asset type and ticket size",
-        "Auctions and bidding with a calendar view of active events",
-        "Expressions of interest and a contact-seller flow gated by preferences",
-        "Private watchlists and an auto-watchlist that can be toggled",
-        "Identity verification (Aadhaar through Digio) inside the onboarding flow",
-        "Per-page search metadata and Open Graph images for shareable listings",
+        "Modular ERP covering purchase, sales, inventory and vendors",
+        "HRMS with employee records, attendance, leave and payroll",
+        "Multi-step approval workflows with a full audit trail",
+        "Role-based access by department, branch and action",
+        "Dashboards and exportable reports for management",
       ],
-      role: "Product engineering",
+      role: "Design and engineering",
       visualsPending: true,
     },
   },

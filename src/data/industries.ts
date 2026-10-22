@@ -21,19 +21,11 @@ export const industries: Industry[] = [
     project: "algo-trading-platform",
   },
   {
-    key: "marketplaces",
-    name: "Marketplaces",
-    example:
-      "A business exchange with mandates, auctions, watchlists and identity verification built into the deal flow.",
-    services: ["web-product-engineering", "software-engineering"],
-    project: "business-exchange-platform",
-  },
-  {
     key: "enterprise",
-    name: "Enterprise & procurement",
-    example: "Browser automation that prepares vendor bids ahead of time and saves them the instant the window opens.",
-    services: ["ai-automation", "digital-transformation"],
-    project: "e-bidding-automation",
+    name: "Enterprise software",
+    example: "ERP, HRMS and management systems that put operations, people, approvals and reporting on one platform.",
+    services: ["software-engineering", "digital-transformation"],
+    project: "enterprise-software",
   },
   {
     key: "gaming",

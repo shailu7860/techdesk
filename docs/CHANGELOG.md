@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+### Changed
+- Replaced the Business Exchange Platform everywhere on the site with an Enterprise Software Suite (ERP, HRMS and management systems), so our enterprise work is presented as a flagship case study (owner request). Homepage hero card, industries tab ("Enterprise software" replaces "Marketplaces"), strengths, work page meta, solution pages and the /system specimen updated. Marketplace and fintech pages no longer claim business exchange or Digio KYC work.
+### Added
+- `/solutions/erp-hrms-software-development` landing page (keyword "ERP software development company"); ERP and HRMS added to Organization `knowsAbout`.
+### Removed
+- `/work/business-exchange-platform` case study and its OG image; new `/work/enterprise-software` replaces it.
+**Files:** src/data/{projects,industries,solutions,company}.ts, src/sections/home/Hero.tsx, src/routes/{work,system,solutions}.tsx, src/lib/seo.ts, public/og/*, tests/e2e/{site,flows}.spec.ts, CLAUDE.md, docs/SEO_KEYWORDS.md · **API/Schema:** none · **Migration:** none (old /work/business-exchange-platform URL now 404s; add an Amplify redirect to /work/enterprise-software if it was indexed) · **Breaking:** no · **Tests:** see verify run
+
 ## 0.2.0 (2026-09-27): static-only
 - Removed the AI chat assistant and its Amplify Lambda backend (owner: deploy on Amplify with no server for now). Dock is now WhatsApp + Call; the home AI section links to /contact.
 - Dropped AWS backend devDependencies (`@aws-amplify/backend*`, `aws-cdk-lib`, `constructs`) and the `mysql2`/`immutable` overrides; `amplify.yml` is frontend-only.

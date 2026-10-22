@@ -30,6 +30,7 @@ Research date: 2026-09-25. Target market: **worldwide** (owner), with India and 
 | `/solutions/whatsapp-ai-agent-development` | WhatsApp AI agent development | WhatsApp chatbot development (cost), for business |
 | `/solutions/algo-trading-software-development` | algo trading software development | algo trading platform, trading bot, crypto algo trading |
 | `/solutions/marketplace-development` | marketplace development company | B2B / online marketplace development |
+| `/solutions/erp-hrms-software-development` | ERP software development company | HRMS software development, custom ERP, enterprise management software |
 | `/solutions/chrome-extension-development` | Chrome extension development company | browser extension development |
 | `/solutions/saas-development-company` | SaaS development company | SaaS product development, SaaS company in India |
 | `/solutions/hire-developers-india` | hire dedicated developers in India | outsource to India, hire AI developers, offshore |

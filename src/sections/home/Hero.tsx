@@ -15,9 +15,9 @@ const SIGNALS = [
     delay: "0s",
   },
   {
-    label: "Business exchange",
-    status: "Live",
-    detail: "Business exchange with KYC",
+    label: "Enterprise software",
+    status: "Delivered",
+    detail: "ERP, HRMS and management systems",
     pos: "top-[40%] -right-[2%]",
     delay: "1.2s",
   },

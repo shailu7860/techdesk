@@ -53,7 +53,7 @@ export const strengths = [
   {
     title: "Products that handle money and trust",
     detail:
-      "Ledgers, KYC, consent and audit logs, built to be correct first (our trading, business exchange and gaming platforms).",
+      "Ledgers, payroll, consent and audit logs, built to be correct first (our trading, ERP and HRMS, and gaming platforms).",
   },
   {
     title: "AI that stays up",

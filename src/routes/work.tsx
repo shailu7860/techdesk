@@ -10,7 +10,7 @@ export const meta = () =>
   seo({
     title: "Case studies: AI, SaaS and automation projects | TechDesk",
     description:
-      "Case studies of AI, SaaS and automation systems built by TechDesk: trading automation, a business exchange, procurement and gaming platforms.",
+      "Case studies of AI, SaaS and automation systems built by TechDesk: trading automation, ERP and HRMS, procurement and gaming platforms.",
     path: "/work",
     breadcrumbs: [["Work", "/work"]],
   });
