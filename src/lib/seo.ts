@@ -117,7 +117,9 @@ const organizationLd: Ld = {
   knowsAbout: [
     "AI agent development",
     "WhatsApp AI agents",
-    "SaaS development",
+    "SaaS product development",
+    "Backend and API development",
+    "Gaming platform development",
     "Custom software development",
     "Algorithmic trading software",
     "Marketplace development",

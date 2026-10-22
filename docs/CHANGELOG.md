@@ -1,6 +1,12 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Three SEO landing pages for the queries the owner wants to rank for: `/solutions/ai-agent-development` (AI agent developers), `/solutions/custom-software-development` (custom software, servers and APIs) and `/solutions/gaming-platform-development` (gaming platforms). Each targets one keyword and cites only real projects; footer, sitemap, llms.txt and share images pick them up automatically.
+### Changed
+- SaaS page title and h1 now lead with "SaaS product development". The AI automation service page is retitled so it no longer competes with the new AI agent page. Site description and Organization `knowsAbout` mention SaaS products, custom software, backend and gaming.
+**Files:** src/data/{solutions,services,company}.ts, src/lib/seo.ts, public/og/*, docs/SEO_KEYWORDS.md · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** npm test, verify, e2e
+
 ### Changed
 - Replaced the Business Exchange Platform everywhere on the site with an Enterprise Software Suite (ERP, HRMS and management systems), so our enterprise work is presented as a flagship case study (owner request). Homepage hero card, industries tab ("Enterprise software" replaces "Marketplaces"), strengths, work page meta, solution pages and the /system specimen updated. Marketplace and fintech pages no longer claim business exchange or Digio KYC work.
 ### Added

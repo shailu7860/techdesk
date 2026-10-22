@@ -68,7 +68,7 @@ export const services: Service[] = [
     stack: ["Claude", "Groq", "OpenAI-compatible APIs", "Vector search", "Node.js", "Python"],
     visual: "agent",
     seo: {
-      title: "AI agent and automation development",
+      title: "AI automation, chatbot and RAG services",
       description:
         "AI agents, chatbots, RAG search and workflow automation that act inside your tools, with provider failover and a human in the loop. Built by TechDesk, Indore.",
     },

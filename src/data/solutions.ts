@@ -23,6 +23,65 @@ export type Solution = {
 
 export const solutions: Solution[] = [
   {
+    slug: "ai-agent-development",
+    keyword: "AI agent development company",
+    secondary: ["hire AI agent developer", "custom AI agent development", "AI agent developers in India"],
+    title: "AI agent development company and developers",
+    description:
+      "Hire AI agent developers who ship: agents that research, decide and act inside your tools, with model failover, guardrails and a human in the loop.",
+    h1: "AI agent development by developers who run agents in production",
+    intro: [
+      "An AI agent is software that reads a situation, decides what to do and takes the action itself: answering a customer, updating a CRM, researching a market or drafting a document. The hard part is not the demo, it is keeping the agent correct, safe and online every day.",
+      "Our AI agent development work runs in production: the AI layer of our algo trading platform produces live research every five minutes across several model providers, with timeouts, failover and cooldowns so one outage never stops the feature.",
+    ],
+    build: [
+      "Customer-facing agents for WhatsApp, web chat and email",
+      "Internal agents that act inside your CRM, ERP and tools",
+      "Research and analysis agents on live data",
+      "RAG search over your documents and knowledge base",
+      "Multi-step workflows with approvals and a human in the loop",
+      "Multi-provider model layers with failover and cost control",
+    ],
+    steps: [
+      { name: "Pick the job", detail: "One task the agent owns end to end, and how we will measure it." },
+      { name: "Connect the tools", detail: "The data it reads and the actions it is allowed to take, nothing more." },
+      { name: "Add guardrails", detail: "Limits, approvals, logging and a fallback when a model is down." },
+      { name: "Launch and tune", detail: "Review real conversations and actions every week and improve them." },
+    ],
+    why: [
+      {
+        title: "Agents in production, not demos",
+        detail: "Our trading platform's AI research and swing-trade agents run on live market data every day.",
+      },
+      {
+        title: "Built to stay up",
+        detail: "Provider chains with per-attempt timeouts and cooldowns, so one model outage degrades, never breaks.",
+      },
+      {
+        title: "Safe by default",
+        detail: "Agents get only the permissions their job needs, and risky actions wait for a person to approve.",
+      },
+    ],
+    proof: ["algo-trading-platform", "e-bidding-automation", "agency-website"],
+    services: ["ai-automation", "software-engineering"],
+    estimateType: "ai",
+    guide: "ai-agent-development-cost",
+    faq: [
+      {
+        q: "What is the difference between a chatbot and an AI agent?",
+        a: "A chatbot answers questions. An AI agent also takes actions: it can look up an order, update a record, book a slot or start a workflow, within limits you set.",
+      },
+      {
+        q: "Which AI models do you use?",
+        a: "We choose per task, for example Claude, Groq-hosted open models or other OpenAI-compatible APIs, and usually put two or more providers behind a failover chain.",
+      },
+      {
+        q: "How much does AI agent development cost?",
+        a: "A focused agent starts at an indicative ₹75k in India or $2k worldwide; the estimate tool and our cost guide give a range for your scope.",
+      },
+    ],
+  },
+  {
     slug: "whatsapp-ai-agent-development",
     keyword: "WhatsApp AI agent development",
     secondary: ["WhatsApp chatbot development", "WhatsApp AI agent for business", "WhatsApp chatbot development cost"],
@@ -287,6 +346,65 @@ export const solutions: Solution[] = [
     ],
   },
   {
+    slug: "custom-software-development",
+    keyword: "custom software development company",
+    secondary: ["backend development company", "server and API development", "Node.js backend development"],
+    title: "Custom software and backend development company",
+    description:
+      "Custom software, servers and APIs built to stay correct under load: data models, queues, integrations and cloud hosting. Node.js, PostgreSQL and AWS.",
+    h1: "Custom software development, from the server up",
+    intro: [
+      "Most software problems are backend problems: data that drifts, jobs that run twice, integrations that fail quietly and servers that slow down as users grow. We build custom software with the server, database and APIs designed first, so the product on top stays fast and correct.",
+      "Our custom software development work includes the backend of a multi-brand gaming platform with an immutable double-entry ledger, the execution engine of an algo trading platform, and ERP and HRMS systems.",
+    ],
+    build: [
+      "Custom business software and internal tools",
+      "Backend servers and REST APIs with OpenAPI docs",
+      "Database design on PostgreSQL, MongoDB and Redis",
+      "Background jobs and queues with retries",
+      "Third-party integrations, webhooks and payment callbacks",
+      "Cloud hosting on AWS with monitoring and backups",
+    ],
+    steps: [
+      { name: "Model the data", detail: "Every entity, state and rule, before any screen is designed." },
+      { name: "Design the APIs", detail: "One schema that validates input, types the code and documents the API." },
+      { name: "Build and test", detail: "Tests against real databases for everything that matters." },
+      { name: "Run it", detail: "Deployment, logging, alerts and backups, so you know it is healthy." },
+    ],
+    why: [
+      {
+        title: "Correct under load",
+        detail: "Idempotency and uniqueness live in the database, so a retried request never creates a duplicate.",
+      },
+      {
+        title: "Built to grow",
+        detail:
+          "Stateless servers, queues for heavy work and indexed queries, so more users means more servers, not a rewrite.",
+      },
+      {
+        title: "No black boxes",
+        detail: "Structured logs, documented APIs and a repository you own from day one.",
+      },
+    ],
+    proof: ["gaming-platform", "algo-trading-platform", "enterprise-software"],
+    services: ["software-engineering", "web-product-engineering"],
+    estimateType: "web-app",
+    faq: [
+      {
+        q: "Can you take over or fix an existing backend?",
+        a: "Yes. We start with a short review of the code, database and hosting, then fix the riskiest problems first before adding features.",
+      },
+      {
+        q: "Which backend stack do you use?",
+        a: "Usually Node.js with Fastify or Express, PostgreSQL or MongoDB, Redis for caching and queues, and AWS for hosting, chosen per project.",
+      },
+      {
+        q: "Do you build APIs for mobile apps and partners?",
+        a: "Yes. We design versioned REST APIs with authentication, rate limits and OpenAPI documentation that your app and partner teams can build against.",
+      },
+    ],
+  },
+  {
     slug: "chrome-extension-development",
     keyword: "Chrome extension development company",
     secondary: ["browser extension development", "Chrome extension development services", "custom Chrome extension"],
@@ -354,10 +472,10 @@ export const solutions: Solution[] = [
     slug: "saas-development-company",
     keyword: "SaaS development company",
     secondary: ["SaaS development services", "SaaS product development", "SaaS development company in India"],
-    title: "SaaS development company for startups and teams",
+    title: "SaaS product development company for startups",
     description:
       "SaaS product development from MVP to scale: accounts, subscriptions, dashboards, admin and APIs, built with React and Node.js. Indicative INR and USD pricing.",
-    h1: "SaaS development from first version to the product customers pay for",
+    h1: "SaaS product development, from first version to the product customers pay for",
     intro: [
       "A SaaS product has more moving parts than it looks: accounts and roles, subscriptions and billing, admin tools, reporting and an API, all while staying fast and secure. We design and build all of it, and we keep the first version small enough to launch.",
       "Our own products include a subscription algo trading platform with Starter, Pro and Ultra Pro plans, and a real-time task management SaaS for teams.",
@@ -409,6 +527,67 @@ export const solutions: Solution[] = [
       {
         q: "Will I own the code?",
         a: "Yes. The code lives in a repository you own or can access from day one.",
+      },
+    ],
+  },
+  {
+    slug: "gaming-platform-development",
+    keyword: "gaming platform development company",
+    secondary: ["iGaming software development", "sportsbook software development", "casino platform development"],
+    title: "Gaming platform development company",
+    description:
+      "Gaming platform development with wallets, a double-entry ledger, payments, bonuses and an operator back office, multi-brand from day one. By TechDesk.",
+    h1: "Gaming platform development where every balance has to add up",
+    intro: [
+      "A gaming platform is a money system first. A single bet touches the wallet, the odds, the bonus and the risk rules at the same moment, and players notice the first time a balance is wrong.",
+      "We are building the foundation of a multi-brand gaming platform: sportsbook, casino aggregation, instant games, wallet, payments, bonuses, VIP, affiliates and an operator back office, as one configurable codebase.",
+    ],
+    build: [
+      "Player wallets on an immutable double-entry ledger",
+      "Sportsbook, casino aggregation and instant games",
+      "Payments and provider callbacks that are idempotent and signature-verified",
+      "Bonuses, VIP tiers and affiliate tracking",
+      "Operator back office with roles and audit logs",
+      "Multi-brand, multi-currency configuration from one codebase",
+    ],
+    steps: [
+      { name: "Model the money", detail: "Wallets, currencies and every state a bet or payment can be in." },
+      { name: "Build the core", detail: "Ledger, accounts and one game vertical working end to end." },
+      { name: "Add verticals", detail: "More games, bonuses and payment methods on the same core." },
+      {
+        name: "Launch per brand",
+        detail: "Brand, currency and market rules set by configuration, not by forking code.",
+      },
+    ],
+    why: [
+      {
+        title: "Money as integers",
+        detail: "Amounts are integer minor units with an explicit currency, and floating-point money is a lint error.",
+      },
+      {
+        title: "Exactly once",
+        detail: "Every financial operation is idempotent, enforced by a unique database index, not by hope.",
+      },
+      {
+        title: "Compliance on the server",
+        detail: "Market and player rules are enforced server-side and deny by default.",
+      },
+    ],
+    proof: ["gaming-platform", "algo-trading-platform"],
+    services: ["software-engineering", "web-product-engineering"],
+    estimateType: "web-app",
+    faq: [
+      {
+        q: "Do you provide gaming licences?",
+        a: "No. We build the software. Licensing, regulatory approval and the choice of markets stay with you as the operator, and we build the platform to follow those rules.",
+      },
+      {
+        q: "Can one platform run several brands?",
+        a: "Yes. Brand, currency and market settings are configuration, so new brands launch without a separate codebase.",
+      },
+      {
+        q: "Can you integrate game and payment providers?",
+        a: "Yes. Provider integrations sit behind adapters, with signed, replay-protected and idempotent callbacks.",
       },
     ],
   },

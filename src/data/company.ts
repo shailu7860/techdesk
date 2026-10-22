@@ -10,7 +10,7 @@ export const site = {
   name: "TechDesk",
   tagline: "We engineer digital systems for what's next.",
   description:
-    "TechDesk is an AI and software development company in Indore, India. We build AI agents, SaaS platforms and automation for clients worldwide.",
+    "TechDesk is an AI and software development company in Indore, India. We build AI agents, SaaS products, custom software and gaming platforms worldwide.",
 } as const;
 
 // Engagement models (delegated by the owner). Prices live in pricing.ts; these describe how we work together.

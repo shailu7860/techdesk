@@ -22,17 +22,20 @@ Research date: 2026-09-25. Target market: **worldwide** (owner), with India and 
 | Page | Primary keyword | Secondary |
 |---|---|---|
 | `/` | AI agent and software development company | AI and software development company in India; worldwide |
-| `/services/ai-automation` | AI agent and automation development | AI chatbot development, RAG, workflow automation |
+| `/services/ai-automation` | AI automation, chatbot and RAG services (cedes "AI agent development" to the solution page) | AI chatbot development, RAG, workflow automation |
 | `/services/web-product-engineering` | web app and SaaS development | React, Next.js, dashboards, e-commerce |
 | `/services/software-engineering` | backend, API and integration engineering | Node.js, PostgreSQL, integrations |
 | `/services/digital-marketing` | SEO and digital marketing for leads | technical SEO |
 | `/services/digital-transformation` | digital transformation and MVP development | legacy modernisation, internal tools |
+| `/solutions/ai-agent-development` | AI agent development company | hire AI agent developer, custom AI agent development |
 | `/solutions/whatsapp-ai-agent-development` | WhatsApp AI agent development | WhatsApp chatbot development (cost), for business |
 | `/solutions/algo-trading-software-development` | algo trading software development | algo trading platform, trading bot, crypto algo trading |
 | `/solutions/marketplace-development` | marketplace development company | B2B / online marketplace development |
 | `/solutions/erp-hrms-software-development` | ERP software development company | HRMS software development, custom ERP, enterprise management software |
+| `/solutions/custom-software-development` | custom software development company | backend development company, server and API development |
+| `/solutions/gaming-platform-development` | gaming platform development company | iGaming, sportsbook and casino platform development |
 | `/solutions/chrome-extension-development` | Chrome extension development company | browser extension development |
-| `/solutions/saas-development-company` | SaaS development company | SaaS product development, SaaS company in India |
+| `/solutions/saas-development-company` | SaaS development company (title leads with "SaaS product development") | SaaS product development, SaaS company in India |
 | `/solutions/hire-developers-india` | hire dedicated developers in India | outsource to India, hire AI developers, offshore |
 | `/solutions/fintech-software-development` | fintech software development company | trading platform, financial software |
 | `/solutions/software-development-company-indore` | software development company in Indore | web development company in Indore, AI development company in Indore |
