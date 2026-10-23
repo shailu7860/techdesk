@@ -122,7 +122,7 @@ export function ContactPrompt() {
               type="button"
               aria-pressed={need?.label === n.label}
               onClick={() => setNeed(need?.label === n.label ? null : n)}
-              className={`min-h-9 cursor-pointer rounded-sm border px-3 text-small font-medium transition-colors ${
+              className={`min-h-9 pointer-coarse:min-h-11 cursor-pointer rounded-sm border px-3 text-small font-medium transition-colors ${
                 need?.label === n.label
                   ? "border-signal bg-signal text-void"
                   : "border-hairline text-ink hover:border-signal hover:text-signal"

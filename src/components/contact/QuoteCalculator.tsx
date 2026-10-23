@@ -127,7 +127,7 @@ export function QuoteCalculator({
             {(["INR", "USD"] as const).map((c) => (
               <label
                 key={c}
-                className="cursor-pointer rounded-[1px] px-3 py-1.5 text-label font-medium has-[:checked]:bg-ink has-[:checked]:text-void has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-signal"
+                className="inline-flex cursor-pointer items-center rounded-[1px] px-3 py-1.5 pointer-coarse:min-h-11 text-label font-medium has-[:checked]:bg-ink has-[:checked]:text-void has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-signal"
               >
                 <input
                   type="radio"

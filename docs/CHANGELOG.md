@@ -1,6 +1,15 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed (UX audit with the ux-craft skill)
+- Brief form: the error summary now lists each broken field as a link and takes focus; fields are first checked when you leave them and re-checked as you type once they show an error; every field reserves room for its message so the buttons never jump; the success message names the project type and where the reply will go.
+- Case study, solution and blog pages: "Back" is now a button on the right of the title row (owner layout rule) instead of a breadcrumb link above the title; breadcrumbs stay in structured data for Google.
+- Focus is never hidden under the sticky header or the mobile contact bar (scroll padding, WCAG 2.2 2.4.11).
+- Browser autofill keeps the dark field colours instead of a pale blue block.
+- Touch screens get 44 px targets on the hero product tabs, calculator currency switch and contact prompt choices.
+- Work page: an empty industry filter now offers "Show all builds".
+**Files:** src/components/contact/{BriefForm,ContactPrompt,QuoteCalculator}.tsx, src/components/ui/Field.tsx, src/routes/{work,work.$slug,solutions.$slug,blog.$slug}.tsx, src/sections/home/HeroShowcase.tsx, src/styles/globals.css, tests/e2e/flows.spec.ts · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** 235 unit, 61 e2e passed
+
 ### Added
 - "Tell us what you need" contact prompt, 5 s after landing (owner request): pick a need (AI agent, SaaS, ERP/HRMS, gaming, website), then WhatsApp with the need prefilled, send a brief (calculator type preselected) or call. Non-modal so the page stays usable and Google's intrusive-interstitial rule is respected; once per session, snoozed a week after closing, never on /contact, waits while someone types, Escape closes, no motion under reduced motion.
 **Files:** src/components/contact/ContactPrompt.tsx, src/root.tsx, src/styles/globals.css, tests/e2e/{fixtures,flows.spec}.ts · **API/Schema:** none · **Migration:** none · **Breaking:** no · **Tests:** 2 e2e added

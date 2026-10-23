@@ -33,6 +33,22 @@ const chip =
 
 type Status = "editing" | "sending" | "sent" | (SubmitResult & { ok: false });
 
+// Field ids and names for the error summary, which links to each field that needs fixing.
+const FIELD_IDS = {
+  name: "brief-name",
+  projectType: "brief-type",
+  description: "brief-description",
+  email: "brief-email",
+  phone: "brief-phone",
+} as const;
+const FIELD_NAMES: Record<keyof typeof FIELD_IDS, string> = {
+  name: "Your name",
+  projectType: "Project type",
+  description: "What are you building?",
+  email: "Email",
+  phone: "Phone / WhatsApp",
+};
+
 /** Five-step project brief (spec §26, LG-02) with per-step validation and every submit state. */
 export function BriefForm({
   projectType = "",
@@ -58,6 +74,7 @@ export function BriefForm({
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("editing");
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const summaryRef = useRef<HTMLDivElement>(null);
   const firstRender = useRef(true);
 
   // Move focus to the new step's heading so keyboard and screen-reader users land in the right place.
@@ -70,16 +87,23 @@ export function BriefForm({
     headingRef.current?.focus();
   }, [step, status]);
 
+  // Once a field shows an error, re-check it on every change so the message clears the moment it is fixed.
   const set = <K extends keyof Lead>(k: K, v: Lead[K]) => {
-    setLead((l) => ({ ...l, [k]: v }));
-    if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
+    const nextLead = { ...lead, [k]: v };
+    setLead(nextLead);
+    if (k in errors) setErrors((e) => ({ ...e, [k]: validate(step, nextLead)[k as keyof Errors] }));
+  };
+  // First check happens when the visitor leaves a field, never while they are still typing.
+  const blur = (k: keyof Errors) => () => {
+    const msg = validate(step, lead)[k];
+    setErrors((e) => (msg || k in e ? { ...e, [k]: msg } : e));
   };
 
   const next = () => {
     const e = validate(step, lead);
     setErrors(e);
     if (Object.keys(e).length === 0) setStep((s) => Math.min(5, s + 1));
-    else headingRef.current?.focus();
+    else requestAnimationFrame(() => summaryRef.current?.focus());
   };
 
   const onSubmit = async (ev: FormEvent) => {
@@ -104,7 +128,15 @@ export function BriefForm({
           Thank you, {lead.name.split(" ")[0]}.
         </h3>
         <p className="mt-4 max-w-[50ch] text-muted">
-          {contact.replyPromise} If it's urgent, message us on WhatsApp and mention your brief.
+          Your brief{lead.projectType ? ` for a ${lead.projectType.toLowerCase()}` : ""} reached us. We'll reply to{" "}
+          <span className="text-ink">{lead.email}</span>
+          {lead.channel !== "email" && lead.phone ? (
+            <>
+              {" "}
+              or on <span className="text-ink">{lead.phone}</span>
+            </>
+          ) : null}
+          . {contact.replyPromise} If it's urgent, message us on WhatsApp and mention your brief.
         </p>
         <div className="mt-8">
           <Button
@@ -144,12 +176,28 @@ export function BriefForm({
         </h3>
 
         {Object.values(errors).some(Boolean) && (
-          <p role="alert" className="text-small text-danger">
-            <span aria-hidden="true" className="">
-              !{" "}
-            </span>
-            Please fix the highlighted {Object.values(errors).filter(Boolean).length > 1 ? "fields" : "field"}.
-          </p>
+          <div
+            ref={summaryRef}
+            tabIndex={-1}
+            role="alert"
+            className="border border-danger/60 p-4 text-small focus:outline-none"
+          >
+            <p className="font-medium text-danger">
+              Fix {Object.values(errors).filter(Boolean).length > 1 ? "these fields" : "this field"} to continue:
+            </p>
+            <ul className="mt-2 grid gap-1">
+              {(Object.keys(FIELD_IDS) as (keyof typeof FIELD_IDS)[])
+                .filter((k) => errors[k])
+                .map((k) => (
+                  <li key={k}>
+                    <a href={`#${FIELD_IDS[k]}`} className="text-ink underline underline-offset-4 hover:text-signal">
+                      {FIELD_NAMES[k]}
+                    </a>
+                    <span className="text-muted">: {errors[k]}</span>
+                  </li>
+                ))}
+            </ul>
+          </div>
         )}
 
         {/* Honeypot: off-screen, not focusable, ignored by humans. */}
@@ -168,6 +216,8 @@ export function BriefForm({
         {step === 1 && (
           <div className="grid gap-6 md:grid-cols-2">
             <Field
+              id={FIELD_IDS.name}
+              onBlur={blur("name")}
               label="Your name"
               name="name"
               autoComplete="name"
@@ -194,6 +244,8 @@ export function BriefForm({
             <div className="grid gap-6 md:grid-cols-2">
               <Field
                 as="select"
+                id={FIELD_IDS.projectType}
+                onBlur={blur("projectType")}
                 label="Project type"
                 name="projectType"
                 required
@@ -224,6 +276,8 @@ export function BriefForm({
             </div>
             <Field
               as="textarea"
+              id={FIELD_IDS.description}
+              onBlur={blur("description")}
               label="What are you building?"
               name="description"
               required
@@ -297,6 +351,8 @@ export function BriefForm({
           <div className="grid gap-6">
             <div className="grid gap-6 md:grid-cols-2">
               <Field
+                id={FIELD_IDS.email}
+                onBlur={blur("email")}
                 label="Email"
                 name="email"
                 type="email"
@@ -309,6 +365,8 @@ export function BriefForm({
                 onChange={(e) => set("email", e.target.value)}
               />
               <Field
+                id={FIELD_IDS.phone}
+                onBlur={blur("phone")}
                 label="Phone / WhatsApp"
                 name="phone"
                 type="tel"

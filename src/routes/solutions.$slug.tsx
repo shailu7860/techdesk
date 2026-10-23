@@ -51,13 +51,12 @@ export default function SolutionPage({ params }: Route.ComponentProps) {
   return (
     <main id="main">
       <header className="container-page pt-16 pb-12 md:pt-24">
-        <nav aria-label="Breadcrumb" className="text-small text-muted">
-          <Link to="/solutions" className="hover:text-ink">
-            Solutions
-          </Link>{" "}
-          / {s.title}
-        </nav>
-        <h1 className="mt-6 max-w-[22ch] font-display text-headline md:text-display">{s.h1}</h1>
+        <div className="flex items-start justify-between gap-6">
+          <h1 className="max-w-[22ch] font-display text-headline md:text-display">{s.h1}</h1>
+          <Button href="/solutions" variant="ghost" className="shrink-0">
+            ← All solutions
+          </Button>
+        </div>
         <div className="mt-8 grid max-w-[70ch] gap-4 text-body text-muted md:text-[1.1875rem]">
           {s.intro.map((p) => (
             <p key={p}>{p}</p>

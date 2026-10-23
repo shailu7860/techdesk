@@ -350,3 +350,27 @@ html[data-motion="paused"] :is(.float, .caret) {
     animation: none;
   }
 }
+
+/* ── Focus never hides under the sticky header or the mobile contact bar (WCAG 2.2, 2.4.11) ── */
+html {
+  scroll-padding-top: 5.5rem;
+  scroll-padding-bottom: calc(var(--dock-h) + env(safe-area-inset-bottom) + 1rem);
+}
+@media (min-width: 48rem) {
+  html {
+    scroll-padding-bottom: 1rem;
+  }
+}
+
+/* ── Browser autofill keeps the dark field instead of a pale blue block (no shadows, by rule) ── */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-ink);
+  caret-color: var(--color-ink);
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
+}

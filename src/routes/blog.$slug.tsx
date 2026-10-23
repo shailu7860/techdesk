@@ -113,13 +113,12 @@ export default function InsightPage({ params }: Route.ComponentProps) {
     <main id="main">
       <article className="container-page pt-16 pb-(--section-y) md:pt-24">
         <div className="max-w-[72ch]">
-          <nav aria-label="Breadcrumb" className="text-small text-muted">
-            <Link to="/blog" className="hover:text-ink">
-              Blog
-            </Link>{" "}
-            / {a.title}
-          </nav>
-          <h1 className="mt-6 font-display text-headline md:text-display">{a.h1}</h1>
+          <div className="flex items-start justify-between gap-6">
+            <h1 className="font-display text-headline md:text-display">{a.h1}</h1>
+            <Button href="/blog" variant="ghost" className="shrink-0">
+              ← All guides
+            </Button>
+          </div>
           <p className="mt-6 text-small text-muted">
             {a.category} · TechDesk · <time dateTime={a.published}>{date}</time> · {a.readMinutes} min read
           </p>

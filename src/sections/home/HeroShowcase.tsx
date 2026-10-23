@@ -52,7 +52,7 @@ export function HeroShowcase() {
               type="button"
               aria-pressed={i === active}
               onClick={() => jump(i)}
-              className={`shrink-0 cursor-pointer rounded-sm px-2.5 py-1.5 text-label font-medium whitespace-nowrap transition-colors ${
+              className={`shrink-0 cursor-pointer rounded-sm px-2.5 py-1.5 pointer-coarse:min-h-11 text-label font-medium whitespace-nowrap transition-colors ${
                 i === active ? "bg-panel-hi text-ink" : "text-muted hover:text-ink"
               }`}
             >

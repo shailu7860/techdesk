@@ -59,14 +59,15 @@ export function Field(props: InputProps | TextareaProps | SelectProps) {
         </p>
       )}
       {el}
-      {error && (
-        <p id={errorId} className="flex items-start gap-2 text-small text-danger">
-          <span aria-hidden="true" className="">
-            !
-          </span>
-          {error}
-        </p>
-      )}
+      {/* The slot is always there, so an error never pushes the buttons below it down. */}
+      <p id={errorId} className="flex min-h-5 items-start gap-2 text-small text-danger">
+        {error && (
+          <>
+            <span aria-hidden="true">!</span>
+            {error}
+          </>
+        )}
+      </p>
     </div>
   );
 }

@@ -71,13 +71,13 @@ export default function CaseStudy({ params }: Route.ComponentProps) {
     <main id="main">
       <article>
         <header className="container-page pt-16 pb-12 md:pt-24">
-          <nav aria-label="Breadcrumb" className="text-label font-medium text-muted">
-            <Link to="/work" className="hover:text-ink">
-              Work
-            </Link>{" "}
-            / {p.title}
-          </nav>
-          <h1 className="mt-8 font-display text-display">{p.title}</h1>
+          {/* Back sits on the right of the title row (owner layout rule); breadcrumbs stay in structured data. */}
+          <div className="flex items-start justify-between gap-6">
+            <h1 className="font-display text-display">{p.title}</h1>
+            <Button href="/work" variant="ghost" className="shrink-0">
+              ← All work
+            </Button>
+          </div>
           <p className="mt-4 max-w-[40ch] font-display text-title text-muted">{p.tagline}</p>
           <dl className="mt-12 grid gap-6 border-t border-hairline pt-8 text-small sm:grid-cols-2 lg:grid-cols-4">
             {[

@@ -151,3 +151,14 @@ test("contact prompt never shows on the contact page", { tag: "@prompt" }, async
   await page.clock.runFor(6000);
   await expect(page.getByRole("dialog", { name: "Tell us what you need" })).toBeHidden();
 });
+
+test("brief errors: summary takes focus and links to the field, and the error clears once fixed", async ({ page }) => {
+  await page.goto("/contact#brief", { waitUntil: "networkidle" });
+  const brief = page.locator("form").filter({ hasText: "Step 1 of 5" });
+  await brief.getByRole("button", { name: "Continue" }).click();
+  const summary = brief.getByRole("alert");
+  await expect(summary).toBeFocused();
+  await expect(summary.getByRole("link", { name: "Your name" })).toHaveAttribute("href", "#brief-name");
+  await page.locator("#brief-name").fill("Asha");
+  await expect(summary).toBeHidden();
+});

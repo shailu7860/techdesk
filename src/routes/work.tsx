@@ -77,6 +77,11 @@ export default function Work() {
               </Link>
               .
             </p>
+            <div className="mt-6 flex justify-end">
+              <Button variant="secondary" onClick={() => setParams({}, { preventScrollReset: true })}>
+                Show all builds
+              </Button>
+            </div>
           </div>
         ) : (
           <table className="mt-12 w-full border-collapse text-left">
